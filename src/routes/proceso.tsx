@@ -102,7 +102,7 @@ function Page() {
           title="De la sentencia al desembolso en nueve pasos"
           support="Cuatro etapas con tiempos definidos. Usted firma en el día nueve; la espera de la entidad corre por nuestra cuenta."
         >
-          <div className="mt-12 border-t border-fin-line pt-10">
+          <div className="mt-12 hidden border-t border-fin-line pt-10 md:block">
             <div className="relative mb-6 hidden h-3 md:block">
               <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-fin-line" />
               <div className="relative grid grid-cols-4">

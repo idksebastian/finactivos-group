@@ -208,7 +208,7 @@ function Page() {
           support="Con la sentencia, la constancia de ejecutoria y su identificación podemos entregarle una valoración escrita. El estudio no tiene costo."
         >
           <div className="mt-12 grid gap-12 border-t border-fin-line pt-12 md:grid-cols-[5fr_6fr]">
-            <dl className={`space-y-6 ${ds.body} text-fin-ink/75`}>
+            <dl className={`order-2 space-y-6 md:order-0 ${ds.body} text-fin-ink/75`}>
               <div>
                 <dt className={label}>Oficina</dt>
                 <dd className="mt-1 leading-relaxed">
@@ -243,7 +243,9 @@ function Page() {
               </div>
             </dl>
 
-            <DirectContact />
+            <div className="order-1 md:order-0">
+              <DirectContact />
+            </div>
           </div>
         </PageHeader>
 

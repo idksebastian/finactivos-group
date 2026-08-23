@@ -22,15 +22,15 @@ export function EntitiesStrip() {
         <p className="shrink-0 font-sans text-[11px] uppercase tracking-[0.18em] text-fin-ink/45">
           Trabajamos casos contra estas entidades
         </p>
-        <ul className="flex flex-wrap items-center gap-x-8 gap-y-4 md:flex-1 md:justify-between">
+        <ul className="grid grid-cols-3 items-center gap-x-4 gap-y-5 sm:grid-cols-3 md:flex md:flex-1 md:flex-wrap md:gap-x-8 md:gap-y-4 md:justify-between">
           {logos.map((l) => (
-            <li key={l.name}>
+            <li key={l.name} className="flex justify-center">
               <img
                 src={l.src}
                 alt={l.name}
                 title={l.name}
                 loading="lazy"
-                className="h-7 w-auto max-w-[110px] object-contain opacity-45 grayscale transition-opacity hover:opacity-70 sm:h-8"
+                className="h-7 w-auto max-w-25 object-contain opacity-45 grayscale transition-opacity hover:opacity-70 sm:h-8 md:max-w-27.5"
               />
             </li>
           ))}
