@@ -30,7 +30,7 @@ export function EntitiesStrip() {
                 alt={l.name}
                 title={l.name}
                 loading="lazy"
-                className="h-7 w-auto max-w-25 object-contain opacity-45 grayscale transition-opacity hover:opacity-70 sm:h-8 md:max-w-27.5"
+                className="h-7 w-auto max-w-25 object-contain opacity-70 grayscale-40 transition-opacity hover:opacity-100 hover:grayscale-0 sm:h-8 md:max-w-27.5"
               />
             </li>
           ))}
