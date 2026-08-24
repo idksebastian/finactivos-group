@@ -50,8 +50,8 @@ function Page() {
                 Nuestro papel es adelantar ese momento sin trasladarle riesgos al titular.
               </p>
               <p>
-                Operamos desde Bogotá, y acompañamos cada cesión hasta su radicación ante la
-                entidad condenada.
+                Operamos desde Bogotá con cobertura nacional, y acompañamos cada cesión hasta su
+                radicación ante la entidad condenada.
               </p>
             </div>
           </div>
@@ -80,14 +80,18 @@ function Page() {
         </Section>
 
         <Section>
-          <div className="grid gap-10 sm:grid-cols-3">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="border-l-2 border-fin-lime pl-5">
               <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">+17</p>
               <p className={`mt-2 ${ds.body} text-fin-ink/70`}>años de experiencia jurídica y financiera</p>
             </div>
             <div className="border-l-2 border-fin-lime pl-5">
               <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">Bogotá</p>
-              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>sede principal</p>
+              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>sede principal, cobertura nacional</p>
+            </div>
+            <div className="border-l-2 border-fin-lime pl-5">
+              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">+250</p>
+              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>procesos analizados</p>
             </div>
             <div className="border-l-2 border-fin-lime pl-5">
               <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">901.389.322-5</p>

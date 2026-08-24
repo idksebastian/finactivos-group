@@ -99,13 +99,45 @@ function Page() {
         </section>
 
         <section className="border-b border-fin-line">
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-            <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
-              A quién está dirigido
-            </h2>
-            <p className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-fin-ink/75">
-              Empresas proveedoras de grandes superficies con cuentas por cobrar pendientes de pago.
-            </p>
+          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 md:grid-cols-2">
+            <div>
+              <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+                A quién está dirigido
+              </h2>
+              <ul className="mt-6 space-y-4">
+                {[
+                  "Empresas proveedoras del Estado con facturas radicadas y aceptadas.",
+                  "Compañías con contratos de tracto sucesivo y pagos diferidos.",
+                  "Pymes en crecimiento que necesitan capital de trabajo sin endeudarse.",
+                  "Contratistas cuyo cobro depende de trámites administrativos largos.",
+                ].map((t) => (
+                  <li key={t} className="flex gap-3 font-sans text-sm leading-relaxed text-fin-ink/75">
+                    <span className="mt-[7px] block h-1.5 w-1.5 shrink-0 rounded-[1px] bg-fin-green" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="border-l-0 border-t border-fin-line pt-8 md:border-l md:border-t-0 md:pl-10 md:pt-0">
+              <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+                Qué necesitamos
+              </h2>
+              <ol className="mt-6 divide-y divide-fin-line border-t border-fin-line">
+                {[
+                  "Factura radicada y aceptada por el pagador",
+                  "Contrato u orden de compra que la respalde",
+                  "Certificado de existencia y representación legal",
+                  "Estados financieros del último periodo",
+                ].map((t, i) => (
+                  <li key={t} className="flex gap-4 py-4">
+                    <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-[3px] border-2 border-fin-lime px-1.5 font-display text-sm font-bold text-fin-teal">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-sans text-sm leading-relaxed text-fin-ink/75">{t}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
           </div>
         </section>
 

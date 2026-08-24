@@ -409,9 +409,11 @@ function Figures() {
   );
   return (
     <section className="border-b border-fin-line bg-white/50">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 sm:grid-cols-2 lg:grid-cols-4">
         {stat("+17", "años de experiencia jurídica y financiera")}
+        {stat("+250", "procesos analizados")}
         {stat("9", "días hábiles hasta la firma de cesión")}
+        {stat("100%", "acompañamiento notarial y contractual")}
       </div>
     </section>
   );
