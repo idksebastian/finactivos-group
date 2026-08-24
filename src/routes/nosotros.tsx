@@ -28,21 +28,6 @@ export const Route = createFileRoute("/nosotros")({
   component: Page,
 });
 
-const values = [
-  {
-    t: "Claridad",
-    d: "Cada propuesta se entrega por escrito, con el valor, los descuentos y los tiempos a la vista. Nunca hay letra pequeña.",
-  },
-  {
-    t: "Respeto",
-    d: "Detrás de cada sentencia hay una pérdida. Acompañamos con el cuidado que ese hecho exige.",
-  },
-  {
-    t: "Rigor",
-    d: "No hacemos ofertas sin estudio jurídico. Si el caso no aplica, se lo decimos de una vez.",
-  },
-];
-
 function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
@@ -60,50 +45,54 @@ function Page() {
             <SectionTitle>Quiénes somos</SectionTitle>
             <div className={`space-y-5 ${ds.lead} text-fin-ink/75`}>
               <p>
-                Nacimos de la unión entre abogados especializados en responsabilidad del Estado y
-                estructuradores financieros. Esa mezcla es la que permite valorar un fallo con
-                precisión y asumir con responsabilidad el riesgo de su cobro.
-              </p>
-              <p>
                 Trabajamos principalmente con sentencias y conciliaciones de reparación directa,
                 donde las familias llevan años esperando un pago que ya fue ordenado por un juez.
                 Nuestro papel es adelantar ese momento sin trasladarle riesgos al titular.
               </p>
               <p>
-                Operamos desde Bogotá con cobertura nacional, y acompañamos cada cesión hasta su
-                radicación ante la entidad condenada.
+                Operamos desde Bogotá, y acompañamos cada cesión hasta su radicación ante la
+                entidad condenada.
               </p>
             </div>
           </div>
         </Section>
 
         <Section tone="paper">
-          <div className="grid gap-px bg-fin-line md:grid-cols-3">
-            {values.map((v, i) => (
-              <div key={v.t} className="bg-fin-cream p-8">
-                <span className={ds.numberBox}>{String(i + 1).padStart(2, "0")}</span>
-                <p className={`mt-4 ${ds.h3} text-fin-teal`}>{v.t}</p>
-                <p className={`mt-3 ${ds.body} text-fin-ink/75`}>{v.d}</p>
-              </div>
-            ))}
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <p className={`${ds.h3} text-fin-teal`}>Esencia de Finactivos</p>
+              <p className={`mt-3 ${ds.body} text-fin-ink/75`}>
+                Trabajamos bajo principios éticos y profesionales: el trato a los clientes, la
+                confianza en el manejo de la información, transparencia en los procesos y
+                compromiso con los resultados pactados. Estos principios hacen parte del ADN de
+                nuestra empresa, con miras a aportar en el ámbito social.
+              </p>
+            </div>
+            <div>
+              <p className={`${ds.h3} text-fin-teal`}>Personalidad Finactivos</p>
+              <p className={`mt-3 ${ds.body} text-fin-ink/75`}>
+                Nuestra personalidad de marca es socialmente consciente y responsable. Creemos que,
+                con un trato cercano pero respetuoso, podemos influir de manera positiva en la
+                vida de nuestros clientes.
+              </p>
+            </div>
           </div>
         </Section>
 
         <Section>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { v: "+17", l: "años de experiencia jurídica y financiera" },
-              { v: "Bogotá", l: "sede principal, cobertura nacional" },
-              { v: "+250", l: "procesos analizados" },
-              { v: "901.389.322-5", l: "NIT" },
-            ].map((d) => (
-              <div key={d.l} className="border-l-2 border-fin-lime pl-5">
-                <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">
-                  {d.v}
-                </p>
-                <p className={`mt-2 ${ds.body} text-fin-ink/70`}>{d.l}</p>
-              </div>
-            ))}
+          <div className="grid gap-10 sm:grid-cols-3">
+            <div className="border-l-2 border-fin-lime pl-5">
+              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">+17</p>
+              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>años de experiencia jurídica y financiera</p>
+            </div>
+            <div className="border-l-2 border-fin-lime pl-5">
+              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">Bogotá</p>
+              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>sede principal</p>
+            </div>
+            <div className="border-l-2 border-fin-lime pl-5">
+              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">901.389.322-5</p>
+              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>NIT</p>
+            </div>
           </div>
         </Section>
 

@@ -43,3 +43,8 @@ supabase/.temp/
 *.sw?
 .env*
 !.env.example
+
+# Internal reference documents (brief, marketing PDFs) -- not part of the
+# deployed site, contain internal contact/pricing info, never commit.
+*.pdf
+*.docx

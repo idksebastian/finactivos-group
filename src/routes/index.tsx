@@ -401,23 +401,17 @@ function Eligibility() {
 /* ---------- cifras ---------- */
 
 function Figures() {
-  const data = [
-    { value: "+17", label: "años de experiencia jurídica y financiera" },
-    { value: "+250", label: "procesos analizados" },
-    { value: "9", label: "días hábiles hasta la firma de cesión" },
-    { value: "100%", label: "acompañamiento notarial y contractual" },
-  ];
+  const stat = (value: string, label: string) => (
+    <div className="border-l-2 border-fin-lime pl-5">
+      <p className="font-display text-4xl font-extrabold tracking-tight text-fin-teal">{value}</p>
+      <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">{label}</p>
+    </div>
+  );
   return (
     <section className="border-b border-fin-line bg-white/50">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 sm:grid-cols-2 lg:grid-cols-4">
-        {data.map((d) => (
-          <div key={d.label} className="border-l-2 border-fin-lime pl-5">
-            <p className="font-display text-4xl font-extrabold tracking-tight text-fin-teal">
-              {d.value}
-            </p>
-            <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">{d.label}</p>
-          </div>
-        ))}
+      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 sm:grid-cols-2">
+        {stat("+17", "años de experiencia jurídica y financiera")}
+        {stat("9", "días hábiles hasta la firma de cesión")}
       </div>
     </section>
   );
