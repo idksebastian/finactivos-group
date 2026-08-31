@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { BackButton } from "@/components/back-button";
 import { EntitiesGrid } from "@/components/entities-grid";
 import { siteUrl } from "@/lib/site-url";
 
@@ -40,6 +41,7 @@ function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
       <SiteNav />
+      <BackButton fallbackTo="/servicios" />
       <main>
         {/* hero: bloque sólido a la izquierda */}
         <section className="border-b border-fin-line">

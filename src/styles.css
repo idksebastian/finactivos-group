@@ -146,7 +146,7 @@
 /* Finactivos Group — design tokens */
 :root {
   --fin-cream: oklch(0.985 0.012 92);
-  --fin-ink: oklch(0.28 0.045 195);
+  --fin-ink: oklch(0.27 0.08 195);
   --fin-teal: #006a6a;
   --fin-green: #037a47;
   --fin-lime: #8cbe43;

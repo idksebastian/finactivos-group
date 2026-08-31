@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { getPublishedPost } from "@/lib/blog.functions";
 import { formatPostDate, readingTime, extractFaq } from "@/lib/blog-format";
+import { BackButton } from "@/components/back-button";
 import { siteUrl } from "@/lib/site-url";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -120,6 +121,7 @@ function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
       <SiteNav />
+      <BackButton fallbackTo="/" />
       <main>
         <article>
           <header className="border-b-2 border-fin-teal">

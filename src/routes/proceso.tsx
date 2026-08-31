@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { BackButton } from "@/components/back-button";
 import { PageHeader, Section, SectionTitle, CtaBlock } from "@/components/page-system";
 import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
@@ -97,6 +98,7 @@ function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
       <SiteNav />
+      <BackButton />
       <main>
         <PageHeader
           eyebrow="Proceso"

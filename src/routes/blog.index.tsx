@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { listPublishedPosts } from "@/lib/blog.functions";
 import { formatPostDate } from "@/lib/blog-format";
 import { PageHeader, Section } from "@/components/page-system";
+import { BackButton } from "@/components/back-button";
 import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
 
@@ -55,6 +56,7 @@ function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
       <SiteNav />
+      <BackButton />
       <main>
         <PageHeader
           variant="solid"

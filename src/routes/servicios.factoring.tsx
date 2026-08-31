@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
+import { BackButton } from "@/components/back-button";
 import { siteUrl } from "@/lib/site-url";
 
 export const Route = createFileRoute("/servicios/factoring")({
@@ -38,6 +39,7 @@ function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
       <SiteNav />
+      <BackButton fallbackTo="/servicios" />
       <main>
         <section className="border-b border-fin-line">
           <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
