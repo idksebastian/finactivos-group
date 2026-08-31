@@ -122,9 +122,19 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <p className="mt-12 font-sans text-xs text-fin-cream/50">
-          © {new Date().getFullYear()} Finactivos Group S.A.S. Todos los derechos reservados.
-        </p>
+        <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-fin-cream/20 pt-6">
+          <p className="font-sans text-xs text-fin-cream/50">
+            © {new Date().getFullYear()} Finactivos Group S.A.S. Todos los derechos reservados.
+          </p>
+          <div className="flex gap-5 font-sans text-xs text-fin-cream/50">
+            <Link to="/terminos-y-condiciones" className="hover:text-fin-lime">
+              Términos y condiciones
+            </Link>
+            <Link to="/politica-de-privacidad" className="hover:text-fin-lime">
+              Política de privacidad
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

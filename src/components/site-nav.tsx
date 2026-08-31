@@ -17,7 +17,7 @@ export function SiteNav() {
     <header className="sticky top-0 z-40 border-b border-fin-line bg-fin-cream/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" aria-label="Finactivos Group — Inicio">
-          <BrandLogo />
+          <BrandLogo markSize="large" />
         </Link>
 
 

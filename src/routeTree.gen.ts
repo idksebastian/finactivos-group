@@ -13,8 +13,10 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as ProcesoRouteImport } from './routes/proceso'
 import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
@@ -45,6 +47,11 @@ const NosotrosRoute = NosotrosRouteImport.update({
   path: '/nosotros',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
+  id: '/politica-de-privacidad',
+  path: '/politica-de-privacidad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProcesoRoute = ProcesoRouteImport.update({
   id: '/proceso',
   path: '/proceso',
@@ -53,6 +60,11 @@ const ProcesoRoute = ProcesoRouteImport.update({
 const ServiciosRoute = ServiciosRouteImport.update({
   id: '/servicios',
   path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TerminosYCondicionesRoute = TerminosYCondicionesRouteImport.update({
+  id: '/terminos-y-condiciones',
+  path: '/terminos-y-condiciones',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -107,8 +119,10 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proceso': typeof ProcesoRoute
   '/servicios': typeof ServiciosRouteWithChildren
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/servicios/compra-de-sentencias': typeof ServiciosCompraDeSentenciasRoute
@@ -123,7 +137,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proceso': typeof ProcesoRoute
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/servicios/compra-de-sentencias': typeof ServiciosCompraDeSentenciasRoute
@@ -140,8 +156,10 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proceso': typeof ProcesoRoute
   '/servicios': typeof ServiciosRouteWithChildren
+  '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/servicios/compra-de-sentencias': typeof ServiciosCompraDeSentenciasRoute
@@ -159,8 +177,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contacto'
     | '/nosotros'
+    | '/politica-de-privacidad'
     | '/proceso'
     | '/servicios'
+    | '/terminos-y-condiciones'
     | '/admin/login'
     | '/blog/$slug'
     | '/servicios/compra-de-sentencias'
@@ -175,7 +195,9 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/nosotros'
+    | '/politica-de-privacidad'
     | '/proceso'
+    | '/terminos-y-condiciones'
     | '/admin/login'
     | '/blog/$slug'
     | '/servicios/compra-de-sentencias'
@@ -191,8 +213,10 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contacto'
     | '/nosotros'
+    | '/politica-de-privacidad'
     | '/proceso'
     | '/servicios'
+    | '/terminos-y-condiciones'
     | '/admin/login'
     | '/blog/$slug'
     | '/servicios/compra-de-sentencias'
@@ -209,8 +233,10 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   ContactoRoute: typeof ContactoRoute
   NosotrosRoute: typeof NosotrosRoute
+  PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   ProcesoRoute: typeof ProcesoRoute
   ServiciosRoute: typeof ServiciosRouteWithChildren
+  TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
@@ -245,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NosotrosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/politica-de-privacidad': {
+      id: '/politica-de-privacidad'
+      path: '/politica-de-privacidad'
+      fullPath: '/politica-de-privacidad'
+      preLoaderRoute: typeof PoliticaDePrivacidadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/proceso': {
       id: '/proceso'
       path: '/proceso'
@@ -257,6 +290,13 @@ declare module '@tanstack/react-router' {
       path: '/servicios'
       fullPath: '/servicios'
       preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terminos-y-condiciones': {
+      id: '/terminos-y-condiciones'
+      path: '/terminos-y-condiciones'
+      fullPath: '/terminos-y-condiciones'
+      preLoaderRoute: typeof TerminosYCondicionesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -362,8 +402,10 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   ContactoRoute: ContactoRoute,
   NosotrosRoute: NosotrosRoute,
+  PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   ProcesoRoute: ProcesoRoute,
   ServiciosRoute: ServiciosRouteWithChildren,
+  TerminosYCondicionesRoute: TerminosYCondicionesRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }

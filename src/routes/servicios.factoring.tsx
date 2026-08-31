@@ -10,7 +10,7 @@ export const Route = createFileRoute("/servicios/factoring")({
       {
         name: "description",
         content:
-          "Anticipamos facturas y cuentas por cobrar frente a entidades públicas y privadas. Liquidez en 24 a 48 horas, sin deuda bancaria.",
+          "Anticipamos el pago de sus facturas de sus clientes. Liquidez en 24 a 48 horas, sin deuda bancaria.",
       },
       { property: "og:title", content: "Factoring | Finactivos Group" },
       {

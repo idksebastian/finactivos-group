@@ -179,7 +179,7 @@ function Services() {
     {
       t: "Factoring",
       to: "/servicios/factoring" as const,
-      d: "Anticipamos facturas y cuentas por cobrar a entidades públicas y privadas, sin afectar el flujo de su operación.",
+      d: "Anticipamos el pago de sus facturas de sus clientes, sin afectar el flujo de su operación.",
     },
     {
       t: "Inversión",
