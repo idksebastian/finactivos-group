@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
 
 const otherServices = [
@@ -15,31 +15,46 @@ const items = [
   { label: "Contacto", to: "/contacto" as const },
 ] as const;
 
+const navLink =
+  "font-sans text-sm text-fin-cream/80 transition-colors hover:text-fin-lime";
+
 function OtherServicesDropdown() {
   const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function show() {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  }
+  function hide() {
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  }
+
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
+    <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="flex items-center gap-1 font-sans text-sm text-fin-ink/70 transition-colors hover:text-fin-teal"
+        className={`flex items-center gap-1.5 ${navLink}`}
       >
         Otros servicios
-        <svg viewBox="0 0 12 8" className="h-2.5 w-2.5 fill-current" aria-hidden="true">
+        <svg
+          viewBox="0 0 12 8"
+          className={`h-2.5 w-2.5 fill-current transition-transform duration-200 ${open ? "-rotate-180" : ""}`}
+          aria-hidden="true"
+        >
           <path d="M6 8 0 0h12L6 8Z" />
         </svg>
       </button>
-      {open && (
-        <div
-          role="menu"
-          className="absolute left-0 top-full z-50 mt-2 w-52 rounded-[3px] border border-fin-line bg-white py-2 shadow-lg"
-        >
+      <div
+        role="menu"
+        className={`absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3 transition-all duration-200 ease-out ${
+          open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden rounded-[6px] border border-fin-line bg-white py-2 shadow-xl">
           {otherServices.map((s) => (
             <Link
               key={s.label}
@@ -58,7 +73,7 @@ function OtherServicesDropdown() {
             Ver todos
           </Link>
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -66,17 +81,17 @@ function OtherServicesDropdown() {
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-fin-line bg-white shadow-sm">
+    <header className="sticky top-0 z-40 bg-fin-green shadow-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" aria-label="Finactivos Group — Inicio">
-          <BrandLogo markSize="large" />
+          <BrandLogo markSize="large" tone="cream" />
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
           <Link
             to={items[0].to}
-            className="font-sans text-sm text-fin-ink/70 transition-colors hover:text-fin-teal"
-            activeProps={{ className: "text-fin-teal font-medium" }}
+            className={navLink}
+            activeProps={{ className: "text-fin-cream font-medium" }}
           >
             {items[0].label}
           </Link>
@@ -85,46 +100,38 @@ export function SiteNav() {
             <Link
               key={i.label}
               to={i.to}
-              className="font-sans text-sm text-fin-ink/70 transition-colors hover:text-fin-teal"
-              activeProps={{ className: "text-fin-teal font-medium" }}
+              className={navLink}
+              activeProps={{ className: "text-fin-cream font-medium" }}
             >
               {i.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <Link
-            to="/servicios/compra-de-sentencias"
-            className="hidden rounded-[3px] bg-fin-teal px-4 py-2 font-sans text-sm font-medium text-fin-cream transition-colors hover:bg-fin-green sm:inline-block"
-          >
-            Evalúe su sentencia
-          </Link>
-          <button
-            type="button"
-            aria-label="Abrir menú"
-            onClick={() => setOpen((v) => !v)}
-            className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
-          >
-            <span className="block h-px w-5 bg-fin-ink" />
-            <span className="block h-px w-5 bg-fin-ink" />
-          </button>
-        </div>
+        <button
+          type="button"
+          aria-label="Abrir menú"
+          onClick={() => setOpen((v) => !v)}
+          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+        >
+          <span className="block h-px w-5 bg-fin-cream" />
+          <span className="block h-px w-5 bg-fin-cream" />
+        </button>
       </div>
 
       {open && (
-        <nav className="border-t border-fin-line px-6 py-4 md:hidden">
+        <nav className="border-t border-fin-cream/20 px-6 py-4 md:hidden">
           {items.map((i) => (
             <Link
               key={i.label}
               to={i.to}
               onClick={() => setOpen(false)}
-              className="block border-b border-fin-line/70 py-3 font-sans text-sm text-fin-ink"
+              className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
             >
               {i.label}
             </Link>
           ))}
-          <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-green">
+          <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-lime">
             Otros servicios
           </p>
           {otherServices.map((s) => (
@@ -132,7 +139,7 @@ export function SiteNav() {
               key={s.label}
               to={s.to}
               onClick={() => setOpen(false)}
-              className="block border-b border-fin-line/70 py-3 font-sans text-sm text-fin-ink"
+              className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
             >
               {s.label}
             </Link>
