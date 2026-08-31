@@ -140,7 +140,7 @@ function TimeRelief() {
       <div className="mt-12">
         <div className="flex items-baseline justify-between">
           <span className="font-sans text-sm font-medium text-fin-teal">Con Finactivos</span>
-          <span className="font-display text-sm font-bold text-fin-green">9 días hábiles</span>
+          <span className="font-display text-sm font-bold text-fin-green">Máximo 3 meses</span>
         </div>
         <div className="relative mt-4 h-10">
           <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-fin-line" />
@@ -159,8 +159,8 @@ function TimeRelief() {
           </div>
         </div>
         <p className="mt-6 font-sans text-sm leading-relaxed text-fin-ink/70">
-          Del envío de documentos a la firma de cesión: nueve días. La espera de la entidad corre por
-          nuestra cuenta.
+          En un máximo de tres meses usted recibe sus derechos económicos. La espera de hasta 6 años
+          ante la entidad corre por nuestra cuenta.
         </p>
       </div>
     </div>
@@ -344,10 +344,10 @@ function Process() {
               Su tiempo real de gestión
             </span>
             <span className="rounded-[3px] bg-fin-cream px-3 py-1 font-display text-sm font-bold uppercase text-fin-teal">
-              9 días hábiles
+              Máximo 3 meses
             </span>
             <span className="font-sans text-sm text-fin-cream/70">
-              — los 60 a 90 días restantes los espera Finactivos, no usted.
+              — los 6 años restantes los espera Finactivos, no usted.
             </span>
           </div>
         </div>
@@ -361,10 +361,10 @@ function Process() {
 
 function Eligibility() {
   const conditions = [
-    { label: "Sentencia o conciliación en firme", ok: true },
+    { label: "Sentencia o conciliación en firme y ejecutoriada", ok: true },
     { label: "Proceso de reparación directa contra el Estado", ok: true },
     { label: "Entidad condenada plenamente identificada", ok: true },
-    { label: "Procesos aún en primera instancia", ok: false },
+    { label: "Cuenta de cobro presentada", ok: true },
   ];
   return (
     <section className="border-b border-fin-line bg-fin-cream">
@@ -413,7 +413,7 @@ function Figures() {
         {stat("+17", "años de experiencia jurídica y financiera")}
         {stat("+250", "procesos analizados")}
         {stat("9", "días hábiles hasta la firma de cesión")}
-        {stat("100%", "acompañamiento notarial y contractual")}
+        {stat("100%", "acompañamiento jurídico y contractual")}
       </div>
     </section>
   );
@@ -426,7 +426,7 @@ function CTA() {
     <section className="bg-fin-teal">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 md:flex-row md:items-end md:justify-between">
         <h2 className="max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
-          Tiene una sentencia en firme. Nosotros tenemos el capital y la paciencia.
+          Tiene una sentencia en firme. Nosotros tenemos el capital y la experiencia.
         </h2>
         <Link
           to="/contacto"

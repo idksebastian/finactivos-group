@@ -38,7 +38,7 @@ const lines = [
     points: [
       "Sentencia o conciliación en firme y ejecutoriada",
       "Estudio jurídico sin costo para el titular",
-      "Cesión ante notaría y radicación ante la entidad",
+      "Cesión y radicación ante la entidad",
       "Pago al titular antes del giro estatal",
     ],
   },
@@ -47,7 +47,7 @@ const lines = [
     to: "/servicios/factoring" as const,
     t: "Factoring",
     lead:
-      "Anticipamos facturas y cuentas por cobrar frente a entidades públicas y privadas para que su operación no dependa de los plazos de pago de terceros.",
+      "Anticipamos el pago de sus facturas de sus clientes para que su operación no dependa de los plazos de pago de terceros.",
     points: [
       "Facturas radicadas y aceptadas",
       "Descuento según plazo y perfil del pagador",

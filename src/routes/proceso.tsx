@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PageHeader, Section, SectionTitle, CtaBlock } from "@/components/page-system";
 import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
+import { slugify } from "@/lib/blog-format";
 
 export const Route = createFileRoute("/proceso")({
   head: () => ({
@@ -67,11 +68,11 @@ const stages = [
     steps: [
       {
         t: "Firma de cesión",
-        d: "Firma ante notaría con acompañamiento de nuestro equipo jurídico y desembolso a su favor.",
+        d: "Firma con acompañamiento de nuestro equipo jurídico y desembolso a su favor.",
       },
       {
         t: "Radicación ante la entidad",
-        d: "Radicamos la cesión ante la entidad condenada y ante el despacho que profirió la decisión.",
+        d: "Radicamos la cesión ante la entidad condenada.",
       },
     ],
   },
@@ -114,12 +115,13 @@ function Page() {
               </div>
             </div>
             <div className="grid gap-px bg-fin-line md:grid-cols-4">
-              {stages.map((s, i) => (
+              {stages.map((s) => (
                 <div key={s.stage} className="bg-fin-cream pb-6 pr-6 md:pl-6 md:first:pl-0">
-                  <div className="flex items-center justify-between gap-3">
-                    <p className={`${ds.h3} text-fin-ink`}>{s.stage}</p>
-                    <span className={ds.numberBox}>{String(i + 1).padStart(2, "0")}</span>
-                  </div>
+                  <a href={`#${slugify(s.stage)}`}>
+                    <p className={`${ds.h3} text-fin-ink transition-colors hover:text-fin-teal`}>
+                      {s.stage}
+                    </p>
+                  </a>
                   <p className={`mt-3 ${ds.timeBadge}`}>{s.time}</p>
                   <p className={`mt-3 ${ds.caption} text-fin-ink/60`}>
                     {s.steps.length} {s.steps.length === 1 ? "paso" : "pasos"} · {s.steps[0]?.t}
@@ -135,7 +137,8 @@ function Page() {
           {stages.map((s) => (
             <div
               key={s.stage}
-              className="grid gap-8 border-b border-fin-line py-12 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[3fr_7fr]"
+              id={slugify(s.stage)}
+              className="scroll-mt-24 grid gap-8 border-b border-fin-line py-12 first:pt-0 last:border-b-0 last:pb-0 md:grid-cols-[3fr_7fr]"
             >
               <div>
                 <SectionTitle>{s.stage}</SectionTitle>

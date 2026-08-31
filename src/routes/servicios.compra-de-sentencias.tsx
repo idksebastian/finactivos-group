@@ -67,7 +67,7 @@ function Page() {
                 {[
                   ["9 días", "hasta la firma de cesión"],
                   ["0 costos", "para el titular en el estudio"],
-                  ["100%", "acompañamiento notarial"],
+                  ["100%", "acompañamiento jurídico"],
                 ].map(([v, l]) => (
                   <div key={l}>
                     <dt className="font-display text-2xl font-extrabold text-fin-teal">{v}</dt>
