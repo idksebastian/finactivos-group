@@ -129,8 +129,8 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* key={pathname} fuerza a que cada página vuelva a montar y dispare la animación de entrada. */}
-      <div key={pathname} className="page-enter">
+      {/* key={pathname} fuerza a que cada página vuelva a montar y dispare la animación de título/gráfico. */}
+      <div key={pathname}>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
         <Outlet />
       </div>

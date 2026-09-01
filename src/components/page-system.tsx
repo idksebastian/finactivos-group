@@ -58,7 +58,7 @@ export function PageHeader({
         <div className="grid gap-8 md:grid-cols-[6fr_5fr] md:gap-12">
           <div>
             <p className={solid ? `${ds.eyebrow} text-fin-lime` : ds.eyebrow}>{eyebrow}</p>
-            <h1 className={`mt-5 ${ds.h1} ${solid ? "text-fin-cream" : "text-fin-teal"}`}>
+            <h1 className={`title-enter mt-5 ${ds.h1} ${solid ? "text-fin-cream" : "text-fin-teal"}`}>
               {title}
             </h1>
           </div>

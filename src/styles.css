@@ -244,22 +244,36 @@
 .article-body hr { border-color: var(--fin-line); }
 .article-body p[style*="center"] { text-align: center; }
 
-/* Animación de entrada al cambiar de página */
-@keyframes page-enter {
+/* Animación de entrada al cambiar de página: solo título y gráfico principal, no la página entera */
+@keyframes title-enter {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateX(32px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
-.page-enter {
-  animation: page-enter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes graphic-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.title-enter {
+  animation: title-enter 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.graphic-enter {
+  animation: graphic-enter 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
 }
 @media (prefers-reduced-motion: reduce) {
-  .page-enter {
+  .title-enter,
+  .graphic-enter {
     animation: none;
   }
 }

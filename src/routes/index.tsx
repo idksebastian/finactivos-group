@@ -68,7 +68,7 @@ function Hero() {
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
             Reparación directa contra el Estado
           </p>
-          <h1 className="mt-6 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl md:text-6xl">
+          <h1 className="title-enter mt-6 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl md:text-6xl">
             Somos su aliado estratégico en el cumplimiento de sus objetivos
           </h1>
           <p className="mt-6 max-w-md font-sans text-base leading-relaxed text-fin-ink/75">
@@ -105,7 +105,7 @@ function TimeRelief() {
   return (
     <div
       ref={ref}
-      className="rounded-[6px] border border-fin-line bg-white/60 p-7 sm:p-9"
+      className="graphic-enter rounded-[6px] border border-fin-line bg-white/60 p-7 sm:p-9"
       aria-label="Comparación del tiempo de espera"
     >
       <p className="font-sans text-xs uppercase tracking-[0.2em] text-fin-ink/45">
