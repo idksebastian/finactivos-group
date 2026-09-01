@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { EntitiesStrip } from "@/components/entities-strip";
 import { PhotoFrame } from "@/components/photo-frame";
 import { ColombiaMap } from "@/components/colombia-map";
+import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
@@ -409,30 +410,38 @@ function Eligibility() {
   ];
   return (
     <section className="border-b border-fin-line bg-fin-cream">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-        <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
-          ¿Su caso aplica?
-        </h2>
-        <div className="mt-10 grid gap-px bg-fin-line sm:grid-cols-2 lg:grid-cols-4">
-          {conditions.map((c) => (
-            <div key={c.label} className="bg-fin-cream p-7">
-              <span
-                className={`flex h-9 w-9 items-center justify-center rounded-[3px] ${
-                  c.ok ? "bg-fin-lime text-fin-teal" : "bg-fin-line text-fin-ink/50"
-                }`}
-                aria-hidden
-              >
-                <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                  {c.ok ? (
-                    <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                  ) : (
-                    <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" />
-                  )}
-                </svg>
-              </span>
-              <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/80">{c.label}</p>
-            </div>
-          ))}
+      <div className="mx-auto grid max-w-6xl gap-14 px-6 py-16 md:py-20 lg:grid-cols-[4fr_7fr] lg:items-center">
+        <PhotoFrame
+          src={fotoCampesinoCafe}
+          alt="Caficultor colombiano, representando a los titulares que acompañamos"
+          block="green"
+          className="aspect-4/5 max-w-xs"
+        />
+        <div>
+          <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+            ¿Su caso aplica?
+          </h2>
+          <div className="mt-10 grid gap-px bg-fin-line sm:grid-cols-2">
+            {conditions.map((c) => (
+              <div key={c.label} className="bg-fin-cream p-7">
+                <span
+                  className={`flex h-9 w-9 items-center justify-center rounded-[3px] ${
+                    c.ok ? "bg-fin-lime text-fin-teal" : "bg-fin-line text-fin-ink/50"
+                  }`}
+                  aria-hidden
+                >
+                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5}>
+                    {c.ok ? (
+                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+                    ) : (
+                      <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" />
+                    )}
+                  </svg>
+                </span>
+                <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/80">{c.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

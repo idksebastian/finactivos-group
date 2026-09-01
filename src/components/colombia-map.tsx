@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { departments, COLOMBIA_VIEWBOX } from "@/lib/colombia-departments-data";
+import { departmentCapitals } from "@/lib/colombia-department-capitals";
 
 /**
  * Mapa interactivo de Colombia: cada departamento es una figura clicable
- * que muestra su nombre. Geometría con atribución en el pie del componente.
+ * que muestra su nombre y su capital. San Andrés y Providencia no viene
+ * como un trazo aprovechable en la fuente original, así que se representa
+ * como un marcador propio en la esquina superior izquierda.
+ * Geometría con atribución en el pie del componente.
  */
 export function ColombiaMap() {
   const [hovered, setHovered] = useState<string | null>(null);
@@ -18,39 +22,67 @@ export function ColombiaMap() {
         aria-label="Mapa de cobertura de Finactivos Group en Colombia, por departamento"
         className="mx-auto h-auto w-full max-w-md"
       >
-        {departments.map((d) => {
-          const isActive = active === d.name;
+        {departments.map((dep) => {
+          const isActive = active === dep.name;
+          const fillClass = isActive
+            ? "fill-fin-lime"
+            : "fill-fin-teal/15 hover:fill-fin-teal/35";
+          const common = {
+            onMouseEnter: () => setHovered(dep.name),
+            onMouseLeave: () => setHovered(null),
+            onFocus: () => setHovered(dep.name),
+            onBlur: () => setHovered(null),
+            onClick: () => setSelected((s) => (s === dep.name ? null : dep.name)),
+            tabIndex: 0,
+            role: "button" as const,
+            "aria-label": dep.name,
+          };
+
+          if ("marker" in dep) {
+            return (
+              <circle
+                key={dep.name}
+                cx={dep.marker.cx}
+                cy={dep.marker.cy}
+                r={dep.marker.r}
+                stroke="var(--fin-cream)"
+                strokeWidth={2}
+                className={`cursor-pointer outline-none transition-colors duration-200 ${fillClass}`}
+                {...common}
+              >
+                <title>{dep.name}</title>
+              </circle>
+            );
+          }
+
           return (
             <path
-              key={d.name}
-              d={d.d}
-              transform={d.transform}
-              onMouseEnter={() => setHovered(d.name)}
-              onMouseLeave={() => setHovered(null)}
-              onFocus={() => setHovered(d.name)}
-              onBlur={() => setHovered(null)}
-              onClick={() => setSelected((s) => (s === d.name ? null : d.name))}
-              tabIndex={0}
-              role="button"
-              aria-label={d.name}
+              key={dep.name}
+              d={dep.d}
               stroke="var(--fin-cream)"
               strokeWidth={2}
               strokeLinejoin="round"
-              className={`cursor-pointer outline-none transition-colors duration-200 ${
-                isActive ? "fill-fin-lime" : "fill-fin-teal/15 hover:fill-fin-teal/35"
-              }`}
+              className={`cursor-pointer outline-none transition-colors duration-200 ${fillClass}`}
+              {...common}
             >
-              <title>{d.name}</title>
+              <title>{dep.name}</title>
             </path>
           );
         })}
       </svg>
 
-      <div className="mt-6 flex min-h-9 items-center justify-center">
+      <div className="mt-6 flex min-h-14 flex-col items-center justify-center gap-1.5">
         {active ? (
-          <span className="rounded-[3px] bg-fin-teal px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-fin-cream">
-            {active}
-          </span>
+          <>
+            <span className="rounded-[3px] bg-fin-teal px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-fin-cream">
+              {active}
+            </span>
+            {departmentCapitals[active] && (
+              <span className="font-sans text-xs text-fin-ink/60">
+                Capital: {departmentCapitals[active]}
+              </span>
+            )}
+          </>
         ) : (
           <span className="font-sans text-sm text-fin-ink/50">
             Seleccione un departamento
