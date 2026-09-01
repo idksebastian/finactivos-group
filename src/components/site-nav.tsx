@@ -37,7 +37,7 @@ function OtherServicesDropdown() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className={`flex items-center gap-1.5 ${navLink}`}
+        className={`flex items-center gap-1.5 hover:cursor-pointer ${navLink}`}
       >
         Otros servicios
         <svg
