@@ -85,7 +85,11 @@ export function SiteNav() {
   return (
     <header className="sticky top-0 z-40 bg-fin-teal shadow-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link to="/" aria-label="Finactivos Group — Inicio">
+        <Link
+          to="/"
+          aria-label="Finactivos Group — Inicio"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
           <BrandLogo markSize="large" tone="cream" />
         </Link>
 
