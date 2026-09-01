@@ -4,6 +4,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { EntitiesStrip } from "@/components/entities-strip";
 import { PhotoFrame } from "@/components/photo-frame";
+import { ColombiaMap } from "@/components/colombia-map";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
@@ -438,6 +439,30 @@ function Eligibility() {
   );
 }
 
+/* ---------- cobertura: mapa interactivo ---------- */
+
+function Coverage() {
+  return (
+    <section className="border-b border-fin-line bg-white/50">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-16 md:py-20 lg:grid-cols-[5fr_5fr]">
+        <div>
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
+            Cobertura nacional
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+            Trabajamos en los 32 departamentos
+          </h2>
+          <p className="mt-5 max-w-md font-sans text-base leading-relaxed text-fin-ink/75">
+            No importa dónde quede radicado su proceso. Seleccione un departamento en el mapa
+            para verlo.
+          </p>
+        </div>
+        <ColombiaMap />
+      </div>
+    </section>
+  );
+}
+
 /* ---------- cifras ---------- */
 
 function Figures() {
@@ -491,6 +516,7 @@ function Index() {
         <Services />
         <Process />
         <Eligibility />
+        <Coverage />
         <Figures />
         <CTA />
       </main>
