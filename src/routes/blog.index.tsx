@@ -77,7 +77,7 @@ function Page() {
                   <p className={ds.eyebrow}>
                     {lead.category} · {formatPostDate(lead.published_at)}
                   </p>
-                  <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-[1.02] tracking-tight text-fin-ink sm:text-4xl">
+                  <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-[1.02] tracking-tight text-fin-teal sm:text-4xl">
                     <Link
                       to="/blog/$slug"
                       params={{ slug: lead.slug }}
@@ -126,7 +126,7 @@ function Page() {
                           {p.category} · {formatPostDate(p.published_at)}
                         </p>
                       </div>
-                      <h3 className="mt-4 font-display text-xl font-bold uppercase leading-tight tracking-tight text-fin-ink transition-colors group-hover:text-fin-teal">
+                      <h3 className="mt-4 font-display text-xl font-bold uppercase leading-tight tracking-tight text-fin-teal transition-colors group-hover:text-fin-green">
                         <Link to="/blog/$slug" params={{ slug: p.slug }}>
                           {p.title}
                         </Link>

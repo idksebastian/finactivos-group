@@ -52,14 +52,14 @@ function Page() {
             {/* ecuación: solidez + gestión = retorno */}
             <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
               <div className="flex-1 border border-fin-line bg-fin-cream p-5 text-center">
-                <p className="font-display text-sm font-bold uppercase text-fin-ink">
+                <p className="font-display text-sm font-bold uppercase text-fin-teal">
                   Solidez del pagador
                 </p>
                 <p className="mt-1 font-sans text-xs text-fin-ink/60">El Estado como deudor</p>
               </div>
               <span className="text-center font-display text-2xl font-extrabold text-fin-lime">+</span>
               <div className="flex-1 border border-fin-line bg-fin-cream p-5 text-center">
-                <p className="font-display text-sm font-bold uppercase text-fin-ink">
+                <p className="font-display text-sm font-bold uppercase text-fin-teal">
                   Gestión Finactivos
                 </p>
                 <p className="mt-1 font-sans text-xs text-fin-ink/60">Debida diligencia y cobro</p>
@@ -115,7 +115,7 @@ function Page() {
                   <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-[3px] border-2 border-fin-lime px-1.5 font-display text-sm font-bold text-fin-teal">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <p className="mt-3 font-display text-base font-bold uppercase leading-tight text-fin-ink">
+                  <p className="mt-3 font-display text-base font-bold uppercase leading-tight text-fin-teal">
                     {e.etapa}
                   </p>
                   <p className="mt-2 inline-block rounded-[3px] bg-fin-lime px-2 py-0.5 font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-teal">

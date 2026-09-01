@@ -95,7 +95,7 @@ function Page() {
                 ["Grupos familiares", "Varios beneficiarios de una misma sentencia que desean cobrar de forma anticipada."],
               ].map(([t, d]) => (
                 <li key={t} className="border-l-2 border-fin-lime pl-5">
-                  <p className="font-display text-base font-bold uppercase text-fin-ink">{t}</p>
+                  <p className="font-display text-base font-bold uppercase text-fin-teal">{t}</p>
                   <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">{d}</p>
                 </li>
               ))}
@@ -126,7 +126,7 @@ function Page() {
                       )}
                     </svg>
                   </span>
-                  <p className="mt-4 font-display text-sm font-bold uppercase text-fin-ink">{r.t}</p>
+                  <p className="mt-4 font-display text-sm font-bold uppercase text-fin-teal">{r.t}</p>
                   <p className="mt-1 font-sans text-sm leading-relaxed text-fin-ink/65">{r.d}</p>
                 </div>
               ))}

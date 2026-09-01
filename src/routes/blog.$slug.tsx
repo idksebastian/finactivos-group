@@ -135,7 +135,7 @@ function Page() {
               <p className="mt-8 font-sans text-xs uppercase tracking-[0.18em] text-fin-green">
                 {post.category}
               </p>
-              <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight text-fin-ink sm:text-5xl">
+              <h1 className="mt-4 font-display text-4xl font-extrabold uppercase leading-[1.02] tracking-tight text-fin-teal sm:text-5xl">
                 {post.title}
               </h1>
               <p className="mt-6 font-sans text-base leading-relaxed text-fin-ink/70">
@@ -201,7 +201,7 @@ function Page() {
                     <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-fin-green">
                       {r.category} · {formatPostDate(r.published_at)}
                     </p>
-                    <h3 className="mt-3 font-display text-lg font-bold uppercase leading-tight text-fin-ink transition-colors group-hover:text-fin-teal">
+                    <h3 className="mt-3 font-display text-lg font-bold uppercase leading-tight text-fin-teal transition-colors group-hover:text-fin-green">
                       <Link to="/blog/$slug" params={{ slug: r.slug }}>
                         {r.title}
                       </Link>

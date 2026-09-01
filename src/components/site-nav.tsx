@@ -31,7 +31,7 @@ function OtherServicesDropdown() {
   }
 
   return (
-    <div onMouseEnter={show} onMouseLeave={hide}>
+    <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -50,20 +50,19 @@ function OtherServicesDropdown() {
         </svg>
       </button>
 
-      {/* Panel de ancho completo, anclado al navbar (sticky = contenedor de posición) */}
       <div
         role="menu"
-        className={`absolute inset-x-0 top-full z-50 border-t border-fin-line bg-white shadow-xl transition-all duration-200 ease-out ${
+        className={`absolute left-1/2 top-full z-50 w-52 -translate-x-1/2 pt-3 transition-all duration-200 ease-out ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
         }`}
       >
-        <div className="mx-auto grid max-w-6xl gap-1 px-6 py-8 sm:grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
+        <div className="overflow-hidden rounded-[6px] border border-fin-line bg-white py-2 shadow-xl">
           {otherServices.map((s) => (
             <Link
               key={s.label}
               to={s.to}
               role="menuitem"
-              className="rounded-[3px] px-3 py-2.5 font-sans text-sm text-fin-ink/80 transition-colors hover:bg-fin-cream hover:text-fin-teal"
+              className="block px-4 py-2.5 font-sans text-sm text-fin-ink/75 transition-colors hover:bg-fin-cream hover:text-fin-teal"
             >
               {s.label}
             </Link>
@@ -71,7 +70,7 @@ function OtherServicesDropdown() {
           <Link
             to="/servicios"
             role="menuitem"
-            className="rounded-[3px] px-3 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-fin-green transition-colors hover:bg-fin-cream hover:text-fin-teal"
+            className="block border-t border-fin-line px-4 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-fin-green transition-colors hover:text-fin-teal"
           >
             Ver todos
           </Link>
@@ -84,7 +83,7 @@ function OtherServicesDropdown() {
 export function SiteNav() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 bg-fin-green shadow-md">
+    <header className="sticky top-0 z-40 bg-fin-teal shadow-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" aria-label="Finactivos Group — Inicio">
           <BrandLogo markSize="large" tone="cream" />

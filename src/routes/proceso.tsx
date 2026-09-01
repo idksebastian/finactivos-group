@@ -120,7 +120,7 @@ function Page() {
               {stages.map((s) => (
                 <div key={s.stage} className="bg-fin-cream pb-6 pr-6 md:pl-6 md:first:pl-0">
                   <a href={`#${slugify(s.stage)}`}>
-                    <p className={`${ds.h3} text-fin-ink transition-colors hover:text-fin-teal`}>
+                    <p className={`${ds.h3} text-fin-teal transition-colors hover:text-fin-green`}>
                       {s.stage}
                     </p>
                   </a>
@@ -153,7 +153,7 @@ function Page() {
                     <li key={st.t} className="flex gap-5 py-5">
                       <span className={ds.numberBox}>{String(counter).padStart(2, "0")}</span>
                       <div>
-                        <p className={`${ds.h3} text-fin-ink`}>{st.t}</p>
+                        <p className={`${ds.h3} text-fin-teal`}>{st.t}</p>
                         <p className={`mt-1 max-w-xl ${ds.body} text-fin-ink/70`}>{st.d}</p>
                       </div>
                     </li>

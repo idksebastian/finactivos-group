@@ -209,7 +209,7 @@ function Services() {
           {items.map((i) => (
             <article key={i.t} className="group py-7">
               <Link to={i.to} className="block">
-                <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-fin-ink transition-colors group-hover:text-fin-green">
+                <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-fin-teal transition-colors group-hover:text-fin-green">
                   {i.t}
                   <span
                     aria-hidden
