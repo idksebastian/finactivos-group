@@ -6,7 +6,7 @@ import { EntitiesStrip } from "@/components/entities-strip";
 import { PhotoFrame } from "@/components/photo-frame";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
-import fotoArtesana from "@/assets/fotos/presencia-3.jpg";
+import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -196,8 +196,8 @@ function Empathy() {
             className="aspect-4/5"
           />
           <PhotoFrame
-            src={fotoArtesana}
-            alt="Colombiana en su lugar de trabajo, representando a los titulares que acompañamos"
+            src={fotoFamilia}
+            alt="Familia sonriendo, representando a los hogares que acompañamos"
             block="lime"
             className="aspect-4/5 mt-8"
           />
