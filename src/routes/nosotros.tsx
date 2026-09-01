@@ -69,7 +69,7 @@ function Page() {
                 src={fotoHombre}
                 alt="Colombiano en su comunidad, representando a los titulares que acompañamos"
                 block="lime"
-                className="aspect-4/5 translate-y-8"
+                className="aspect-4/5 mt-8"
               />
               <PhotoFrame
                 src={fotoPareja}

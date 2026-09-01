@@ -199,7 +199,7 @@ function Empathy() {
             src={fotoArtesana}
             alt="Colombiana en su lugar de trabajo, representando a los titulares que acompañamos"
             block="lime"
-            className="aspect-4/5 translate-y-8"
+            className="aspect-4/5 mt-8"
           />
         </div>
       </div>
