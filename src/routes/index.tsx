@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
-import { EntitiesStrip } from "@/components/entities-strip";
+import { EntitiesGrid } from "@/components/entities-grid";
 import { PhotoFrame } from "@/components/photo-frame";
 import { ColombiaMap } from "@/components/colombia-map";
 import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
@@ -520,7 +520,7 @@ function Index() {
       <SiteNav />
       <main>
         <Hero />
-        <EntitiesStrip />
+        <EntitiesGrid tone="cream" />
         <Empathy />
         <Services />
         <Process />
