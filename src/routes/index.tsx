@@ -3,7 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { EntitiesStrip } from "@/components/entities-strip";
+import { PhotoFrame } from "@/components/photo-frame";
 import { siteUrl } from "@/lib/site-url";
+import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
+import fotoArtesana from "@/assets/fotos/presencia-3.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -164,6 +167,43 @@ function TimeRelief() {
         </p>
       </div>
     </div>
+  );
+}
+
+/* ---------- empatía: personas reales, mismo tratamiento que Nosotros ---------- */
+
+function Empathy() {
+  return (
+    <section className="border-b border-fin-line bg-fin-cream">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-16 md:grid-cols-2 md:py-20">
+        <div className="order-2 md:order-1">
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
+            Cobertura nacional
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+            Personas, no expedientes
+          </h2>
+          <p className="mt-5 max-w-md font-sans text-base leading-relaxed text-fin-ink/75">
+            Detrás de cada sentencia hay alguien que ya esperó suficiente. Trabajamos para que esa
+            espera termine antes.
+          </p>
+        </div>
+        <div className="order-1 grid grid-cols-2 gap-10 pt-6 md:order-2">
+          <PhotoFrame
+            src={fotoMujerCasa}
+            alt="Colombiana en su hogar, representando a las familias que acompañamos"
+            block="green"
+            className="aspect-4/5"
+          />
+          <PhotoFrame
+            src={fotoArtesana}
+            alt="Colombiana en su lugar de trabajo, representando a los titulares que acompañamos"
+            block="lime"
+            className="aspect-4/5 translate-y-8"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -447,6 +487,7 @@ function Index() {
       <main>
         <Hero />
         <EntitiesStrip />
+        <Empathy />
         <Services />
         <Process />
         <Eligibility />
