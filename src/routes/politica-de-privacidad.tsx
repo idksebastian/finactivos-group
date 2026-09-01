@@ -42,15 +42,6 @@ function Page() {
         />
 
         <Section className="max-w-3xl">
-          <div className="mb-8 rounded-[3px] border border-fin-lime bg-white/60 p-5">
-            <p className="font-sans text-xs leading-relaxed text-fin-ink/70">
-              <strong className="text-fin-teal">Nota:</strong> este documento es un borrador preliminar
-              preparado como referencia inicial para Finactivos Group S.A.S. No sustituye la revisión de
-              un abogado especializado en protección de datos, y no debe considerarse definitivo hasta
-              que la compañía lo confirme y, de ser necesario, lo ajuste.
-            </p>
-          </div>
-
           <Article n={1} title="Responsable del tratamiento">
             <p>
               <strong>Finactivos Group S.A.S.</strong>, identificada con NIT 901.389.322-5, con
