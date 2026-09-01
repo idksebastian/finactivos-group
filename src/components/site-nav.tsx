@@ -31,7 +31,7 @@ function OtherServicesDropdown() {
   }
 
   return (
-    <div className="relative" onMouseEnter={show} onMouseLeave={hide}>
+    <div onMouseEnter={show} onMouseLeave={hide}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -41,26 +41,29 @@ function OtherServicesDropdown() {
       >
         Otros servicios
         <svg
-          viewBox="0 0 12 8"
-          className={`h-2.5 w-2.5 fill-current transition-transform duration-200 ${open ? "-rotate-180" : ""}`}
+          viewBox="0 0 16 16"
+          fill="none"
+          className={`h-3.5 w-3.5 stroke-current transition-transform duration-200 ${open ? "-rotate-180" : ""}`}
           aria-hidden="true"
         >
-          <path d="M6 8 0 0h12L6 8Z" />
+          <path d="M4 6l4 4 4-4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
+
+      {/* Panel de ancho completo, anclado al navbar (sticky = contenedor de posición) */}
       <div
         role="menu"
-        className={`absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-3 transition-all duration-200 ease-out ${
+        className={`absolute inset-x-0 top-full z-50 border-t border-fin-line bg-white shadow-xl transition-all duration-200 ease-out ${
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-1 opacity-0"
         }`}
       >
-        <div className="overflow-hidden rounded-[6px] border border-fin-line bg-white py-2 shadow-xl">
+        <div className="mx-auto grid max-w-6xl gap-1 px-6 py-8 sm:grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
           {otherServices.map((s) => (
             <Link
               key={s.label}
               to={s.to}
               role="menuitem"
-              className="block px-4 py-2.5 font-sans text-sm text-fin-ink/75 transition-colors hover:bg-fin-cream hover:text-fin-teal"
+              className="rounded-[3px] px-3 py-2.5 font-sans text-sm text-fin-ink/80 transition-colors hover:bg-fin-cream hover:text-fin-teal"
             >
               {s.label}
             </Link>
@@ -68,7 +71,7 @@ function OtherServicesDropdown() {
           <Link
             to="/servicios"
             role="menuitem"
-            className="block border-t border-fin-line px-4 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-fin-green transition-colors hover:text-fin-teal"
+            className="rounded-[3px] px-3 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.12em] text-fin-green transition-colors hover:bg-fin-cream hover:text-fin-teal"
           >
             Ver todos
           </Link>
