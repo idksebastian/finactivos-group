@@ -18,7 +18,7 @@ export function BackButton({ fallbackTo = "/" }: { fallbackTo?: "/" | "/servicio
         <button
           type="button"
           onClick={handleBack}
-          className="inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-teal transition-colors hover:text-fin-green"
+          className="inline-flex cursor-pointer items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-teal transition-colors hover:text-fin-green"
         >
           <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-current" aria-hidden="true">
             <path d="M12.7 3.3a1 1 0 0 1 0 1.4L7.42 10l5.3 5.3a1 1 0 0 1-1.42 1.4l-6-6a1 1 0 0 1 0-1.4l6-6a1 1 0 0 1 1.42 0Z" />

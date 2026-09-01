@@ -114,7 +114,7 @@ export function SiteNav() {
           type="button"
           aria-label="Abrir menú"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span className="block h-px w-5 bg-fin-cream" />
           <span className="block h-px w-5 bg-fin-cream" />

@@ -67,7 +67,7 @@ function Page() {
               </p>
               <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-3">
                 {[
-                  ["9 días", "hasta la firma de cesión"],
+                  ["60 a 90 días", "hasta la firma de cesión"],
                   ["0 costos", "para el titular en el estudio"],
                   ["100%", "acompañamiento jurídico"],
                 ].map(([v, l]) => (

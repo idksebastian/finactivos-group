@@ -141,7 +141,7 @@ function LocationCard() {
           <button
             type="button"
             onClick={copyAddress}
-            className="rounded-[3px] border border-fin-line px-4 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-ink/70 transition-colors hover:border-fin-teal hover:text-fin-teal"
+            className="cursor-pointer rounded-[3px] border border-fin-line px-4 py-2.5 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-ink/70 transition-colors hover:border-fin-teal hover:text-fin-teal"
             aria-live="polite"
           >
             {copied ? "Dirección copiada" : "Copiar dirección"}
@@ -328,7 +328,7 @@ function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading" || !accepted}
-        className="mt-6 w-full rounded-[3px] bg-fin-teal px-6 py-4 font-sans text-sm font-semibold text-fin-cream transition-colors hover:bg-fin-green disabled:cursor-not-allowed disabled:opacity-50"
+        className="mt-6 w-full cursor-pointer rounded-[3px] bg-fin-teal px-6 py-4 font-sans text-sm font-semibold text-fin-cream transition-colors hover:bg-fin-green disabled:cursor-not-allowed disabled:opacity-50"
       >
         {status === "loading" ? "Enviando..." : "Enviar mensaje"}
       </button>

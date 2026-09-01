@@ -62,7 +62,7 @@ export function EntitiesGrid({ tone = "cream" }: { tone?: "cream" | "white" }) {
                   src={e.logo}
                   alt={`Logo de ${e.name}`}
                   loading="lazy"
-                  className="max-h-20 w-auto max-w-[190px] object-contain opacity-60 grayscale"
+                  className="max-h-20 w-auto max-w-[190px] object-contain"
                 />
               </span>
               <span>
