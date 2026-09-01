@@ -3,8 +3,11 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
 import { PageHeader, Section, SectionTitle, CtaBlock } from "@/components/page-system";
+import { PhotoFrame } from "@/components/photo-frame";
 import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
+import fotoHombre from "@/assets/fotos/hero-tranquilidad.jpg";
+import fotoPareja from "@/assets/fotos/presencia-2.jpg";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -54,6 +57,34 @@ function Page() {
               <p>
                 Operamos desde Bogotá con cobertura nacional, y acompañamos cada cesión hasta su
                 radicación ante la entidad condenada.
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        <Section>
+          <div className="grid items-center gap-14 md:grid-cols-2">
+            <div className="grid grid-cols-2 gap-10 pt-6">
+              <PhotoFrame
+                src={fotoHombre}
+                alt="Colombiano en su comunidad, representando a los titulares que acompañamos"
+                block="lime"
+                className="aspect-4/5 translate-y-8"
+              />
+              <PhotoFrame
+                src={fotoPareja}
+                alt="Pareja colombiana, representando a los beneficiarios y herederos que acompañamos"
+                block="green"
+                className="aspect-4/5"
+              />
+            </div>
+            <div>
+              <p className={ds.eyebrow}>Cobertura nacional</p>
+              <h2 className={`mt-4 ${ds.h2} text-fin-teal`}>Detrás de cada sentencia hay una persona</h2>
+              <p className={`mt-5 ${ds.lead} text-fin-ink/75`}>
+                Víctimas, herederos y familias en distintas regiones del país que ya obtuvieron un
+                fallo a su favor y ahora esperan que el Estado cumpla. Ese es el titular con el que
+                trabajamos: alguien con un derecho reconocido y sin tiempo de sobra para esperarlo.
               </p>
             </div>
           </div>
