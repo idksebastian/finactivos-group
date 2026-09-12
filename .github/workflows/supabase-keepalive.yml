@@ -9,10 +9,16 @@ name: Supabase Keep-Alive
 # settings) through the PostgREST API using the anon key. A plain curl to
 # the project's root URL does NOT prevent the pause.
 #
-# Runs on a day-of-month step of 5 (1, 6, 11, 16, 21, 26, and 31 when it
-# exists), which never leaves more than a ~5 day gap between runs -- safely
-# inside Supabase's 7-day inactivity window. Also runnable manually via
-# workflow_dispatch for testing.
+# Runs once a day. GitHub Actions schedules are "best effort" and can be
+# skipped or delayed under load (this is documented GitHub behavior, and is
+# what actually happened: the previous every-5-days schedule left no margin
+# when one run silently didn't fire, and the project paused anyway). Daily
+# gives a much wider safety margin under Supabase's 7-day inactivity window,
+# but is still not a 100% guarantee -- see the note in the repo about adding
+# an independent external cron (e.g. cron-job.org) as a second layer, or
+# upgrading to Supabase Pro to remove auto-pause entirely.
+#
+# Also runnable manually via workflow_dispatch for testing.
 #
 # Requires two repository secrets (Settings -> Secrets and variables ->
 # Actions): SUPABASE_URL and SUPABASE_ANON_KEY. Only the anon key is needed
@@ -20,7 +26,7 @@ name: Supabase Keep-Alive
 
 on:
   schedule:
-    - cron: "0 5 */5 * *"
+    - cron: "0 5 * * *"
   workflow_dispatch: {}
 
 jobs:
