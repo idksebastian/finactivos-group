@@ -403,222 +403,24 @@ function LatestNews({ posts }: { posts: PostTeaser[] }) {
   );
 }
 
-/* ---------- proceso: flujo por etapas (referencia material Finactivos) ---------- */
-
-const stages = [
-  {
-    stage: "Análisis",
-    time: "Días 1 – 3",
-    out: "Propuesta económica escrita",
-    steps: ["Envío de documentos", "Análisis técnico-jurídico", "Propuesta económica"],
-  },
-  {
-    stage: "Negociación",
-    time: "Días 4 – 5",
-    out: "Condiciones aceptadas",
-    steps: ["Aprobación de la propuesta", "Solicitud de documentos contractuales"],
-  },
-  {
-    stage: "Formalización",
-    time: "Días 6 – 9",
-    out: "Cesión firmada y desembolso",
-    steps: ["Firma de cesión", "Radicación ante la entidad condenada"],
-  },
-  {
-    stage: "Pago",
-    time: "Días 60 – 90",
-    out: "Giro de la entidad a Finactivos",
-    steps: ["Aceptación oficial de la entidad", "Giro de recursos"],
-  },
-];
-
-function Process() {
-  const { ref, seen } = useInView<HTMLDivElement>(0.15);
-  let counter = 0;
-
-  return (
-    <section className="bg-fin-teal">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="max-w-xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
-            Nueve pasos, cuatro etapas
-          </h2>
-          <p className="max-w-xs font-sans text-sm text-fin-cream/70">
-            Usted firma en el día 9. El resto lo esperamos nosotros.
-          </p>
-        </div>
-
-        {/* riel continuo con hitos */}
-        <div ref={ref} className="mt-14">
-          <div className="relative hidden h-4 md:block">
-            <div className="absolute left-0 right-0 top-1/2 h-[2px] -translate-y-1/2 bg-fin-cream/20" />
-            <div
-              className="absolute left-0 top-1/2 h-[2px] -translate-y-1/2 bg-fin-lime transition-[width] duration-[1800ms] ease-out"
-              style={{ width: seen ? "100%" : "0%" }}
-            />
-            <div className="relative grid grid-cols-4">
-              {stages.map((s, si) => (
-                <span key={s.stage} className="flex justify-start">
-                  <span
-                    className="flex h-4 w-4 items-center justify-center rounded-[3px] border-2 border-fin-teal bg-fin-lime transition-opacity duration-500"
-                    style={{
-                      opacity: seen ? 1 : 0.25,
-                      transitionDelay: `${si * 380}ms`,
-                    }}
-                  />
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-px bg-fin-cream/15 md:mt-6 md:grid-cols-4">
-            {stages.map((s, si) => (
-              <div key={s.stage} className="relative bg-fin-teal p-6">
-                <div className="flex items-baseline justify-between gap-3">
-                  <p className="font-display text-lg font-bold uppercase text-fin-cream">
-                    {s.stage}
-                  </p>
-                  <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-[3px] border-2 border-fin-lime px-1.5 font-display text-sm font-bold text-fin-lime">
-                    0{si + 1}
-                  </span>
-                </div>
-                <p className="mt-3 inline-block rounded-[3px] bg-fin-lime px-2.5 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-fin-teal">
-                  {s.time}
-                </p>
-
-                <ol className="mt-5 space-y-3">
-                  {s.steps.map((step) => {
-                    counter += 1;
-                    return (
-                      <li key={step} className="flex gap-3">
-                        <span className="mt-[2px] flex h-5 w-5 shrink-0 items-center justify-center rounded-[3px] border border-fin-cream/35 font-sans text-[11px] text-fin-cream/70">
-                          {counter}
-                        </span>
-                        <span className="font-sans text-sm leading-relaxed text-fin-cream/85">
-                          {step}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ol>
-
-                <div className="mt-6 border-t border-fin-cream/15 pt-4">
-                  <p className="font-sans text-[10px] uppercase tracking-[0.18em] text-fin-cream/45">
-                    Resultado
-                  </p>
-                  <p className="mt-1 font-sans text-sm leading-snug text-fin-lime">{s.out}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-6 flex flex-wrap items-center gap-3 border-t border-fin-cream/15 pt-6">
-            <span className="font-sans text-xs uppercase tracking-[0.18em] text-fin-cream/50">
-              Su tiempo real de gestión
-            </span>
-            <span className="rounded-[3px] bg-fin-cream px-3 py-1 font-display text-sm font-bold uppercase text-fin-teal">
-              Máximo 3 meses
-            </span>
-            <span className="font-sans text-sm text-fin-cream/70">
-              — los 6 años restantes los espera Finactivos, no usted.
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-/* ---------- elegibilidad: diagrama de condiciones ---------- */
-
-function Eligibility() {
-  const conditions = [
-    { label: "Sentencia o conciliación en firme y ejecutoriada", ok: true },
-    { label: "Proceso de reparación directa contra el Estado", ok: true },
-    { label: "Entidad condenada plenamente identificada", ok: true },
-    { label: "Cuenta de cobro presentada", ok: true },
-  ];
-  return (
-    <section className="border-b border-fin-line bg-fin-cream">
-      <div className="mx-auto grid max-w-6xl gap-14 px-6 py-16 md:py-20 lg:grid-cols-[4fr_7fr] lg:items-center">
-        <PhotoFrame
-          src={fotoCampesinoCafe}
-          alt="Caficultor colombiano, representando a los titulares que acompañamos"
-          block="green"
-          className="aspect-4/5 max-w-xs"
-        />
-        <div>
-          <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
-            ¿Su caso aplica?
-          </h2>
-          <div className="mt-10 grid gap-px bg-fin-line sm:grid-cols-2">
-            {conditions.map((c) => (
-              <div key={c.label} className="bg-fin-cream p-7">
-                <span
-                  className={`flex h-9 w-9 items-center justify-center rounded-[3px] ${
-                    c.ok ? "bg-fin-lime text-fin-teal" : "bg-fin-line text-fin-ink/50"
-                  }`}
-                  aria-hidden
-                >
-                  <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                    {c.ok ? (
-                      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-                    ) : (
-                      <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" />
-                    )}
-                  </svg>
-                </span>
-                <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/80">{c.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- cobertura: mapa interactivo ---------- */
 
 function Coverage() {
   return (
     <section className="border-b border-fin-line bg-white/50">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-16 md:py-20 lg:grid-cols-[5fr_5fr]">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 py-12 md:py-14 lg:grid-cols-[4fr_5fr]">
         <div>
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
             Cobertura nacional
           </p>
-          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+          <h2 className="mt-3 font-display text-2xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal sm:text-3xl">
             Trabajamos en los 32 departamentos
           </h2>
-          <p className="mt-5 max-w-md font-sans text-base leading-relaxed text-fin-ink/75">
-            No importa dónde quede radicado su proceso. Seleccione un departamento en el mapa
-            para verlo.
+          <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-fin-ink/75">
+            Seleccione un departamento en el mapa para verlo.
           </p>
         </div>
         <ColombiaMap />
-      </div>
-    </section>
-  );
-}
-
-/* ---------- cifras ---------- */
-
-function Figures() {
-  const stat = (value: string, label: string) => (
-    <div className="border-l-2 border-fin-lime pl-5">
-      <p className="font-display text-4xl font-extrabold tracking-tight text-fin-teal">{value}</p>
-      <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">{label}</p>
-    </div>
-  );
-  return (
-    <section className="border-b border-fin-line bg-white/50">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 sm:grid-cols-2 lg:grid-cols-4">
-        {stat("+17", "años de experiencia jurídica y financiera")}
-        {stat("+250", "procesos analizados")}
-        {stat("9", "días hábiles hasta la firma de cesión")}
-        {stat("100%", "acompañamiento jurídico y contractual")}
       </div>
     </section>
   );
@@ -660,11 +462,8 @@ function Index() {
         <Empathy />
         <Services />
         <Values />
-        <LatestNews posts={posts} />
-        <Process />
-        <Eligibility />
         <Coverage />
-        <Figures />
+        <LatestNews posts={posts} />
         <CTA />
       </main>
       <SiteFooter />

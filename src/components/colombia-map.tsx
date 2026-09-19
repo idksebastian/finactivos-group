@@ -20,7 +20,7 @@ export function ColombiaMap() {
         viewBox={COLOMBIA_VIEWBOX}
         role="img"
         aria-label="Mapa de cobertura de Finactivos Group en Colombia, por departamento"
-        className="mx-auto h-auto w-full max-w-md"
+        className="mx-auto h-auto w-full max-w-sm"
       >
         {departments.map((dep) => {
           const isActive = active === dep.name;
@@ -71,7 +71,7 @@ export function ColombiaMap() {
         })}
       </svg>
 
-      <div className="mt-6 flex min-h-14 flex-col items-center justify-center gap-1.5">
+      <div className="mt-4 flex min-h-14 flex-col items-center justify-center gap-1.5">
         {active ? (
           <>
             <span className="rounded-[3px] bg-fin-teal px-4 py-2 font-display text-sm font-bold uppercase tracking-wide text-fin-cream">
