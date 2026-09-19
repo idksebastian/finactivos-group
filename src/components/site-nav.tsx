@@ -131,49 +131,68 @@ export function SiteNav() {
 
         <button
           type="button"
-          aria-label="Abrir menú"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
+          className="relative flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
         >
-          <span className="block h-px w-5 bg-fin-cream" />
-          <span className="block h-px w-5 bg-fin-cream" />
+          <span
+            className={`block h-px w-5 bg-fin-cream transition-transform duration-300 ease-out ${
+              open ? "translate-y-[3.5px] rotate-45" : ""
+            }`}
+          />
+          <span
+            className={`block h-px w-5 bg-fin-cream transition-transform duration-300 ease-out ${
+              open ? "translate-y-[-3.5px] -rotate-45" : ""
+            }`}
+          />
         </button>
       </div>
 
-      {open && (
-        <nav className="border-t border-fin-cream/20 px-6 py-4 md:hidden">
-          {items.map((i) => (
-            <Link
-              key={i.label}
-              to={i.to}
-              onClick={() => setOpen(false)}
-              className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
-            >
-              {i.label}
-            </Link>
-          ))}
-          <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-lime">
-            Otros servicios
-          </p>
-          {otherServices.map((s) => (
-            <Link
-              key={s.label}
-              to={s.to}
-              onClick={() => setOpen(false)}
-              className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
-            >
-              {s.label}
-            </Link>
-          ))}
-          <Link
-            to="/contacto"
-            onClick={() => setOpen(false)}
-            className={`mt-4 block text-center ${ctaButton}`}
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-in-out md:hidden ${
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <nav
+            className={`border-t border-fin-cream/20 px-6 py-4 transition-[opacity,transform] duration-300 ease-out ${
+              open ? "translate-y-0 opacity-100 delay-100" : "-translate-y-2 opacity-0"
+            }`}
           >
-            Contáctenos
-          </Link>
-        </nav>
-      )}
+            {items.map((i) => (
+              <Link
+                key={i.label}
+                to={i.to}
+                onClick={() => setOpen(false)}
+                className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
+              >
+                {i.label}
+              </Link>
+            ))}
+            <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-lime">
+              Otros servicios
+            </p>
+            {otherServices.map((s) => (
+              <Link
+                key={s.label}
+                to={s.to}
+                onClick={() => setOpen(false)}
+                className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
+              >
+                {s.label}
+              </Link>
+            ))}
+            <Link
+              to="/contacto"
+              onClick={() => setOpen(false)}
+              className={`mt-4 block text-center ${ctaButton}`}
+            >
+              Contáctenos
+            </Link>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }
