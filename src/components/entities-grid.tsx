@@ -53,16 +53,16 @@ export function EntitiesGrid({ tone = "cream" }: { tone?: "cream" | "white" }) {
           {entities.map((e) => (
             <li
               key={e.name}
-              className={`flex flex-col items-center gap-5 p-7 text-center sm:items-start sm:text-left ${
+              className={`flex flex-col items-center gap-5 p-7 text-center ${
                 tone === "white" ? "bg-white" : "bg-fin-cream"
               }`}
             >
-              <span className="flex h-20 w-full items-center justify-center sm:justify-start">
+              <span className="flex h-24 w-full items-center justify-center rounded-[3px] border border-fin-line bg-fin-cream">
                 <img
                   src={e.logo}
                   alt={`Logo de ${e.name}`}
                   loading="lazy"
-                  className="max-h-20 w-auto max-w-[190px] object-contain"
+                  className="max-h-16 w-auto max-w-42 object-contain"
                 />
               </span>
               <span>

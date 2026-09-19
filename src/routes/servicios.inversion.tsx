@@ -67,7 +67,7 @@ function Page() {
               <span className="text-center font-display text-2xl font-extrabold text-fin-lime">=</span>
               <div className="flex-1 bg-fin-teal p-5 text-center">
                 <p className="font-display text-sm font-bold uppercase text-fin-cream">
-                  Rentabilidad superior al 15%
+                  Rentabilidad superior
                 </p>
                 <p className="mt-1 font-sans text-xs text-fin-cream/70">Horizonte definido</p>
               </div>
@@ -81,7 +81,7 @@ function Page() {
               Cómo se estructura
             </h2>
             <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-fin-ink/70">
-              Diez pasos en cinco etapas, con rentabilidad superior al 15%.
+              Diez pasos en cinco etapas, con rentabilidad superior.
             </p>
             <div className="mt-10 grid gap-px bg-fin-line md:grid-cols-5">
               {[

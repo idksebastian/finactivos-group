@@ -1,8 +1,5 @@
 import { useRouterState } from "@tanstack/react-router";
-
-const WHATSAPP_URL =
-  "https://wa.me/573128085632?text=" +
-  encodeURIComponent("Hola, quiero más información sobre los servicios de Finactivos.");
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 /** Botón flotante de WhatsApp, visible en todo el sitio público (no en /admin). */
 export function FloatingWhatsApp() {

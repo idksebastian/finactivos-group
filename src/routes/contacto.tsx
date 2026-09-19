@@ -7,10 +7,7 @@ import { PageHeader, Section, SectionTitle, CtaBlock } from "@/components/page-s
 import { ContactForm } from "@/components/contact-form";
 import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
-
-const WHATSAPP_URL =
-  "https://wa.me/573128085632?text=" +
-  encodeURIComponent("Hola, quiero información sobre la compra de mi sentencia o conciliación.");
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 const ADDRESS = "Cll 28 No. 13a 24, Oficina 303, Parque Bavaria — Torre Museo, Bogotá";
 

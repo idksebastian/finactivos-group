@@ -9,6 +9,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { siteUrl } from "../lib/site-url";
@@ -135,6 +136,8 @@ function RootComponent() {
         <Outlet />
       </div>
       <FloatingWhatsApp />
+      {/* Sin cookies ni banner de consentimiento -- ver conversación con el cliente. */}
+      <Analytics />
     </QueryClientProvider>
   );
 }
