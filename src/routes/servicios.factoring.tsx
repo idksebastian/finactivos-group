@@ -79,14 +79,14 @@ function Page() {
           </div>
         </section>
 
-        <section className="border-b border-fin-line bg-fin-teal">
+        <section className="border-b border-fin-line bg-fin-green">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
             <h2 className="max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
               La arquitectura del factoring corporativo
             </h2>
             <div className="mt-12 grid gap-px bg-fin-cream/15 md:grid-cols-3 lg:grid-cols-5">
               {pilares.map((p, i) => (
-                <div key={p.t} className="bg-fin-teal p-6">
+                <div key={p.t} className="bg-fin-green p-6">
                   <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-[3px] border-2 border-fin-lime px-1.5 font-display text-sm font-bold text-fin-lime">
                     {String(i + 1).padStart(2, "0")}
                   </span>

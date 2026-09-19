@@ -137,7 +137,7 @@ function Page() {
           </div>
         </section>
 
-        <section className="border-b border-fin-line bg-fin-teal">
+        <section className="border-b border-fin-line bg-fin-green">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 md:grid-cols-[4fr_6fr]">
             <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
               A quién está dirigido
