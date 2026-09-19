@@ -113,7 +113,11 @@ function Page() {
         </Section>
 
         <Section>
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="border-l-2 border-fin-lime pl-5">
+              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">2020</p>
+              <p className={`mt-2 ${ds.body} text-fin-ink/70`}>año de fundación</p>
+            </div>
             <div className="border-l-2 border-fin-lime pl-5">
               <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">+17</p>
               <p className={`mt-2 ${ds.body} text-fin-ink/70`}>años de experiencia jurídica y financiera</p>
@@ -123,7 +127,7 @@ function Page() {
               <p className={`mt-2 ${ds.body} text-fin-ink/70`}>sede principal, cobertura nacional</p>
             </div>
             <div className="border-l-2 border-fin-lime pl-5">
-              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">+250</p>
+              <p className="font-display text-2xl font-extrabold tracking-tight text-fin-teal">+10.000</p>
               <p className={`mt-2 ${ds.body} text-fin-ink/70`}>procesos analizados</p>
             </div>
             <div className="border-l-2 border-fin-lime pl-5">
