@@ -6,6 +6,8 @@ import { EntitiesGrid } from "@/components/entities-grid";
 import { PhotoFrame } from "@/components/photo-frame";
 import { ColombiaMap } from "@/components/colombia-map";
 import { ContactForm } from "@/components/contact-form";
+import { listPublishedPosts } from "@/lib/blog.functions";
+import { formatPostDate } from "@/lib/blog-format";
 import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
@@ -13,6 +15,9 @@ import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
 
 
 export const Route = createFileRoute("/")({
+  // No debe tumbar la home si el blog falla (ej. base de datos pausada) -- se
+  // degrada a "sin publicaciones" en vez de un error de página completa.
+  loader: () => listPublishedPosts().catch(() => []),
   head: () => ({
     meta: [
       { title: "Finactivos Group | Compra de sentencias judiciales en Colombia" },
@@ -274,6 +279,130 @@ function Services() {
   );
 }
 
+/* ---------- experiencia y conocimiento: 3 pilares ---------- */
+
+const pillars = [
+  {
+    t: "Confianza",
+    d: "Transparencia en el manejo de la información y en cada paso del proceso, de principio a fin.",
+  },
+  {
+    t: "Compromiso",
+    d: "Trabajamos bajo principios éticos y profesionales, con compromiso real con los resultados pactados.",
+  },
+  {
+    t: "Cercanía",
+    d: "Trato cercano pero respetuoso, buscando aportar valor real en la vida de cada titular.",
+  },
+];
+
+function Values() {
+  return (
+    <section className="border-b border-fin-line bg-white/50">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <div className="max-w-2xl">
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
+            Experiencia y conocimiento
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+            Un equipo con más de 17 años de trayectoria
+          </h2>
+          <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/70">
+            Ponemos a su disposición un equipo jurídico y financiero dedicado a la gestión de
+            sentencias, conciliaciones y activos judiciales.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-px bg-fin-line sm:grid-cols-3">
+          {pillars.map((p) => (
+            <div key={p.t} className="bg-fin-cream p-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-fin-lime font-display text-sm font-bold text-fin-teal">
+                {p.t.charAt(0)}
+              </span>
+              <p className="mt-4 font-display text-lg font-bold uppercase text-fin-teal">{p.t}</p>
+              <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">{p.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <Link
+          to="/nosotros"
+          className="mt-8 inline-block border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal transition-colors hover:border-fin-teal"
+        >
+          Conozca más acerca de Finactivos
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- noticias y actualidad: teaser del blog ---------- */
+
+type PostTeaser = Awaited<ReturnType<typeof listPublishedPosts>>[number];
+
+function LatestNews({ posts }: { posts: PostTeaser[] }) {
+  const post = posts[0];
+  if (!post) return null;
+
+  return (
+    <section className="border-b border-fin-line bg-fin-cream">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-xl">
+            <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
+              Blog
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+              Noticias y actualidad
+            </h2>
+          </div>
+          <Link
+            to="/blog"
+            className="border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal transition-colors hover:border-fin-teal"
+          >
+            Ver todo el blog
+          </Link>
+        </div>
+
+        <Link
+          to="/blog/$slug"
+          params={{ slug: post.slug }}
+          className="group mt-10 grid gap-8 border border-fin-line bg-white md:grid-cols-[5fr_7fr]"
+        >
+          {post.cover_image_url ? (
+            <div className="aspect-4/3 overflow-hidden md:aspect-auto">
+              <img
+                src={post.cover_image_url}
+                alt=""
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+          ) : (
+            <div className="hidden bg-fin-teal md:block" aria-hidden />
+          )}
+          <div className="p-7 sm:p-9">
+            <p className="font-sans text-xs uppercase tracking-[0.18em] text-fin-ink/45">
+              {post.category} · {formatPostDate(post.published_at)}
+            </p>
+            <h3 className="mt-3 font-display text-2xl font-bold uppercase leading-tight text-fin-teal transition-colors group-hover:text-fin-green">
+              {post.title}
+            </h3>
+            {post.excerpt && (
+              <p className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-fin-ink/70">
+                {post.excerpt}
+              </p>
+            )}
+            <span className="mt-6 inline-block border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal">
+              Leer más
+            </span>
+          </div>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
 /* ---------- proceso: flujo por etapas (referencia material Finactivos) ---------- */
 
 const stages = [
@@ -521,6 +650,7 @@ function CTA() {
 
 
 function Index() {
+  const posts = Route.useLoaderData();
   return (
     <div className="min-h-screen bg-fin-cream">
       <SiteNav />
@@ -529,6 +659,8 @@ function Index() {
         <EntitiesGrid tone="cream" />
         <Empathy />
         <Services />
+        <Values />
+        <LatestNews posts={posts} />
         <Process />
         <Eligibility />
         <Coverage />
