@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
+import { socialLinks } from "@/lib/social-links";
 
 const otherServices = [
   { label: "Factoring", to: "/servicios/factoring" as const },
@@ -131,66 +132,95 @@ export function SiteNav() {
 
         <button
           type="button"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-label="Abrir menú"
           aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="relative flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
+          onClick={() => setOpen(true)}
+          className="flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
         >
-          <span
-            className={`block h-px w-5 bg-fin-cream transition-transform duration-300 ease-out ${
-              open ? "translate-y-[3.5px] rotate-45" : ""
-            }`}
-          />
-          <span
-            className={`block h-px w-5 bg-fin-cream transition-transform duration-300 ease-out ${
-              open ? "translate-y-[-3.5px] -rotate-45" : ""
-            }`}
-          />
+          <span className="block h-px w-5 bg-fin-cream" />
+          <span className="block h-px w-5 bg-fin-cream" />
         </button>
       </div>
 
+      {/* Menú móvil a pantalla completa, con la X para cerrar al final */}
       <div
-        className={`grid transition-[grid-template-rows] duration-300 ease-in-out md:hidden ${
-          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        className={`fixed inset-0 z-50 flex flex-col bg-fin-teal transition-[opacity,transform] duration-300 ease-out md:hidden ${
+          open ? "pointer-events-auto scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0"
         }`}
       >
-        <div className="overflow-hidden">
-          <nav
-            className={`border-t border-fin-cream/20 px-6 py-4 transition-[opacity,transform] duration-300 ease-out ${
-              open ? "translate-y-0 opacity-100 delay-100" : "-translate-y-2 opacity-0"
-            }`}
+        <div className="flex items-center justify-between px-6 py-4">
+          <Link
+            to="/"
+            aria-label="Finactivos Group — Inicio"
+            onClick={() => setOpen(false)}
           >
-            {items.map((i) => (
-              <Link
-                key={i.label}
-                to={i.to}
-                onClick={() => setOpen(false)}
-                className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
-              >
-                {i.label}
-              </Link>
-            ))}
-            <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-lime">
-              Otros servicios
-            </p>
-            {otherServices.map((s) => (
-              <Link
-                key={s.label}
-                to={s.to}
-                onClick={() => setOpen(false)}
-                className="block border-b border-fin-cream/15 py-3 font-sans text-sm text-fin-cream/90"
-              >
-                {s.label}
-              </Link>
-            ))}
+            <BrandLogo markSize="large" tone="cream" />
+          </Link>
+        </div>
+
+        <nav className="flex-1 overflow-y-auto px-6 py-4">
+          {items.map((i) => (
             <Link
-              to="/contacto"
+              key={i.label}
+              to={i.to}
               onClick={() => setOpen(false)}
-              className={`mt-4 block text-center ${ctaButton}`}
+              className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
             >
-              Contáctenos
+              {i.label}
             </Link>
-          </nav>
+          ))}
+          <p className="mt-3 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-fin-lime">
+            Otros servicios
+          </p>
+          {otherServices.map((s) => (
+            <Link
+              key={s.label}
+              to={s.to}
+              onClick={() => setOpen(false)}
+              className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
+            >
+              {s.label}
+            </Link>
+          ))}
+
+          {/* Redes sociales, justo después de los enlaces */}
+          <div className="mt-6 flex items-center gap-3">
+            {socialLinks.map((s) => (
+              <a
+                key={s.label}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={s.label}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-fin-cream/30 text-fin-cream/85 transition-colors hover:border-fin-lime hover:text-fin-lime"
+              >
+                <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+                  <path d={s.path} />
+                </svg>
+              </a>
+            ))}
+          </div>
+
+          <Link
+            to="/contacto"
+            onClick={() => setOpen(false)}
+            className={`mt-6 block text-center ${ctaButton}`}
+          >
+            Contáctenos
+          </Link>
+        </nav>
+
+        <div className="flex justify-center pb-10 pt-4">
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            onClick={() => setOpen(false)}
+            className="flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-fin-lime text-fin-teal transition-transform hover:scale-105"
+          >
+            <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+              <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" />
+            </svg>
+          </button>
         </div>
       </div>
     </header>
