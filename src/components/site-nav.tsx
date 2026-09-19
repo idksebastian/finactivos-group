@@ -132,10 +132,10 @@ export function SiteNav() {
 
         <button
           type="button"
-          aria-label="Abrir menú"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
-          onClick={() => setOpen(true)}
-          className="flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          className="relative z-60 flex h-9 w-9 cursor-pointer flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span className="block h-px w-5 bg-fin-cream" />
           <span className="block h-px w-5 bg-fin-cream" />
