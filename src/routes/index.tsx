@@ -66,17 +66,62 @@ function useInView<T extends HTMLElement>(threshold = 0.25) {
 
 /* ---------- hero ---------- */
 
+const HERO_HEADLINE = "Somos su aliado estratégico en el cumplimiento de sus objetivos";
+
+/** Eslogan del hero con efecto de escritura tipo teclado. */
+function TypingHeadline({ text, className }: { text: string; className: string }) {
+  const [chars, setChars] = useState(0);
+  const reduced = useRef(
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+
+  useEffect(() => {
+    if (reduced.current) {
+      setChars(text.length);
+      return;
+    }
+    if (chars >= text.length) return;
+    const t = setTimeout(() => setChars((c) => c + 1), 28);
+    return () => clearTimeout(t);
+  }, [chars, text.length]);
+
+  return (
+    <h1 className={className}>
+      <span aria-hidden>{text.slice(0, chars)}</span>
+      {chars < text.length && (
+        <span aria-hidden className="animate-pulse text-fin-lime">
+          ▍
+        </span>
+      )}
+      <span className="sr-only">{text}</span>
+    </h1>
+  );
+}
+
+/** Manchas suaves en movimiento lento: dinamismo sin depender de una imagen. */
+function HeroBackdrop() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+      <div className="hero-blob absolute -left-24 -top-24 h-96 w-96 rounded-full bg-fin-lime/25 blur-3xl" />
+      <div className="hero-blob hero-blob-delay absolute -right-16 top-1/3 h-80 w-80 rounded-full bg-fin-green/20 blur-3xl" />
+      <div className="hero-blob hero-blob-delay-2 absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-fin-teal/10 blur-3xl" />
+    </div>
+  );
+}
+
 function Hero() {
   return (
-    <section className="border-b border-fin-line bg-fin-cream">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-16 md:py-28">
+    <section className="relative overflow-hidden border-b border-fin-line bg-fin-cream">
+      <HeroBackdrop />
+      <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-16 md:py-28">
         <div>
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
             Reparación directa contra el Estado
           </p>
-          <h1 className="title-enter mt-6 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl md:text-6xl">
-            Somos su aliado estratégico en el cumplimiento de sus objetivos
-          </h1>
+          <TypingHeadline
+            text={HERO_HEADLINE}
+            className="mt-6 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl md:text-6xl"
+          />
           <p className="mt-6 max-w-md font-sans text-base leading-relaxed text-fin-ink/75">
             Si ya tiene una sentencia o conciliación en firme, no tiene que seguir esperando el pago
             de la entidad. Nosotros asumimos la espera.
