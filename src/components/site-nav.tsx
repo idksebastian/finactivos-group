@@ -7,16 +7,20 @@ const otherServices = [
   { label: "Inversión", to: "/servicios/inversion" as const },
 ];
 
+/** Orden pedido por el cliente: Inicio, Nosotros, [Otros servicios], producto principal, Proceso, Blog, [Contacto]. */
 const items = [
-  { label: "Compra de sentencias", to: "/servicios/compra-de-sentencias" as const },
-  { label: "Proceso", to: "/proceso" as const },
-  { label: "Nosotros", to: "/nosotros" as const },
-  { label: "Blog", to: "/blog" as const },
-  { label: "Contacto", to: "/contacto" as const },
+  { label: "Inicio", to: "/" as const, exact: true },
+  { label: "Nosotros", to: "/nosotros" as const, exact: false },
+  { label: "Compra de sentencias", to: "/servicios/compra-de-sentencias" as const, exact: false },
+  { label: "Proceso", to: "/proceso" as const, exact: false },
+  { label: "Blog", to: "/blog" as const, exact: false },
 ] as const;
 
 const navLink =
   "font-sans text-sm text-fin-cream/80 transition-colors hover:text-fin-lime";
+
+const ctaButton =
+  "rounded-[3px] bg-fin-lime px-5 py-2 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-green hover:text-fin-cream";
 
 function OtherServicesDropdown() {
   const [open, setOpen] = useState(false);
@@ -97,12 +101,20 @@ export function SiteNav() {
           <Link
             to={items[0].to}
             className={navLink}
+            activeOptions={{ exact: items[0].exact }}
             activeProps={{ className: "text-fin-cream font-medium" }}
           >
             {items[0].label}
           </Link>
+          <Link
+            to={items[1].to}
+            className={navLink}
+            activeProps={{ className: "text-fin-cream font-medium" }}
+          >
+            {items[1].label}
+          </Link>
           <OtherServicesDropdown />
-          {items.slice(1).map((i) => (
+          {items.slice(2).map((i) => (
             <Link
               key={i.label}
               to={i.to}
@@ -112,6 +124,9 @@ export function SiteNav() {
               {i.label}
             </Link>
           ))}
+          <Link to="/contacto" className={ctaButton}>
+            Contáctenos
+          </Link>
         </nav>
 
         <button
@@ -150,6 +165,13 @@ export function SiteNav() {
               {s.label}
             </Link>
           ))}
+          <Link
+            to="/contacto"
+            onClick={() => setOpen(false)}
+            className={`mt-4 block text-center ${ctaButton}`}
+          >
+            Contáctenos
+          </Link>
         </nav>
       )}
     </header>

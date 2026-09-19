@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { EntitiesGrid } from "@/components/entities-grid";
 import { PhotoFrame } from "@/components/photo-frame";
 import { ColombiaMap } from "@/components/colombia-map";
+import { ContactForm } from "@/components/contact-form";
 import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
@@ -231,40 +232,41 @@ function Services() {
   ];
   return (
     <section className="border-b border-fin-line bg-fin-cream">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:py-20 md:grid-cols-[4fr_6fr]">
-        <div>
-          <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
-            Qué hacemos
-          </h2>
-          <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/70">
-            Tres líneas de negocio con un mismo principio: convertir derechos ciertos en liquidez
-            real.
-          </p>
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div className="max-w-xl">
+            <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+              Qué hacemos
+            </h2>
+            <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/70">
+              Tres líneas de negocio con un mismo principio: convertir derechos ciertos en liquidez
+              real.
+            </p>
+          </div>
           <Link
             to="/servicios"
-            className="mt-6 inline-block border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal transition-colors hover:border-fin-teal"
+            className="border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal transition-colors hover:border-fin-teal"
           >
-            Ver servicios
+            Ver todos los servicios
           </Link>
         </div>
-        <div className="divide-y divide-fin-line border-t border-fin-line">
-          {items.map((i) => (
-            <article key={i.t} className="group py-7">
-              <Link to={i.to} className="block">
-                <h3 className="flex items-center gap-3 font-display text-xl font-bold uppercase text-fin-teal transition-colors group-hover:text-fin-green">
-                  {i.t}
-                  <span
-                    aria-hidden
-                    className="translate-x-0 text-fin-lime transition-transform group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </h3>
-                <p className="mt-2 max-w-xl font-sans text-sm leading-relaxed text-fin-ink/70">
-                  {i.d}
-                </p>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          {items.map((i, idx) => (
+            <div key={i.t} className="flex flex-col border border-fin-line bg-white p-7">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-fin-lime font-display text-sm font-bold text-fin-teal">
+                0{idx + 1}
+              </span>
+              <h3 className="mt-5 font-display text-xl font-bold uppercase text-fin-teal">{i.t}</h3>
+              <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-fin-ink/70">{i.d}</p>
+              <Link
+                to={i.to}
+                className="mt-6 inline-flex items-center justify-center gap-2 rounded-[3px] border-2 border-fin-teal px-5 py-2.5 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-teal hover:text-fin-cream"
+              >
+                Conocer más
+                <span aria-hidden>→</span>
               </Link>
-            </article>
+            </div>
           ))}
         </div>
       </div>
@@ -493,21 +495,25 @@ function Figures() {
   );
 }
 
-/* ---------- cierre ---------- */
+/* ---------- cierre: formulario directo, no solo un enlace ---------- */
 
 function CTA() {
   return (
     <section className="bg-fin-teal">
-      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 md:flex-row md:items-end md:justify-between">
-        <h2 className="max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
-          Tiene una sentencia en firme. Nosotros tenemos el capital y la experiencia.
-        </h2>
-        <Link
-          to="/contacto"
-          className="self-start rounded-[3px] bg-fin-lime px-7 py-3 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-cream"
-        >
-          Hablemos hoy
-        </Link>
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[5fr_6fr] md:items-center">
+        <div>
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-lime">
+            Hablemos
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
+            Tiene una sentencia en firme. Nosotros tenemos el capital y la experiencia.
+          </h2>
+          <p className="mt-5 max-w-md font-sans text-sm leading-relaxed text-fin-cream/75">
+            Complete sus datos y un asesor de Finactivos Group se pondrá en contacto con usted. El
+            estudio de su caso no tiene costo.
+          </p>
+        </div>
+        <ContactForm tone="solid" />
       </div>
     </section>
   );
