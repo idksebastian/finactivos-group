@@ -270,22 +270,22 @@ const pillars = [
 
 function Values() {
   return (
-    <section className="border-b border-fin-line bg-white/50">
+    <section className="border-b border-fin-line bg-fin-green">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="max-w-2xl">
-          <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
+          <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-lime">
             Experiencia y conocimiento
           </p>
-          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+          <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
             Un equipo con más de 17 años de trayectoria
           </h2>
-          <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/70">
+          <p className="mt-4 font-sans text-sm leading-relaxed text-fin-cream/75">
             Ponemos a su disposición un equipo jurídico y financiero dedicado a la gestión de
             sentencias, conciliaciones y activos judiciales.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-px bg-fin-line sm:grid-cols-3">
+        <div className="mt-12 grid gap-px bg-fin-cream/15 sm:grid-cols-3">
           {pillars.map((p) => (
             <div key={p.t} className="bg-fin-cream p-7">
               <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-fin-lime font-display text-sm font-bold text-fin-teal">
@@ -299,7 +299,7 @@ function Values() {
 
         <Link
           to="/nosotros"
-          className="mt-8 inline-block border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal transition-colors hover:border-fin-teal"
+          className="mt-8 inline-block border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-cream transition-colors hover:border-fin-cream"
         >
           Conozca más acerca de Finactivos
         </Link>

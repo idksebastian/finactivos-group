@@ -90,11 +90,11 @@ function Page() {
           </div>
         </Section>
 
-        <Section tone="paper">
+        <Section tone="green">
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <p className={`${ds.h3} text-fin-teal`}>Esencia de Finactivos</p>
-              <p className={`mt-3 ${ds.body} text-fin-ink/75`}>
+              <p className={`${ds.h3} text-fin-cream`}>Esencia de Finactivos</p>
+              <p className={`mt-3 ${ds.body} text-fin-cream/80`}>
                 Trabajamos bajo principios éticos y profesionales: el trato a los clientes, la
                 confianza en el manejo de la información, transparencia en los procesos y
                 compromiso con los resultados pactados. Estos principios hacen parte del ADN de
@@ -102,8 +102,8 @@ function Page() {
               </p>
             </div>
             <div>
-              <p className={`${ds.h3} text-fin-teal`}>Personalidad Finactivos</p>
-              <p className={`mt-3 ${ds.body} text-fin-ink/75`}>
+              <p className={`${ds.h3} text-fin-cream`}>Personalidad Finactivos</p>
+              <p className={`mt-3 ${ds.body} text-fin-cream/80`}>
                 Nuestra personalidad de marca es socialmente consciente y responsable. Creemos que,
                 con un trato cercano pero respetuoso, podemos influir de manera positiva en la
                 vida de nuestros clientes.
