@@ -142,8 +142,8 @@ function PageTransitionFlash() {
     previousPathname.current = pathname;
 
     setPhase("in");
-    const toOut = setTimeout(() => setPhase("out"), 180);
-    const toIdle = setTimeout(() => setPhase("idle"), 180 + 320);
+    const toOut = setTimeout(() => setPhase("out"), 550);
+    const toIdle = setTimeout(() => setPhase("idle"), 550 + 400);
     return () => {
       clearTimeout(toOut);
       clearTimeout(toIdle);
