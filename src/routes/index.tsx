@@ -13,7 +13,7 @@ import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
 import heroCubos from "@/assets/fotos/hero-cubos.jpg";
-import heroCuboLogo from "@/assets/fotos/hero-cubo-logo.jpg";
+import heroCuboPago from "@/assets/fotos/hero-cubo-pago.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -150,15 +150,20 @@ function HeroPhaseIcon({ d }: { d: string }) {
   );
 }
 
+const cubeBox = "h-20 w-20 rounded-[3px] border border-fin-line shadow-sm sm:h-24 sm:w-24";
+
 /** Hilera de cubos, uno por fase real del proceso, con ícono + nombre sobre cada
- *  cara; en la última, la mano coloca el cubo con el logo de Finactivos. */
+ *  cara -- los cuatro con el mismo tamaño y marco. En la última, la mano coloca
+ *  el cubo con el logo de Finactivos. */
 function HeroJourneyPhoto() {
   return (
     <div className="graphic-enter">
       <div className="flex items-end justify-center gap-4 sm:gap-6">
         {HERO_PHASES.map((phase) => (
           <div key={phase.label} className="flex w-20 flex-col items-center sm:w-24">
-            <div className="flex h-20 w-20 flex-col items-center justify-center gap-1.5 rounded-[3px] border border-fin-line bg-linear-to-b from-white to-[#efe6cf] px-1.5 shadow-sm sm:h-24 sm:w-24">
+            <div
+              className={`flex flex-col items-center justify-center gap-1.5 bg-linear-to-b from-white to-[#efe6cf] px-1.5 ${cubeBox}`}
+            >
               <span className="text-fin-teal">
                 <HeroPhaseIcon d={phase.icon} />
               </span>
@@ -168,15 +173,17 @@ function HeroJourneyPhoto() {
             </div>
           </div>
         ))}
-        <div className="flex w-24 flex-col items-center sm:w-28">
-          <img
-            src={heroCuboLogo}
-            alt="Mano colocando el cubo con el logo de Finactivos, al final de la fila"
-            className="h-auto w-32 max-w-none sm:w-36"
-          />
-          <p className="mt-4 text-center font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-teal sm:text-xs">
-            Pago
-          </p>
+        <div className="flex w-20 flex-col items-center sm:w-24">
+          <div className={`relative overflow-hidden ${cubeBox}`}>
+            <img
+              src={heroCuboPago}
+              alt="Mano colocando el cubo con el logo de Finactivos: fase de pago"
+              className="h-full w-full object-cover"
+            />
+            <p className="absolute inset-x-0 bottom-0 bg-white/85 py-1 text-center font-sans text-[9px] font-bold uppercase leading-tight tracking-wide text-fin-teal sm:text-[10px]">
+              Pago
+            </p>
+          </div>
         </div>
       </div>
       <p className="mt-6 text-center font-sans text-sm leading-relaxed text-fin-ink/70">
