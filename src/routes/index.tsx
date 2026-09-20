@@ -12,8 +12,7 @@ import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
-import heroCubos from "@/assets/fotos/hero-cubos.jpg";
-import heroCuboPago from "@/assets/fotos/hero-cubo-pago.jpg";
+import heroCubosFinal from "@/assets/fotos/hero-cubos-final.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -89,7 +88,7 @@ function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       <img
-        src={heroCubos}
+        src={heroCubosFinal}
         alt=""
         className="hero-kenburns absolute inset-0 h-full w-full object-cover opacity-30"
       />
@@ -136,60 +135,23 @@ function Hero() {
   );
 }
 
-const HERO_PHASES = [
-  { label: "Análisis", icon: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 17-5.2-5.2" },
-  { label: "Negociación", icon: "M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6M2 20c0-3 2.5-5 6-5s6 2 6 5M14 20c0-2.5 2-4.5 5-4.5s5 2 5 4.5" },
-  { label: "Formalización", icon: "M4 20h4l10-10-4-4L4 16v4Zm12-14 4 4" },
-] as const;
-
-function HeroPhaseIcon({ d }: { d: string }) {
-  return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8}>
-      <path d={d} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-const cubeBox = "h-20 w-20 rounded-[3px] border border-fin-line shadow-sm sm:h-24 sm:w-24";
-
-/** Hilera de cubos, uno por fase real del proceso, con ícono + nombre sobre cada
- *  cara -- los cuatro con el mismo tamaño y marco. En la última, la mano coloca
- *  el cubo con el logo de Finactivos. */
+/** Foto final (editada con IA a partir de nuestras propias fotos): cubos en
+ *  hilera con un ícono por fase real y el logo en el que la mano coloca, con
+ *  el mensaje mapeado directamente sobre la imagen. */
 function HeroJourneyPhoto() {
   return (
-    <div className="graphic-enter">
-      <div className="flex items-end justify-center gap-4 sm:gap-6">
-        {HERO_PHASES.map((phase) => (
-          <div key={phase.label} className="flex w-20 flex-col items-center sm:w-24">
-            <div
-              className={`flex flex-col items-center justify-center gap-1.5 bg-linear-to-b from-white to-[#efe6cf] px-1.5 ${cubeBox}`}
-            >
-              <span className="text-fin-teal">
-                <HeroPhaseIcon d={phase.icon} />
-              </span>
-              <p className="text-center font-sans text-[9px] font-bold uppercase leading-tight tracking-wide text-fin-ink/70 sm:text-[10px]">
-                {phase.label}
-              </p>
-            </div>
-          </div>
-        ))}
-        <div className="flex w-20 flex-col items-center sm:w-24">
-          <div className={`relative overflow-hidden ${cubeBox}`}>
-            <img
-              src={heroCuboPago}
-              alt="Mano colocando el cubo con el logo de Finactivos: fase de pago"
-              className="h-full w-full object-cover"
-            />
-            <p className="absolute inset-x-0 bottom-0 bg-white/85 py-1 text-center font-sans text-[9px] font-bold uppercase leading-tight tracking-wide text-fin-teal sm:text-[10px]">
-              Pago
-            </p>
-          </div>
-        </div>
-      </div>
-      <p className="mt-6 text-center font-sans text-sm leading-relaxed text-fin-ink/70">
-        Con otros, el proceso avanza fase a fase durante años.{" "}
-        <span className="font-semibold text-fin-teal">Con Finactivos, ya está en el pago.</span>
-      </p>
+    <div className="graphic-enter relative overflow-hidden rounded-[6px] border border-fin-line">
+      <img
+        src={heroCubosFinal}
+        alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
+        className="h-full w-full object-cover"
+      />
+      <span className="absolute bottom-[6%] left-[4%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
+        Con otros, el primer eslabón
+      </span>
+      <span className="absolute right-[4%] top-[6%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
+        Con Finactivos, está aquí
+      </span>
     </div>
   );
 }
