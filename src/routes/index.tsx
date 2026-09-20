@@ -12,7 +12,7 @@ import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
-import heroEscalera from "@/assets/fotos/hero-escalera.jpg";
+import heroCubos from "@/assets/fotos/hero-cubos.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -88,9 +88,9 @@ function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       <img
-        src={heroEscalera}
+        src={heroCubos}
         alt=""
-        className="hero-kenburns absolute inset-0 h-full w-full object-cover opacity-35"
+        className="hero-kenburns absolute inset-0 h-full w-full object-cover opacity-30"
       />
       <div className="absolute inset-0 bg-linear-to-r from-fin-cream via-fin-cream/85 to-fin-cream/30" />
     </div>
@@ -138,16 +138,16 @@ function Hero() {
 /** Foto real con el mensaje mapeado directamente sobre la imagen, en vez de una tarjeta de datos aparte. */
 function HeroJourneyPhoto() {
   return (
-    <div className="graphic-enter relative aspect-3/4 overflow-hidden rounded-[6px] border border-fin-line">
+    <div className="graphic-enter relative aspect-4/3 overflow-hidden rounded-[6px] border border-fin-line">
       <img
-        src={heroEscalera}
-        alt="Escalera minimalista: el camino hasta recibir su dinero"
+        src={heroCubos}
+        alt="Cubos en escalera y una mano colocando el último: el camino hasta recibir su dinero"
         className="h-full w-full object-cover"
       />
-      <span className="absolute bottom-[6%] left-[6%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
+      <span className="absolute bottom-[8%] left-[5%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
         Con otros, el primer escalón
       </span>
-      <span className="absolute right-[8%] top-[36%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
+      <span className="absolute right-[6%] top-[8%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
         Con Finactivos, está aquí
       </span>
     </div>
