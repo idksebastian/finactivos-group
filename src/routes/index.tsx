@@ -45,26 +45,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-/* ---------- helpers ---------- */
-
-function useInView<T extends HTMLElement>(threshold = 0.25) {
-  const ref = useRef<T>(null);
-  const [seen, setSeen] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([e]) => {
-        if (e?.isIntersecting) setSeen(true);
-      },
-      { threshold },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [threshold]);
-  return { ref, seen };
-}
-
 /* ---------- hero ---------- */
 
 const HERO_HEADLINE = "Somos su aliado estratégico en el cumplimiento de sus objetivos";
@@ -87,13 +67,17 @@ function TypingHeadline({ text, className }: { text: string; className: string }
   }, [chars, text.length]);
 
   return (
-    <h1 className={className}>
-      <span aria-hidden>{text.slice(0, chars)}</span>
-      {chars < text.length && (
-        <span aria-hidden className="animate-pulse text-fin-lime">
-          ▍
-        </span>
-      )}
+    <h1 className={`relative ${className}`}>
+      {/* Reserva el tamaño final desde el primer fotograma para que no haya
+          reflow del resto del layout con cada letra (eso era lo que se
+          sentía "a tropezones", no el tamaño del texto). */}
+      <span className="invisible" aria-hidden>
+        {text}
+      </span>
+      <span className="absolute inset-0" aria-hidden>
+        {text.slice(0, chars)}
+        {chars < text.length && <span className="animate-pulse text-fin-lime">▍</span>}
+      </span>
       <span className="sr-only">{text}</span>
     </h1>
   );
@@ -145,84 +129,27 @@ function Hero() {
             </Link>
           </div>
         </div>
-        <TimeRelief />
+        <HeroJourneyPhoto />
       </div>
     </section>
-
   );
 }
 
-
-/** Contraste de tiempos como recorrido, no como gráfico de datos. */
-function TimeRelief() {
-  const { ref, seen } = useInView<HTMLDivElement>(0.35);
-
+/** Foto real con el mensaje mapeado directamente sobre la imagen, en vez de una tarjeta de datos aparte. */
+function HeroJourneyPhoto() {
   return (
-    <div
-      ref={ref}
-      className="graphic-enter rounded-[6px] border border-fin-line bg-white/60 p-7 sm:p-9"
-      aria-label="Comparación del tiempo de espera"
-    >
-      <p className="font-sans text-xs uppercase tracking-[0.2em] text-fin-ink/45">
-        El camino hasta recibir su dinero
-      </p>
-
-      {/* camino largo */}
-      <div className="mt-8">
-        <div className="flex items-baseline justify-between">
-          <span className="font-sans text-sm text-fin-ink/70">Esperando a la entidad</span>
-          <span className="font-display text-sm font-bold text-fin-ink/60">
-            90% de los casos: más de 6 años
-          </span>
-        </div>
-        <div className="relative mt-4 h-10">
-          <div className="absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 border-t border-dashed border-fin-ink/25" />
-          <div className="relative flex h-full items-center justify-between">
-            {["Hoy", "", "", "", "Pago"].map((label, i) => (
-              <span key={i} className="flex flex-col items-center gap-2">
-                <span
-                  className={`block h-2 w-2 rounded-full ${
-                    i === 0 ? "bg-fin-ink/60" : "bg-fin-ink/20"
-                  }`}
-                />
-                {label && (
-                  <span className="absolute top-7 font-sans text-[11px] text-fin-ink/45">
-                    {label}
-                  </span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* camino corto */}
-      <div className="mt-12">
-        <div className="flex items-baseline justify-between">
-          <span className="font-sans text-sm font-medium text-fin-teal">Con Finactivos</span>
-          <span className="font-display text-sm font-bold text-fin-green">Máximo 3 meses</span>
-        </div>
-        <div className="relative mt-4 h-10">
-          <div className="absolute left-0 right-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-fin-line" />
-          <div
-            className="absolute left-0 top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-fin-lime transition-[width] duration-[1600ms] ease-out"
-            style={{ width: seen ? "100%" : "0%" }}
-          />
-          <div
-            className="absolute top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-fin-green text-fin-cream transition-[left] duration-[1600ms] ease-out"
-            style={{ left: seen ? "100%" : "0%" }}
-            aria-hidden
-          >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth={2.5}>
-              <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
-        </div>
-        <p className="mt-6 font-sans text-sm leading-relaxed text-fin-ink/70">
-          En un máximo de tres meses usted recibe sus derechos económicos. La espera de hasta 6 años
-          ante la entidad corre por nuestra cuenta.
-        </p>
-      </div>
+    <div className="graphic-enter relative aspect-4/3 overflow-hidden rounded-[6px] border border-fin-line">
+      <img
+        src={heroBloques}
+        alt="Bloques de madera en escalera: el camino hasta recibir su dinero"
+        className="h-full w-full object-cover"
+      />
+      <span className="absolute bottom-[8%] left-[6%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
+        Con otros, el primer eslabón
+      </span>
+      <span className="absolute left-[54%] top-[14%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
+        Con Finactivos, está aquí
+      </span>
     </div>
   );
 }
