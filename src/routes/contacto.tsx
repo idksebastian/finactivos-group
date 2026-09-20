@@ -7,7 +7,6 @@ import { PageHeader, Section, SectionTitle, CtaBlock } from "@/components/page-s
 import { ContactForm } from "@/components/contact-form";
 import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
-import { WHATSAPP_URL } from "@/lib/whatsapp";
 
 const ADDRESS = "Cll 28 No. 13a 24, Oficina 303, Parque Bavaria — Torre Museo, Bogotá";
 
@@ -60,51 +59,6 @@ export const Route = createFileRoute("/contacto")({
 });
 
 const label = "font-sans text-xs uppercase tracking-[0.16em] text-fin-ink/60";
-
-function DirectContact() {
-  return (
-    <div className="border border-fin-line bg-white/50 p-7 sm:p-9">
-      <p className={ds.eyebrow}>Hable con nosotros</p>
-      <h2 className="mt-4 font-display text-2xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
-        Respuesta directa
-      </h2>
-      <p className="mt-4 max-w-md font-sans text-sm leading-relaxed text-fin-ink/70">
-        Escríbanos por WhatsApp con los datos de su sentencia, llámenos en horario de oficina, o
-        complete el formulario más abajo. Un asesor le acompaña desde la primera conversación.
-      </p>
-
-      <a
-        href={WHATSAPP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="mt-8 flex w-full items-center justify-center gap-3 rounded-[3px] bg-fin-green px-6 py-4 font-sans text-sm font-semibold text-fin-cream transition-colors hover:bg-fin-teal"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-          <path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.94.52 3.75 1.42 5.31L2 22l4.98-1.58a9.8 9.8 0 0 0 5.06 1.39h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.48 2 12.04 2Zm0 17.96h-.01a8.1 8.1 0 0 1-4.14-1.14l-.3-.18-3.06.97.98-2.98-.2-.31a8.08 8.08 0 0 1-1.24-4.31c0-4.5 3.66-8.16 8.17-8.16 2.18 0 4.23.85 5.77 2.4a8.11 8.11 0 0 1 2.39 5.77c0 4.5-3.66 8.15-8.16 8.15Zm4.47-6.1c-.24-.13-1.45-.72-1.68-.8-.23-.09-.39-.13-.56.12s-.64.8-.79.97c-.14.16-.29.18-.53.06-.24-.12-1.03-.38-1.97-1.22-.73-.65-1.22-1.45-1.36-1.69-.14-.24-.02-.37.1-.49.11-.11.24-.29.36-.43.12-.15.16-.25.24-.41.08-.17.04-.31-.02-.43-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3-.22.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.65 4.2 3.71.59.26 1.04.41 1.4.52.59.19 1.12.16 1.55.1.47-.07 1.45-.59 1.66-1.17.2-.57.2-1.06.14-1.16-.06-.11-.22-.17-.46-.29Z" />
-        </svg>
-        Escríbanos por WhatsApp
-      </a>
-
-      <a
-        href="tel:+573128085632"
-        className="mt-3 flex w-full items-center justify-center gap-3 rounded-[3px] border-2 border-fin-teal px-6 py-4 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-teal hover:text-fin-cream"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-          <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2Z" />
-        </svg>
-        Llámenos: 312 808 5632
-      </a>
-
-      <p className="mt-6 font-sans text-xs leading-relaxed text-fin-ink/50">
-        También puede escribirnos a{" "}
-        <a href="mailto:comercial@finactivos.com" className="text-fin-green hover:text-fin-teal">
-          comercial@finactivos.com
-        </a>
-        . El estudio de su caso no tiene costo.
-      </p>
-    </div>
-  );
-}
 
 function LocationCard() {
   const [copied, setCopied] = useState(false);
@@ -207,46 +161,42 @@ function Page() {
           title="Cuéntenos su caso"
           support="Con la sentencia, la constancia de ejecutoria y su identificación podemos entregarle una valoración escrita. El estudio no tiene costo."
         >
-          <div className="mt-12 grid gap-12 border-t border-fin-line pt-12 md:grid-cols-[5fr_6fr]">
-            <dl className={`order-2 space-y-6 md:order-0 ${ds.body} text-fin-ink/75`}>
-              <div>
-                <dt className={label}>Oficina</dt>
-                <dd className="mt-1 leading-relaxed">
-                  Cll 28 No. 13a 24, Oficina 303
-                  <br />
-                  Parque Bavaria — Torre Museo, Bogotá
-                </dd>
-              </div>
-              <div>
-                <dt className={label}>Teléfonos</dt>
-                <dd className="mt-1">
-                  <a href="tel:+573128085632" className="hover:text-fin-green">
-                    312 808 5632
-                  </a>
-                  <br />
-                  <a href="tel:+573134537849" className="hover:text-fin-green">
-                    313 453 7849
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className={label}>Correo</dt>
-                <dd className="mt-1">
-                  <a href="mailto:comercial@finactivos.com" className="hover:text-fin-green">
-                    comercial@finactivos.com
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className={label}>Horario</dt>
-                <dd className="mt-1">Lunes a viernes, 8:00 am – 5:00 pm</dd>
-              </div>
-            </dl>
-
-            <div className="order-1 md:order-0">
-              <DirectContact />
+          <dl
+            className={`mt-12 grid gap-8 border-t border-fin-line pt-12 sm:grid-cols-2 lg:grid-cols-4 ${ds.body} text-fin-ink/75`}
+          >
+            <div>
+              <dt className={label}>Oficina</dt>
+              <dd className="mt-1 leading-relaxed">
+                Cll 28 No. 13a 24, Oficina 303
+                <br />
+                Parque Bavaria — Torre Museo, Bogotá
+              </dd>
             </div>
-          </div>
+            <div>
+              <dt className={label}>Teléfonos</dt>
+              <dd className="mt-1">
+                <a href="tel:+573128085632" className="hover:text-fin-green">
+                  312 808 5632
+                </a>
+                <br />
+                <a href="tel:+573134537849" className="hover:text-fin-green">
+                  313 453 7849
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className={label}>Correo</dt>
+              <dd className="mt-1">
+                <a href="mailto:comercial@finactivos.com" className="hover:text-fin-green">
+                  comercial@finactivos.com
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt className={label}>Horario</dt>
+              <dd className="mt-1">Lunes a viernes, 8:00 am – 5:00 pm</dd>
+            </div>
+          </dl>
         </PageHeader>
 
         <Section tone="paper">

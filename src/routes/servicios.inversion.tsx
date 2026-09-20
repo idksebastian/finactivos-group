@@ -37,12 +37,21 @@ function Page() {
           <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[6fr_5fr] md:py-24">
             <div>
               <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
-                Servicio 03
+                Inversión
               </p>
               <h1 className="mt-5 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl">
                 Proyecte su portafolio sobre activos ya reconocidos
               </h1>
-              <p className="mt-6 max-w-lg font-sans text-base leading-relaxed text-fin-ink/75">
+              <div className="mt-6 max-w-lg border-l-2 border-fin-lime pl-4">
+                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-green">
+                  ¿Qué es?
+                </p>
+                <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/75">
+                  Es un vehículo de inversión respaldado en sentencias y conciliaciones en firme
+                  contra el Estado, con reglas de retorno y plazos definidos desde el inicio.
+                </p>
+              </div>
+              <p className="max-w-lg font-sans text-base leading-relaxed text-fin-ink/75">
                 La volatilidad exige alternativas que protejan el capital. Estructuramos inversión
                 respaldada en derechos económicos con título judicial en firme, con reglas de
                 retorno y plazos definidos desde el primer día.

@@ -136,28 +136,16 @@ function Hero() {
 }
 
 /** Foto final (editada con IA a partir de nuestras propias fotos): cubos en
- *  hilera con un ícono por fase real y el logo en el que la mano coloca, con
- *  el mensaje mapeado directamente sobre la imagen. */
+ *  hilera con un ícono por fase real y el logo en el que la mano coloca.
+ *  Sin texto superpuesto -- se deja que la foto hable por sí sola. */
 function HeroJourneyPhoto() {
   return (
-    <div className="graphic-enter">
-      <div className="relative overflow-hidden rounded-[6px] border border-fin-line">
-        <img
-          src={heroCubosFinal}
-          alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
-          className="h-full w-full object-cover"
-        />
-        <span className="absolute bottom-[8%] left-[4%] max-w-[34%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-[11px] font-semibold uppercase leading-snug tracking-wide text-fin-ink/70 shadow-md sm:text-xs">
-          Información, acuerdos, espera del pago
-        </span>
-        <span className="absolute bottom-[8%] right-[3%] max-w-[36%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-[11px] font-bold uppercase leading-snug tracking-wide text-fin-teal shadow-md sm:text-xs">
-          Con Finactivos, ya tiene su dinero
-        </span>
-      </div>
-      <p className="mt-6 font-sans text-sm leading-relaxed text-fin-ink/70">
-        Evítese todo ese proceso. Nosotros lo asumimos por usted: le pagamos de inmediato y
-        esperamos hasta que la entidad reembolse, con acompañamiento completo en cada paso.
-      </p>
+    <div className="graphic-enter overflow-hidden rounded-[6px] border border-fin-line">
+      <img
+        src={heroCubosFinal}
+        alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
+        className="h-full w-full object-cover"
+      />
     </div>
   );
 }

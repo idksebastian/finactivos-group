@@ -48,7 +48,7 @@ function Page() {
           <div className="mx-auto grid max-w-6xl gap-0 px-6 py-0 md:grid-cols-[4fr_6fr]">
             <div className="-mx-6 bg-fin-teal px-6 py-16 md:mx-0 md:px-10 md:py-24">
               <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-lime">
-                Servicio 01
+                Compra de sentencias
               </p>
               <h1 className="mt-5 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-cream sm:text-5xl">
                 Compra de sentencias
@@ -59,12 +59,17 @@ function Page() {
               </p>
             </div>
             <div className="flex flex-col justify-center gap-6 py-16 md:pl-12">
-              <p className="max-w-xl font-sans text-base leading-relaxed text-fin-ink/80">
-                Adquirimos sentencias y conciliaciones en firme de reparación directa contra
-                entidades del Estado. Usted recibe el capital en días hábiles; nosotros nos
-                sustituimos en el cobro ante la entidad condenada y asumimos íntegramente el riesgo
-                de la demora.
-              </p>
+              <div>
+                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-green">
+                  ¿Qué es?
+                </p>
+                <p className="mt-2 max-w-xl font-sans text-base leading-relaxed text-fin-ink/80">
+                  Adquirimos sentencias y conciliaciones en firme de reparación directa contra
+                  entidades del Estado. Usted recibe el capital en días hábiles; nosotros nos
+                  sustituimos en el cobro ante la entidad condenada y asumimos íntegramente el
+                  riesgo de la demora.
+                </p>
+              </div>
               <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-3">
                 {[
                   ["60 a 90 días", "hasta la firma de cesión"],
