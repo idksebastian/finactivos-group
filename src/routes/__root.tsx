@@ -126,12 +126,78 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+// Debe cubrir toda la pantalla antes de navegar: la duración cubre la animación
+// CSS de entrada (.page-flash-mark-in, 0.4s) más un pequeño margen.
+const COVER_MS = 420;
+const REVEAL_MS = 420;
+
 function PageTransitionFlash() {
+  const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const [phase, setPhase] = useState<"idle" | "in" | "out">("idle");
+  const [phase, setPhase] = useState<"idle" | "covering" | "revealing">("idle");
   const isFirstRender = useRef(true);
   const previousPathname = useRef(pathname);
+  const pendingHref = useRef<string | null>(null);
+  const intercepted = useRef(false);
 
+  // Intercepta los clics en enlaces internos: primero cubre la pantalla con el
+  // destello y el logo, y solo cuando termina esa animación navega a la nueva
+  // página -- así la transición se ve completa antes de que cargue el destino.
+  useEffect(() => {
+    function onClick(e: MouseEvent) {
+      if (e.defaultPrevented || e.button !== 0) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+      const target = e.target as HTMLElement | null;
+      const anchor = target?.closest("a[href]") as HTMLAnchorElement | null;
+      if (!anchor) return;
+      if (anchor.target && anchor.target !== "_self") return;
+      if (anchor.hasAttribute("download")) return;
+
+      let url: URL;
+      try {
+        url = new URL(anchor.href);
+      } catch {
+        return;
+      }
+      if (url.origin !== window.location.origin) return;
+      if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+
+      // stopPropagation es clave: evita que el propio onClick de <Link> (que
+      // navega de inmediato) también reciba este clic y adelante la navegación.
+      e.preventDefault();
+      e.stopPropagation();
+      if (phase !== "idle") return;
+      intercepted.current = true;
+      pendingHref.current = url.pathname + url.search + url.hash;
+      setPhase("covering");
+    }
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase === "covering") {
+      const t = setTimeout(() => {
+        const href = pendingHref.current;
+        pendingHref.current = null;
+        const go = href ? router.navigate({ href }) : Promise.resolve();
+        go.catch(() => {}).finally(() => setPhase("revealing"));
+      }, COVER_MS);
+      return () => clearTimeout(t);
+    }
+    if (phase === "revealing") {
+      const t = setTimeout(() => {
+        setPhase("idle");
+        intercepted.current = false;
+      }, REVEAL_MS);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [phase, router]);
+
+  // Respaldo para navegación no interceptada (botón "Volver", atrás/adelante
+  // del navegador): sigue mostrando el destello aunque no podamos retrasar la carga.
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -140,12 +206,13 @@ function PageTransitionFlash() {
     }
     if (previousPathname.current === pathname) return;
     previousPathname.current = pathname;
+    if (intercepted.current) return;
 
-    setPhase("in");
-    const toOut = setTimeout(() => setPhase("out"), 550);
-    const toIdle = setTimeout(() => setPhase("idle"), 550 + 400);
+    setPhase("covering");
+    const toReveal = setTimeout(() => setPhase("revealing"), COVER_MS);
+    const toIdle = setTimeout(() => setPhase("idle"), COVER_MS + REVEAL_MS);
     return () => {
-      clearTimeout(toOut);
+      clearTimeout(toReveal);
       clearTimeout(toIdle);
     };
   }, [pathname]);
@@ -156,14 +223,14 @@ function PageTransitionFlash() {
     <div
       aria-hidden="true"
       className={`pointer-events-none fixed inset-0 z-999 flex items-center justify-center bg-fin-teal motion-reduce:hidden ${
-        phase === "in" ? "page-flash-in" : "page-flash-out"
+        phase === "covering" ? "page-flash-in" : "page-flash-out"
       }`}
     >
       <img
         src={finactivosMark}
         alt=""
         className={`h-12 w-auto brightness-0 invert ${
-          phase === "in" ? "page-flash-mark-in" : "page-flash-mark-out"
+          phase === "covering" ? "page-flash-mark-in" : "page-flash-mark-out"
         }`}
       />
     </div>
