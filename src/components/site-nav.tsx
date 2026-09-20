@@ -8,12 +8,12 @@ const otherServices = [
   { label: "Inversión", to: "/servicios/inversion" as const },
 ];
 
-/** Orden pedido por el cliente: Inicio, Nosotros, [Otros servicios], producto principal, Proceso, Blog, [Contacto]. */
+/** Orden pedido por el cliente: Inicio, Compra de sentencias, Proceso, Nosotros, Otros servicios, Blog. */
 const items = [
   { label: "Inicio", to: "/" as const, exact: true },
-  { label: "Nosotros", to: "/nosotros" as const, exact: false },
   { label: "Compra de sentencias", to: "/servicios/compra-de-sentencias" as const, exact: false },
   { label: "Proceso", to: "/proceso" as const, exact: false },
+  { label: "Nosotros", to: "/nosotros" as const, exact: false },
   { label: "Blog", to: "/blog" as const, exact: false },
 ] as const;
 
@@ -99,23 +99,19 @@ export function SiteNav() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          <Link
-            to={items[0].to}
-            className={navLink}
-            activeOptions={{ exact: items[0].exact }}
-            activeProps={{ className: "text-fin-cream font-medium" }}
-          >
-            {items[0].label}
-          </Link>
-          <Link
-            to={items[1].to}
-            className={navLink}
-            activeProps={{ className: "text-fin-cream font-medium" }}
-          >
-            {items[1].label}
-          </Link>
+          {items.slice(0, 4).map((i) => (
+            <Link
+              key={i.label}
+              to={i.to}
+              className={navLink}
+              activeOptions={{ exact: i.exact }}
+              activeProps={{ className: "text-fin-cream font-medium" }}
+            >
+              {i.label}
+            </Link>
+          ))}
           <OtherServicesDropdown />
-          {items.slice(2).map((i) => (
+          {items.slice(4).map((i) => (
             <Link
               key={i.label}
               to={i.to}
@@ -159,7 +155,7 @@ export function SiteNav() {
         </div>
 
         <nav className="flex-1 overflow-y-auto px-6 py-4">
-          {items.map((i) => (
+          {items.slice(0, 4).map((i) => (
             <Link
               key={i.label}
               to={i.to}
@@ -180,6 +176,16 @@ export function SiteNav() {
               className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
             >
               {s.label}
+            </Link>
+          ))}
+          {items.slice(4).map((i) => (
+            <Link
+              key={i.label}
+              to={i.to}
+              onClick={() => setOpen(false)}
+              className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
+            >
+              {i.label}
             </Link>
           ))}
 
