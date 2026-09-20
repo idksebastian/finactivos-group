@@ -15,6 +15,7 @@ import { Analytics } from "@vercel/analytics/react";
 import appCss from "../styles.css?url";
 import { siteUrl } from "../lib/site-url";
 import { FloatingWhatsApp } from "../components/floating-whatsapp";
+import finactivosMark from "../assets/finactivos-mark.png";
 
 function NotFoundComponent() {
   return (
@@ -154,10 +155,18 @@ function PageTransitionFlash() {
   return (
     <div
       aria-hidden="true"
-      className={`pointer-events-none fixed inset-0 z-999 bg-fin-teal motion-reduce:hidden ${
+      className={`pointer-events-none fixed inset-0 z-999 flex items-center justify-center bg-fin-teal motion-reduce:hidden ${
         phase === "in" ? "page-flash-in" : "page-flash-out"
       }`}
-    />
+    >
+      <img
+        src={finactivosMark}
+        alt=""
+        className={`h-12 w-auto brightness-0 invert ${
+          phase === "in" ? "page-flash-mark-in" : "page-flash-mark-out"
+        }`}
+      />
+    </div>
   );
 }
 
