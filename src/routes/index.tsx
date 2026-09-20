@@ -147,10 +147,10 @@ function HeroJourneyPhoto() {
           alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
           className="h-full w-full object-cover"
         />
-        <span className="absolute bottom-[6%] left-[4%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
+        <span className="absolute bottom-[8%] left-[4%] max-w-[34%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-[11px] font-semibold uppercase leading-snug tracking-wide text-fin-ink/70 shadow-md sm:text-xs">
           Información, acuerdos, espera del pago
         </span>
-        <span className="absolute bottom-[8%] right-[3%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
+        <span className="absolute bottom-[8%] right-[3%] max-w-[36%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-[11px] font-bold uppercase leading-snug tracking-wide text-fin-teal shadow-md sm:text-xs">
           Con Finactivos, ya tiene su dinero
         </span>
       </div>
