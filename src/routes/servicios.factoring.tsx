@@ -27,12 +27,51 @@ export const Route = createFileRoute("/servicios/factoring")({
   component: Page,
 });
 
-const pilares = [
-  { t: "Liquidez récord", d: "Desembolso directo a su cuenta bancaria entre 24 y 48 horas después de la aprobación." },
-  { t: "Cero deuda bancaria", d: "Está estructurado como venta de un activo suyo: no consume cupo ni afecta su endeudamiento." },
-  { t: "Flexibilidad absoluta", d: "Usted decide qué facturas adelantar y en qué momento exacto hacerlo." },
-  { t: "Gestión transparente", d: "Asumimos la cobranza y la administración; usted se concentra en operar." },
-  { t: "Tasas a la medida", d: "Tarifas estructuradas según la solidez y el riesgo del pagador, no según su tamaño." },
+const ICONS = {
+  clock: "M12 7v5l3.5 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
+  shield: "M12 3l7 3v6c0 4.8-2.9 8.1-7 9-4.1-.9-7-4.2-7-9V6l7-3Zm-3 9 2 2 4-4",
+  sliders: "M4 6h10m4 0h2M4 12h4m4 0h8M4 18h13m4 0h1M9 4v4M17 10v4M13 16v4",
+  clipboard: "M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1ZM6 6h12v14H6V6Zm3 6 2 2 5-5",
+  scale: "M12 3v18M9 21h6M5 8l-3 5a3.5 3.5 0 0 0 7 0l-3-5Zm14 0-3 5a3.5 3.5 0 0 0 7 0l-3-5ZM7 8h10",
+};
+
+function PilarIcon({ name }: { name: keyof typeof ICONS }) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <path d={ICONS[name]} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+const ventajas = [
+  {
+    icon: "clock" as const,
+    t: "Liquidez en 24 a 48 horas",
+    d: "Desembolso directo a su cuenta bancaria después de la aprobación.",
+  },
+  {
+    icon: "shield" as const,
+    t: "Cero deuda bancaria",
+    d: "Está estructurado como venta de un activo suyo: no consume cupo ni afecta su endeudamiento.",
+  },
+  {
+    icon: "sliders" as const,
+    t: "Flexibilidad absoluta",
+    d: "Usted decide qué facturas adelantar y en qué momento exacto hacerlo.",
+  },
+];
+
+const gestion = [
+  {
+    icon: "clipboard" as const,
+    t: "Gestión y cobranza integral",
+    d: "Asumimos la cobranza y la administración; usted se concentra en operar.",
+  },
+  {
+    icon: "scale" as const,
+    t: "Tasas basadas en el pagador",
+    d: "Tarifas estructuradas según la solidez y el riesgo del pagador, no según su tamaño.",
+  },
 ];
 
 function Page() {
@@ -84,18 +123,53 @@ function Page() {
             <h2 className="max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
               La arquitectura del factoring corporativo
             </h2>
-            <div className="mt-12 grid gap-px bg-fin-cream/15 md:grid-cols-3 lg:grid-cols-5">
-              {pilares.map((p, i) => (
-                <div key={p.t} className="bg-fin-green p-6">
-                  <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-[3px] border-2 border-fin-lime px-1.5 font-display text-sm font-bold text-fin-lime">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <p className="mt-3 font-display text-base font-bold uppercase leading-tight text-fin-cream">
-                    {p.t}
-                  </p>
-                  <p className="mt-2 font-sans text-sm leading-relaxed text-fin-cream/70">{p.d}</p>
+
+            <div className="mt-12 grid gap-12 md:grid-cols-2">
+              <div>
+                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-lime">
+                  Ventajas de liquidez y crédito
+                </p>
+                <div className="mt-6 space-y-6">
+                  {ventajas.map((v) => (
+                    <div key={v.t} className="flex gap-4">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-fin-cream text-fin-green">
+                        <PilarIcon name={v.icon} />
+                      </span>
+                      <div>
+                        <p className="font-display text-base font-bold uppercase leading-tight text-fin-cream">
+                          {v.t}
+                        </p>
+                        <p className="mt-1 font-sans text-sm leading-relaxed text-fin-cream/70">{v.d}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              <div className="border-t border-fin-cream/15 pt-8 md:border-l md:border-t-0 md:pl-12 md:pt-0">
+                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-lime">
+                  Gestión estratégica del riesgo
+                </p>
+                <div className="mt-6 space-y-6">
+                  {gestion.map((g) => (
+                    <div key={g.t} className="flex gap-4">
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-fin-cream text-fin-green">
+                        <PilarIcon name={g.icon} />
+                      </span>
+                      <div>
+                        <p className="font-display text-base font-bold uppercase leading-tight text-fin-cream">
+                          {g.t}
+                        </p>
+                        <p className="mt-1 font-sans text-sm leading-relaxed text-fin-cream/70">{g.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="mt-8 border-l-2 border-fin-lime pl-4 font-display text-lg font-bold uppercase leading-snug text-fin-cream">
+                  Cambiar de activo es cambiar de riesgo.
+                </p>
+              </div>
             </div>
           </div>
         </section>
