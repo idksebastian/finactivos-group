@@ -278,23 +278,16 @@
   }
 }
 
-/* Fondo del hero: manchas suaves en movimiento lento y continuo */
-@keyframes hero-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(3%, 4%) scale(1.06); }
-  66% { transform: translate(-2%, -3%) scale(0.97); }
+/* Fondo del hero: zoom lento y continuo sobre la foto (efecto Ken Burns) */
+@keyframes hero-kenburns {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
-.hero-blob {
-  animation: hero-drift 22s ease-in-out infinite;
-}
-.hero-blob-delay {
-  animation-delay: -7s;
-}
-.hero-blob-delay-2 {
-  animation-delay: -14s;
+.hero-kenburns {
+  animation: hero-kenburns 24s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-blob {
+  .hero-kenburns {
     animation: none;
   }
 }

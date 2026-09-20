@@ -12,6 +12,7 @@ import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
+import heroBloques from "@/assets/fotos/hero-bloques.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -98,13 +99,16 @@ function TypingHeadline({ text, className }: { text: string; className: string }
   );
 }
 
-/** Manchas suaves en movimiento lento: dinamismo sin depender de una imagen. */
+/** Foto real en vez de gráficas abstractas, con leve zoom continuo para dar movimiento. */
 function HeroBackdrop() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      <div className="hero-blob absolute -left-24 -top-24 h-96 w-96 rounded-full bg-fin-lime/25 blur-3xl" />
-      <div className="hero-blob hero-blob-delay absolute -right-16 top-1/3 h-80 w-80 rounded-full bg-fin-green/20 blur-3xl" />
-      <div className="hero-blob hero-blob-delay-2 absolute -bottom-24 left-1/3 h-72 w-72 rounded-full bg-fin-teal/10 blur-3xl" />
+      <img
+        src={heroBloques}
+        alt=""
+        className="hero-kenburns absolute inset-0 h-full w-full object-cover opacity-[0.22]"
+      />
+      <div className="absolute inset-0 bg-linear-to-r from-fin-cream via-fin-cream/85 to-fin-cream/30" />
     </div>
   );
 }
