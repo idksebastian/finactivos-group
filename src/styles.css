@@ -292,6 +292,28 @@
   }
 }
 
+/* Destello de transición al cambiar de página: cubre la pantalla y se disuelve, marcando el cambio */
+@keyframes page-flash-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes page-flash-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+.page-flash-in {
+  animation: page-flash-in 0.18s ease-out both;
+}
+.page-flash-out {
+  animation: page-flash-out 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-flash-in,
+  .page-flash-out {
+    display: none;
+  }
+}
+
 .tiptap:focus { outline: none; }
 .tiptap p.is-editor-empty:first-child::before {
   content: attr(data-placeholder);

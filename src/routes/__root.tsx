@@ -9,6 +9,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
@@ -124,12 +125,49 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function PageTransitionFlash() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const [phase, setPhase] = useState<"idle" | "in" | "out">("idle");
+  const isFirstRender = useRef(true);
+  const previousPathname = useRef(pathname);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      previousPathname.current = pathname;
+      return;
+    }
+    if (previousPathname.current === pathname) return;
+    previousPathname.current = pathname;
+
+    setPhase("in");
+    const toOut = setTimeout(() => setPhase("out"), 180);
+    const toIdle = setTimeout(() => setPhase("idle"), 180 + 320);
+    return () => {
+      clearTimeout(toOut);
+      clearTimeout(toIdle);
+    };
+  }, [pathname]);
+
+  if (phase === "idle") return null;
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none fixed inset-0 z-999 bg-fin-teal motion-reduce:hidden ${
+        phase === "in" ? "page-flash-in" : "page-flash-out"
+      }`}
+    />
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
     <QueryClientProvider client={queryClient}>
+      <PageTransitionFlash />
       {/* key={pathname} fuerza a que cada página vuelva a montar y dispare la animación de título/gráfico. */}
       <div key={pathname}>
         {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}

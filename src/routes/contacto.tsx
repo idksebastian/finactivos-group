@@ -24,7 +24,7 @@ export const Route = createFileRoute("/contacto")({
       {
         name: "description",
         content:
-          "Escríbanos por WhatsApp o llámenos para evaluar su sentencia o conciliación en firme. Oficina en Bogotá, lunes a viernes de 8:00 am a 5:00 pm.",
+          "Complete el formulario para evaluar su sentencia o conciliación en firme. Oficina en Bogotá, lunes a viernes de 8:00 am a 5:00 pm.",
       },
       { property: "og:title", content: "Contacto | Finactivos Group" },
       {
