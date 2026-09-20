@@ -13,6 +13,7 @@ import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
 import heroCubos from "@/assets/fotos/hero-cubos.jpg";
+import heroCuboLogo from "@/assets/fotos/hero-cubo-logo.jpg";
 
 
 export const Route = createFileRoute("/")({
@@ -135,21 +136,37 @@ function Hero() {
   );
 }
 
-/** Foto real con el mensaje mapeado directamente sobre la imagen, en vez de una tarjeta de datos aparte. */
+const HERO_PHASES = ["Análisis", "Negociación", "Formalización", "Pago"];
+
+/** Hilera de cubos, uno por fase real del proceso; en la última, la mano coloca
+ *  el cubo con el logo de Finactivos -- exactamente el concepto que pidió el cliente. */
 function HeroJourneyPhoto() {
   return (
-    <div className="graphic-enter relative aspect-4/3 overflow-hidden rounded-[6px] border border-fin-line">
-      <img
-        src={heroCubos}
-        alt="Cubos en escalera y una mano colocando el último: el camino hasta recibir su dinero"
-        className="h-full w-full object-cover"
-      />
-      <span className="absolute bottom-[8%] left-[5%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
-        Con otros, el primer escalón
-      </span>
-      <span className="absolute right-[6%] top-[8%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
-        Con Finactivos, está aquí
-      </span>
+    <div className="graphic-enter">
+      <div className="flex items-end justify-center gap-4 sm:gap-6">
+        {HERO_PHASES.slice(0, 3).map((phase) => (
+          <div key={phase} className="flex w-20 flex-col items-center gap-4 sm:w-24">
+            <div className="h-20 w-20 rounded-[3px] border border-fin-line bg-linear-to-b from-white to-[#efe6cf] shadow-sm sm:h-24 sm:w-24" />
+            <p className="text-center font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-ink/60 sm:text-xs">
+              {phase}
+            </p>
+          </div>
+        ))}
+        <div className="flex w-24 flex-col items-center gap-4 sm:w-28">
+          <img
+            src={heroCuboLogo}
+            alt="Mano colocando el cubo con el logo de Finactivos, al final de la fila"
+            className="h-auto w-32 max-w-none sm:w-36"
+          />
+          <p className="text-center font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-teal sm:text-xs">
+            {HERO_PHASES[3]}
+          </p>
+        </div>
+      </div>
+      <p className="mt-6 text-center font-sans text-sm leading-relaxed text-fin-ink/70">
+        Con otros, el proceso avanza fase a fase durante años.{" "}
+        <span className="font-semibold text-fin-teal">Con Finactivos, ya está en el pago.</span>
+      </p>
     </div>
   );
 }
