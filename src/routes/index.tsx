@@ -140,18 +140,24 @@ function Hero() {
  *  el mensaje mapeado directamente sobre la imagen. */
 function HeroJourneyPhoto() {
   return (
-    <div className="graphic-enter relative overflow-hidden rounded-[6px] border border-fin-line">
-      <img
-        src={heroCubosFinal}
-        alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
-        className="h-full w-full object-cover"
-      />
-      <span className="absolute bottom-[6%] left-[4%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
-        Con otros, el primer eslabón
-      </span>
-      <span className="absolute right-[4%] top-[6%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
-        Con Finactivos, está aquí
-      </span>
+    <div className="graphic-enter">
+      <div className="relative overflow-hidden rounded-[6px] border border-fin-line">
+        <img
+          src={heroCubosFinal}
+          alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
+          className="h-full w-full object-cover"
+        />
+        <span className="absolute bottom-[6%] left-[4%] rounded-[3px] bg-white/95 px-3 py-2 font-sans text-xs font-semibold uppercase tracking-wide text-fin-ink/70 shadow-md">
+          Información, acuerdos, espera del pago
+        </span>
+        <span className="absolute bottom-[8%] right-[3%] rounded-[3px] bg-fin-lime px-3 py-2 font-display text-xs font-bold uppercase tracking-wide text-fin-teal shadow-md">
+          Con Finactivos, ya tiene su dinero
+        </span>
+      </div>
+      <p className="mt-6 font-sans text-sm leading-relaxed text-fin-ink/70">
+        Evítese todo ese proceso. Nosotros lo asumimos por usted: le pagamos de inmediato y
+        esperamos hasta que la entidad reembolse, con acompañamiento completo en cada paso.
+      </p>
     </div>
   );
 }
