@@ -136,30 +136,46 @@ function Hero() {
   );
 }
 
-const HERO_PHASES = ["Análisis", "Negociación", "Formalización", "Pago"];
+const HERO_PHASES = [
+  { label: "Análisis", icon: "M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm9 17-5.2-5.2" },
+  { label: "Negociación", icon: "M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm8 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6M2 20c0-3 2.5-5 6-5s6 2 6 5M14 20c0-2.5 2-4.5 5-4.5s5 2 5 4.5" },
+  { label: "Formalización", icon: "M4 20h4l10-10-4-4L4 16v4Zm12-14 4 4" },
+] as const;
 
-/** Hilera de cubos, uno por fase real del proceso; en la última, la mano coloca
- *  el cubo con el logo de Finactivos -- exactamente el concepto que pidió el cliente. */
+function HeroPhaseIcon({ d }: { d: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8}>
+      <path d={d} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+/** Hilera de cubos, uno por fase real del proceso, con ícono + nombre sobre cada
+ *  cara; en la última, la mano coloca el cubo con el logo de Finactivos. */
 function HeroJourneyPhoto() {
   return (
     <div className="graphic-enter">
       <div className="flex items-end justify-center gap-4 sm:gap-6">
-        {HERO_PHASES.slice(0, 3).map((phase) => (
-          <div key={phase} className="flex w-20 flex-col items-center gap-4 sm:w-24">
-            <div className="h-20 w-20 rounded-[3px] border border-fin-line bg-linear-to-b from-white to-[#efe6cf] shadow-sm sm:h-24 sm:w-24" />
-            <p className="text-center font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-ink/60 sm:text-xs">
-              {phase}
-            </p>
+        {HERO_PHASES.map((phase) => (
+          <div key={phase.label} className="flex w-20 flex-col items-center sm:w-24">
+            <div className="flex h-20 w-20 flex-col items-center justify-center gap-1.5 rounded-[3px] border border-fin-line bg-linear-to-b from-white to-[#efe6cf] px-1.5 shadow-sm sm:h-24 sm:w-24">
+              <span className="text-fin-teal">
+                <HeroPhaseIcon d={phase.icon} />
+              </span>
+              <p className="text-center font-sans text-[9px] font-bold uppercase leading-tight tracking-wide text-fin-ink/70 sm:text-[10px]">
+                {phase.label}
+              </p>
+            </div>
           </div>
         ))}
-        <div className="flex w-24 flex-col items-center gap-4 sm:w-28">
+        <div className="flex w-24 flex-col items-center sm:w-28">
           <img
             src={heroCuboLogo}
             alt="Mano colocando el cubo con el logo de Finactivos, al final de la fila"
             className="h-auto w-32 max-w-none sm:w-36"
           />
-          <p className="text-center font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-teal sm:text-xs">
-            {HERO_PHASES[3]}
+          <p className="mt-4 text-center font-sans text-[11px] font-semibold uppercase tracking-wide text-fin-teal sm:text-xs">
+            Pago
           </p>
         </div>
       </div>
