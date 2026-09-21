@@ -92,8 +92,9 @@ function Page() {
               <div>
                 <h2 className={`${ds.h2} text-fin-teal`}>{l.t}</h2>
                 <p className={`mt-4 max-w-lg ${ds.body} text-fin-ink/75`}>{l.lead}</p>
-                <Link to={l.to} className={`mt-5 ${ds.linkUnderline}`}>
+                <Link to={l.to} className={`mt-6 inline-flex items-center gap-2 ${ds.btnTeal}`}>
                   Ver detalle del servicio
+                  <span aria-hidden>→</span>
                 </Link>
               </div>
               <ul className="space-y-3 border-t border-fin-line pt-5 md:border-l md:border-t-0 md:pl-6 md:pt-0">
