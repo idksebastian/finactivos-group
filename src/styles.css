@@ -141,12 +141,6 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
-
-  /* Texto justificado (pedido del cliente); las utilidades text-center/left lo sobrescriben. */
-  main p {
-    text-align: justify;
-    hyphens: auto;
-  }
 }
 
 /* Finactivos Group — design tokens */
@@ -284,16 +278,38 @@
   }
 }
 
-/* Fondo del hero: zoom lento y continuo sobre la foto (efecto Ken Burns) */
-@keyframes hero-kenburns {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.08); }
+/* Navbar: subrayado animado que marca la página actual (y aparece al pasar el cursor) */
+@keyframes nav-underline {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
-.hero-kenburns {
-  animation: hero-kenburns 24s ease-in-out infinite;
+.nav-link {
+  position: relative;
+  padding-bottom: 0.25rem;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: var(--fin-lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+.nav-link[data-status="active"]::after {
+  transform: scaleX(1);
+  animation: nav-underline 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-kenburns {
+  .nav-link::after,
+  .nav-link[data-status="active"]::after {
+    transition: none;
     animation: none;
   }
 }

@@ -11,16 +11,16 @@ import { slugify } from "@/lib/blog-format";
 export const Route = createFileRoute("/proceso")({
   head: () => ({
     meta: [
-      { title: "Proceso | Nueve pasos hasta su pago — Finactivos Group" },
+      { title: "Proceso | De la sentencia al desembolso — Finactivos Group" },
       {
         name: "description",
         content:
-          "Cómo funciona la compra de su sentencia: análisis, negociación, formalización y pago. Nueve pasos, con tiempos claros por etapa.",
+          "Cómo funciona la compra de su sentencia: análisis, negociación, formalización y pago, con tiempos claros por etapa.",
       },
       { property: "og:title", content: "Proceso | Finactivos Group" },
       {
         property: "og:description",
-        content: "Usted firma en el día 9. La espera de la entidad la asumimos nosotros.",
+        content: "Finactivos espera los 6 años que la entidad pague.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: siteUrl("/proceso") },
@@ -179,8 +179,8 @@ function Page() {
       <main>
         <PageHeader
           eyebrow="Proceso"
-          title="De la sentencia al desembolso en nueve pasos"
-          support="Cuatro etapas con tiempos definidos. Usted firma en el día nueve; Finactivos espera los 6 años que la entidad pague."
+          title="De la sentencia al desembolso, etapa por etapa"
+          support="Cuatro etapas con tiempos definidos. Finactivos espera los 6 años que la entidad pague."
         >
           <div className="mt-12 hidden border-t border-fin-line pt-10 md:block">
             <div className="relative mb-6 hidden h-3 md:block">

@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
 import { socialLinks } from "@/lib/social-links";
@@ -18,7 +18,12 @@ const items = [
 ] as const;
 
 const navLink =
-  "font-sans text-sm text-fin-cream/80 transition-colors hover:text-fin-lime";
+  "nav-link font-sans text-sm text-fin-cream/80 transition-colors hover:text-fin-cream data-[status=active]:text-fin-cream";
+
+const mobileLink =
+  "block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90 data-[status=active]:font-semibold data-[status=active]:text-fin-lime";
+
+const otherServicesPaths = ["/servicios", "/servicios/factoring", "/servicios/inversion"];
 
 const ctaButton =
   "rounded-[3px] bg-fin-lime px-5 py-2 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-green hover:text-fin-cream";
@@ -26,6 +31,8 @@ const ctaButton =
 function OtherServicesDropdown() {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const active = otherServicesPaths.includes(pathname.replace(/\/$/, ""));
 
   function show() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -42,6 +49,7 @@ function OtherServicesDropdown() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
+        data-status={active ? "active" : undefined}
         className={`flex items-center gap-1.5 hover:cursor-pointer ${navLink}`}
       >
         Otros servicios
@@ -105,7 +113,6 @@ export function SiteNav() {
               to={i.to}
               className={navLink}
               activeOptions={{ exact: i.exact }}
-              activeProps={{ className: "text-fin-cream font-medium" }}
             >
               {i.label}
             </Link>
@@ -116,7 +123,6 @@ export function SiteNav() {
               key={i.label}
               to={i.to}
               className={navLink}
-              activeProps={{ className: "text-fin-cream font-medium" }}
             >
               {i.label}
             </Link>
@@ -160,7 +166,7 @@ export function SiteNav() {
               key={i.label}
               to={i.to}
               onClick={() => setOpen(false)}
-              className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
+              className={mobileLink}
             >
               {i.label}
             </Link>
@@ -173,7 +179,7 @@ export function SiteNav() {
               key={s.label}
               to={s.to}
               onClick={() => setOpen(false)}
-              className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
+              className={mobileLink}
             >
               {s.label}
             </Link>
@@ -183,7 +189,7 @@ export function SiteNav() {
               key={i.label}
               to={i.to}
               onClick={() => setOpen(false)}
-              className="block border-b border-fin-cream/15 py-3 font-sans text-base text-fin-cream/90"
+              className={mobileLink}
             >
               {i.label}
             </Link>

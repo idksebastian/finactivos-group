@@ -8,7 +8,6 @@ import { ColombiaMap } from "@/components/colombia-map";
 import { ContactForm } from "@/components/contact-form";
 import { listPublishedPosts } from "@/lib/blog.functions";
 import { formatPostDate } from "@/lib/blog-format";
-import fotoCampesinoCafe from "@/assets/fotos/campesino-cafe.jpg";
 import { siteUrl } from "@/lib/site-url";
 import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
 import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
@@ -83,25 +82,10 @@ function TypingHeadline({ text, className }: { text: string; className: string }
   );
 }
 
-/** Foto real en vez de gráficas abstractas, con leve zoom continuo para dar movimiento. */
-function HeroBackdrop() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-      <img
-        src={heroCubosFinal}
-        alt=""
-        className="hero-kenburns absolute inset-0 h-full w-full object-cover opacity-30"
-      />
-      <div className="absolute inset-0 bg-linear-to-r from-fin-cream via-fin-cream/85 to-fin-cream/30" />
-    </div>
-  );
-}
-
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-fin-line bg-fin-cream">
-      <HeroBackdrop />
-      <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-16 md:py-28">
+    <section className="border-b border-fin-line bg-fin-cream">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.05fr_0.95fr] md:items-center md:gap-16 md:py-28">
         <div>
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-green">
             Reparación directa contra el Estado
@@ -135,18 +119,27 @@ function Hero() {
   );
 }
 
-/** Foto final (editada con IA a partir de nuestras propias fotos): cubos en
- *  hilera con un ícono por fase real y el logo en el que la mano coloca.
- *  Sin texto superpuesto -- se deja que la foto hable por sí sola. */
+/** Foto final (editada con IA): cubos en hilera con un ícono por fase y el logo
+ *  en el que la mano coloca. El texto va en un pie de foto en código, fuera de
+ *  la imagen, para explicar qué representa sin tapar la foto. */
 function HeroJourneyPhoto() {
   return (
-    <div className="graphic-enter overflow-hidden rounded-[6px] border border-fin-line">
+    <figure className="graphic-enter overflow-hidden rounded-[6px] border border-fin-line bg-white">
       <img
         src={heroCubosFinal}
         alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
         className="h-full w-full object-cover"
       />
-    </div>
+      <figcaption className="border-t border-fin-line px-5 py-4">
+        <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-fin-green">
+          Información · Acuerdos · Espera del pago
+        </p>
+        <p className="mt-1.5 font-sans text-sm leading-relaxed text-fin-ink/75">
+          Con Finactivos se evita todo ese camino: nosotros lo asumimos, le pagamos y esperamos a que
+          la entidad reembolse.
+        </p>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -275,7 +268,7 @@ function LatestNews({ posts }: { posts: PostTeaser[] }) {
         <Link
           to="/blog/$slug"
           params={{ slug: post.slug }}
-          className="group mt-10 grid gap-8 border border-fin-line bg-white md:grid-cols-[5fr_7fr]"
+          className={`group mt-10 grid gap-8 border border-fin-line bg-white ${post.cover_image_url ? "md:grid-cols-[5fr_7fr]" : ""}`}
         >
           {post.cover_image_url ? (
             <div className="aspect-4/3 overflow-hidden md:aspect-auto">
@@ -286,9 +279,7 @@ function LatestNews({ posts }: { posts: PostTeaser[] }) {
                 className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-          ) : (
-            <div className="hidden bg-fin-teal md:block" aria-hidden />
-          )}
+          ) : null}
           <div className="p-7 sm:p-9">
             <p className="font-sans text-xs uppercase tracking-[0.18em] text-fin-ink/45">
               {post.category} · {formatPostDate(post.published_at)}
