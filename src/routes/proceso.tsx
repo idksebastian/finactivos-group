@@ -296,7 +296,7 @@ function Page() {
           </div>
         </Section>
 
-        <section className="border-b border-fin-line bg-fin-green">
+        <section className="bg-fin-green">
           <div className={`${ds.container} py-8`}>
           <p className={`${ds.body} text-fin-cream/85`}>
             ¿Quiere saber si su entidad aplica?{" "}

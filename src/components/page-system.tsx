@@ -26,7 +26,11 @@ export function Section({
   const pad =
     size === "header" ? ds.sectionPadHeader : size === "cta" ? ds.sectionPadCta : ds.sectionPad;
   return (
-    <section className={`${tones[tone]} ${border ? "border-b border-fin-line" : ""}`}>
+    <section
+      className={`${tones[tone]} ${
+        border && (tone === "cream" || tone === "paper") ? "border-b border-fin-line" : ""
+      }`}
+    >
       <div className={`${ds.container} ${pad} ${className}`}>{children}</div>
     </section>
   );

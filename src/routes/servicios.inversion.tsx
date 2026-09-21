@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
 import { siteUrl } from "@/lib/site-url";
+import { InfoCard, type InfoItem } from "@/components/info-graphics";
 import { breadcrumbLd, jsonLd, serviceLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/servicios/inversion")({
@@ -45,6 +46,12 @@ export const Route = createFileRoute("/servicios/inversion")({
   component: Page,
 });
 
+const ecuacion: InfoItem[] = [
+  { icon: "estado", t: "Solidez del pagador", d: "El Estado como deudor" },
+  { icon: "lupa", t: "Gestión Finactivos", d: "Debida diligencia y cobro" },
+  { icon: "grafica", t: "Rentabilidad superior", d: "Horizonte definido" },
+];
+
 function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
@@ -52,8 +59,8 @@ function Page() {
       <BackButton fallbackTo="/servicios" />
       <main>
         <section className="border-b border-fin-line bg-white/50">
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[6fr_5fr] md:py-24">
-            <div>
+          <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+            <div className="max-w-3xl">
               <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
                 Inversión
               </p>
@@ -69,34 +76,32 @@ function Page() {
                   contra el Estado, con reglas de retorno y plazos definidos desde el inicio.
                 </p>
               </div>
-              <p className="max-w-lg font-sans text-base leading-relaxed text-fin-ink/75">
+              <p className="mt-6 max-w-lg font-sans text-base leading-relaxed text-fin-ink/75">
                 La volatilidad exige alternativas que protejan el capital. Estructuramos inversión
                 respaldada en derechos económicos con título judicial en firme, con reglas de
                 retorno y plazos definidos desde el primer día.
               </p>
             </div>
+          </div>
+        </section>
 
-            {/* ecuación: solidez + gestión = retorno */}
-            <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-              <div className="flex-1 border border-fin-line bg-fin-cream p-5 text-center">
-                <p className="font-display text-sm font-bold uppercase text-fin-teal">
-                  Solidez del pagador
-                </p>
-                <p className="mt-1 font-sans text-xs text-fin-ink/60">El Estado como deudor</p>
-              </div>
-              <span className="text-center font-display text-2xl font-extrabold text-fin-lime">+</span>
-              <div className="flex-1 border border-fin-line bg-fin-cream p-5 text-center">
-                <p className="font-display text-sm font-bold uppercase text-fin-teal">
-                  Gestión Finactivos
-                </p>
-                <p className="mt-1 font-sans text-xs text-fin-ink/60">Debida diligencia y cobro</p>
-              </div>
-              <span className="text-center font-display text-2xl font-extrabold text-fin-lime">=</span>
-              <div className="flex-1 bg-fin-teal p-5 text-center">
-                <p className="font-display text-sm font-bold uppercase text-fin-cream">
-                  Rentabilidad superior
-                </p>
-                <p className="mt-1 font-sans text-xs text-fin-cream/70">Horizonte definido</p>
+        {/* ecuación: solidez + gestión = retorno */}
+        <section className="bg-fin-green">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+            <div className="rounded-[6px] bg-fin-cream p-6 sm:p-10">
+              <p className="text-center font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
+                La ecuación de la inversión
+              </p>
+              <div className="mt-8 grid items-stretch gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:gap-6">
+                <InfoCard item={ecuacion[0]!} />
+                <span className="flex items-center justify-center font-display text-4xl font-extrabold text-fin-lime">
+                  +
+                </span>
+                <InfoCard item={ecuacion[1]!} />
+                <span className="flex items-center justify-center font-display text-4xl font-extrabold text-fin-lime">
+                  =
+                </span>
+                <InfoCard item={ecuacion[2]!} tone="teal" />
               </div>
             </div>
           </div>
@@ -164,7 +169,7 @@ function Page() {
           </div>
         </section>
 
-        <section className="border-b border-fin-line bg-fin-green">
+        <section className="bg-fin-green">
           <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:py-20 md:grid-cols-[4fr_6fr]">
             <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
               A quién está dirigido

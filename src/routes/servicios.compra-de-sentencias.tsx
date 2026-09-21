@@ -155,7 +155,7 @@ function Page() {
         </section>
 
         {/* elegibilidad */}
-        <section className="border-b border-fin-line bg-fin-green">
+        <section className="bg-fin-green">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
             <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
               Condiciones de elegibilidad

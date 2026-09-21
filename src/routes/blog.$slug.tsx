@@ -190,7 +190,7 @@ function Page() {
         </article>
 
         {related.length > 0 ? (
-          <section className="border-t border-fin-line bg-fin-green">
+          <section className="bg-fin-green">
             <div className="mx-auto max-w-6xl px-6 py-14">
               <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-fin-lime">
                 Siga leyendo

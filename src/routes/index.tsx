@@ -202,7 +202,7 @@ const pillars = [
 
 function Values() {
   return (
-    <section className="border-b border-fin-line bg-fin-green">
+    <section className="bg-fin-green">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <div className="max-w-2xl">
           <p className="font-sans text-xs uppercase tracking-[0.22em] text-fin-lime">

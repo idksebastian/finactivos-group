@@ -48,10 +48,78 @@ function BlogShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+type Post = Awaited<ReturnType<typeof listPublishedPosts>>[number];
+
+const accents = ["bg-fin-teal", "bg-fin-green", "bg-fin-lime"] as const;
+
+/** Cada nota es una tarjeta completa y clicable, con su propio color de acento. */
+function PostCard({ post, index = 0, featured = false }: { post: Post; index?: number; featured?: boolean }) {
+  const accent = accents[index % accents.length];
+  return (
+    <article
+      className={`group relative flex overflow-hidden rounded-[6px] border border-fin-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+        featured ? "flex-col md:flex-row" : "flex-col"
+      }`}
+    >
+      <span aria-hidden="true" className={`absolute inset-x-0 top-0 z-10 h-1.5 ${accent}`} />
+
+      {post.cover_image_url ? (
+        <div
+          className={`overflow-hidden ${featured ? "aspect-16/9 md:aspect-auto md:w-5/12" : "aspect-16/9"}`}
+        >
+          <img
+            src={post.cover_image_url}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+      ) : null}
+
+      <div className={`flex flex-1 flex-col p-7 pt-9 ${featured ? "sm:p-10 sm:pt-12" : ""}`}>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="rounded-[3px] bg-fin-lime/25 px-2.5 py-1 font-sans text-[11px] font-semibold uppercase tracking-[0.14em] text-fin-teal">
+            {post.category}
+          </span>
+          <span className="font-sans text-xs text-fin-ink/50">{formatPostDate(post.published_at)}</span>
+        </div>
+
+        <h2
+          className={`mt-4 font-display font-extrabold uppercase leading-[1.05] tracking-tight text-fin-teal transition-colors group-hover:text-fin-green ${
+            featured ? "text-3xl sm:text-4xl" : "text-xl"
+          }`}
+        >
+          <Link
+            to="/blog/$slug"
+            params={{ slug: post.slug }}
+            className="after:absolute after:inset-0 after:content-['']"
+          >
+            {post.title}
+          </Link>
+        </h2>
+
+        <p
+          className={`mt-4 font-sans leading-relaxed text-fin-ink/70 ${
+            featured ? "max-w-2xl text-base" : "line-clamp-4 text-sm"
+          }`}
+        >
+          {post.excerpt}
+        </p>
+
+        <span className="mt-auto inline-flex items-center gap-2 pt-6 font-sans text-sm font-semibold text-fin-teal">
+          <span className="border-b-2 border-fin-lime pb-0.5">Leer la nota</span>
+          <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
+        </span>
+      </div>
+    </article>
+  );
+}
+
 function Page() {
   const posts = Route.useLoaderData();
-  const lead = posts[0];
-  const rest = posts.slice(1);
+  const [lead, ...rest] = posts;
 
   return (
     <div className="min-h-screen bg-fin-cream">
@@ -72,67 +140,19 @@ function Page() {
         ) : (
           <>
             <Section>
-              <div className="grid gap-10 md:grid-cols-[7fr_5fr]">
-                <article>
-                  <p className={ds.eyebrow}>
-                    {lead.category} · {formatPostDate(lead.published_at)}
-                  </p>
-                  <h2 className="mt-4 font-display text-3xl font-extrabold uppercase leading-[1.02] tracking-tight text-fin-teal sm:text-4xl">
-                    <Link
-                      to="/blog/$slug"
-                      params={{ slug: lead.slug }}
-                      className="transition-colors hover:text-fin-teal"
-                    >
-                      {lead.title}
-                    </Link>
-                  </h2>
-                  <p className={`mt-5 max-w-2xl ${ds.lead} text-fin-ink/75`}>{lead.excerpt}</p>
-                  <Link
-                    to="/blog/$slug"
-                    params={{ slug: lead.slug }}
-                    className={`mt-6 ${ds.linkUnderline}`}
-                  >
-                    Leer la nota completa
-                  </Link>
-                </article>
-                <aside className="border-t border-fin-line pt-6 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-                  <p className={`${ds.h3} text-fin-teal`}>En esta edición</p>
-                  <ul className="mt-4 space-y-3">
-                    {rest.map((p) => (
-                      <li key={p.id} className={`${ds.body} text-fin-ink/75`}>
-                        <span className="text-fin-lime">—</span>{" "}
-                        <Link
-                          to="/blog/$slug"
-                          params={{ slug: p.slug }}
-                          className="hover:text-fin-teal"
-                        >
-                          {p.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </aside>
-              </div>
+              <PostCard post={lead} featured />
             </Section>
 
             {rest.length > 0 ? (
               <Section tone="green">
-                <div className="grid gap-px bg-fin-cream/15 sm:grid-cols-2">
+                <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-lime">
+                  Más notas
+                </p>
+                <div
+                  className={`mt-8 grid gap-6 sm:grid-cols-2 ${rest.length === 4 ? "" : "lg:grid-cols-3"}`}
+                >
                   {rest.map((p, i) => (
-                    <article key={p.id} className="group bg-fin-cream p-8">
-                      <div className="flex items-center gap-3">
-                        <span className={ds.numberBox}>{String(i + 1).padStart(2, "0")}</span>
-                        <p className={ds.eyebrow}>
-                          {p.category} · {formatPostDate(p.published_at)}
-                        </p>
-                      </div>
-                      <h3 className="mt-4 font-display text-xl font-bold uppercase leading-tight tracking-tight text-fin-teal transition-colors group-hover:text-fin-green">
-                        <Link to="/blog/$slug" params={{ slug: p.slug }}>
-                          {p.title}
-                        </Link>
-                      </h3>
-                      <p className={`mt-3 ${ds.body} text-fin-ink/70`}>{p.excerpt}</p>
-                    </article>
+                    <PostCard key={p.id} post={p} index={i + 1} />
                   ))}
                 </div>
               </Section>
