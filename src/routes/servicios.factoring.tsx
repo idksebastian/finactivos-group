@@ -27,50 +27,95 @@ export const Route = createFileRoute("/servicios/factoring")({
   component: Page,
 });
 
+const stroke = { fill: "none", stroke: "currentColor", strokeWidth: 2.2, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+const lime = "var(--fin-lime)";
+
 const ICONS = {
-  clock: "M12 7v5l3.5 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
-  shield: "M12 3l7 3v6c0 4.8-2.9 8.1-7 9-4.1-.9-7-4.2-7-9V6l7-3Zm-3 9 2 2 4-4",
-  sliders: "M4 6h10m4 0h2M4 12h4m4 0h8M4 18h13m4 0h1M9 4v4M17 10v4M13 16v4",
-  clipboard: "M9 4h6a1 1 0 0 1 1 1v1H8V5a1 1 0 0 1 1-1ZM6 6h12v14H6V6Zm3 6 2 2 5-5",
-  scale: "M12 3v18M9 21h6M5 8l-3 5a3.5 3.5 0 0 0 7 0l-3-5Zm14 0-3 5a3.5 3.5 0 0 0 7 0l-3-5ZM7 8h10",
+  reloj: (
+    <>
+      <circle cx="28" cy="36" r="18" />
+      <path d="M24 12h8M28 12v6M28 36V26M28 36l7 4" />
+      <rect x="36" y="42" width="24" height="14" rx="2" fill={lime} />
+      <circle cx="48" cy="49" r="3.5" />
+    </>
+  ),
+  escudo: (
+    <>
+      <path d="M32 6l20 7v18c0 13-9 22-20 27C21 53 12 44 12 31V13l20-7Z" />
+      <rect x="23" y="30" width="18" height="14" rx="2.5" fill={lime} />
+      <path d="M27 30v-5a5 5 0 0 1 10 0v5" />
+    </>
+  ),
+  documentos: (
+    <>
+      <path d="M16 8h20l8 8v30H16Z" />
+      <path d="M36 8v8h8M22 24h16M22 31h16M22 38h10" />
+      <rect x="38" y="34" width="20" height="22" rx="3" fill={lime} />
+      <path d="M43 45l4 4 7-8" />
+    </>
+  ),
+  cobranza: (
+    <>
+      <rect x="14" y="12" width="30" height="42" rx="3" />
+      <path d="M22 12V9h14v3M21 26h16M21 33h16M21 40h9" />
+      <circle cx="46" cy="44" r="11" fill={lime} />
+      <path d="M41 44l4 4 7-8" />
+    </>
+  ),
+  balanza: (
+    <>
+      <path d="M32 10v40M20 54h24M12 20h40" />
+      <path d="M12 20L8 36M12 20l16 16M52 20L36 36M52 20l4 16" />
+      <path d="M8 36h20c0 6-4 9-10 9s-10-3-10-9Z" fill={lime} />
+      <path d="M36 36h20c0 6-4 9-10 9s-10-3-10-9Z" />
+    </>
+  ),
 };
 
-function PilarIcon({ name }: { name: keyof typeof ICONS }) {
+type Item = { icon: keyof typeof ICONS; t: string; d: string };
+
+function InfoCard({ item, className = "" }: { item: Item; className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={1.8}>
-      <path d={ICONS[name]} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <div
+      className={`flex flex-col items-center rounded-[6px] border border-fin-line bg-white px-5 py-7 text-center ${className}`}
+    >
+      <svg viewBox="0 0 64 64" className="h-20 w-20 text-fin-teal" aria-hidden="true" {...stroke}>
+        {ICONS[item.icon]}
+      </svg>
+      <p className="mt-4 font-display text-base font-bold leading-tight text-fin-teal">{item.t}</p>
+      <p className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">{item.d}</p>
+    </div>
   );
 }
 
-const ventajas = [
+const ventajas: Item[] = [
   {
-    icon: "clock" as const,
+    icon: "reloj",
     t: "Liquidez en 24 a 48 horas",
-    d: "Desembolso directo a su cuenta bancaria después de la aprobación.",
+    d: "Desembolso rápido de fondos directamente en su cuenta bancaria.",
   },
   {
-    icon: "shield" as const,
+    icon: "escudo",
     t: "Cero deuda bancaria",
-    d: "Está estructurado como venta de un activo suyo: no consume cupo ni afecta su endeudamiento.",
+    d: "Al ser venta de activos, no afecta su capacidad de endeudamiento financiero.",
   },
   {
-    icon: "sliders" as const,
+    icon: "documentos",
     t: "Flexibilidad absoluta",
-    d: "Usted decide qué facturas adelantar y en qué momento exacto hacerlo.",
+    d: "Usted decide estratégicamente qué facturas adelantar y en qué momento.",
   },
 ];
 
-const gestion = [
+const gestion: Item[] = [
   {
-    icon: "clipboard" as const,
+    icon: "cobranza",
     t: "Gestión y cobranza integral",
-    d: "Asumimos la cobranza y la administración; usted se concentra en operar.",
+    d: "Finactivos se encarga de toda la operación administrativa y de cobranza.",
   },
   {
-    icon: "scale" as const,
+    icon: "balanza",
     t: "Tasas basadas en el pagador",
-    d: "Tarifas estructuradas según la solidez y el riesgo del pagador, no según su tamaño.",
+    d: "Tarifas competitivas evaluando la solidez de sus clientes y no su deuda.",
   },
 ];
 
@@ -101,83 +146,52 @@ function Page() {
               Esperar 30, 60 o más de 90 días por el pago de una factura ralentiza la operación y
               asfixia el flujo de caja. El factoring convierte esa cartera en efectivo ahora.
             </p>
-
-            {/* escalera de espera */}
-            <div className="mt-14 flex items-end gap-3 border-b border-fin-line pb-4 sm:gap-6">
-              {[
-                { d: "30 días", h: "h-24" },
-                { d: "60 días", h: "h-36" },
-                { d: "90+ días", h: "h-52" },
-              ].map((b) => (
-                <div key={b.d} className={`flex ${b.h} flex-1 items-end justify-center bg-fin-ink/10`}>
-                  <span className="pb-3 font-display text-sm font-bold uppercase text-fin-ink/60">
-                    {b.d}
-                  </span>
-                </div>
-              ))}
-              <div className="flex h-16 flex-1 items-center justify-center bg-fin-lime">
-                <span className="px-2 text-center font-display text-sm font-bold uppercase leading-tight text-fin-teal">
-                  24 – 48 h
-                  <span className="block font-sans text-[10px] font-medium tracking-[0.14em]">
-                    Finactivos
-                  </span>
-                </span>
-              </div>
-            </div>
           </div>
         </section>
 
+        {/* infografía: ventajas de liquidez y gestión del riesgo */}
         <section className="border-b border-fin-line bg-fin-green">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-            <h2 className="max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream">
-              La arquitectura del factoring corporativo
-            </h2>
+            <div className="rounded-[6px] bg-fin-cream p-6 sm:p-10">
+              <h2 className="mx-auto max-w-3xl text-center font-display text-2xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal sm:text-3xl">
+                Factoring corporativo: liquidez estratégica y cero deuda
+              </h2>
 
-            <div className="mt-12 grid gap-12 md:grid-cols-2">
-              <div>
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-lime">
-                  Ventajas de liquidez y crédito
-                </p>
-                <div className="mt-6 space-y-6">
-                  {ventajas.map((v) => (
-                    <div key={v.t} className="flex gap-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-fin-cream text-fin-green">
-                        <PilarIcon name={v.icon} />
-                      </span>
-                      <div>
-                        <p className="font-display text-base font-bold uppercase leading-tight text-fin-cream">
-                          {v.t}
-                        </p>
-                        <p className="mt-1 font-sans text-sm leading-relaxed text-fin-cream/70">{v.d}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="border-t border-fin-cream/15 pt-8 md:border-l md:border-t-0 md:pl-12 md:pt-0">
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-lime">
-                  Gestión estratégica del riesgo
-                </p>
-                <div className="mt-6 space-y-6">
-                  {gestion.map((g) => (
-                    <div key={g.t} className="flex gap-4">
-                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-fin-cream text-fin-green">
-                        <PilarIcon name={g.icon} />
-                      </span>
-                      <div>
-                        <p className="font-display text-base font-bold uppercase leading-tight text-fin-cream">
-                          {g.t}
-                        </p>
-                        <p className="mt-1 font-sans text-sm leading-relaxed text-fin-cream/70">{g.d}</p>
-                      </div>
-                    </div>
-                  ))}
+              <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-0">
+                <div className="lg:pr-10">
+                  <p className="text-center font-display text-lg font-bold text-fin-teal">
+                    Ventajas de <span className="text-fin-green">liquidez y crédito</span>
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {ventajas.map((v, i) => (
+                      <InfoCard
+                        key={v.t}
+                        item={v}
+                        className={i === 2 ? "sm:col-span-2 sm:mx-auto sm:max-w-xs" : ""}
+                      />
+                    ))}
+                  </div>
                 </div>
 
-                <p className="mt-8 border-l-2 border-fin-lime pl-4 font-display text-lg font-bold uppercase leading-snug text-fin-cream">
-                  Cambiar de activo es cambiar de riesgo.
-                </p>
+                <div className="border-t border-fin-line pt-10 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                  <p className="text-center font-display text-lg font-bold text-fin-teal">
+                    Gestión estratégica <span className="text-fin-green">del riesgo</span>
+                  </p>
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {gestion.map((g) => (
+                      <InfoCard key={g.t} item={g} />
+                    ))}
+                  </div>
+                  <figure className="mt-4 border-l-4 border-fin-lime bg-white px-6 py-5">
+                    <blockquote className="font-display text-lg font-bold leading-snug text-fin-teal">
+                      “Cambiar de activo es cambiar de riesgo”
+                    </blockquote>
+                    <figcaption className="mt-2 font-sans text-sm leading-relaxed text-fin-ink/70">
+                      Diversificación inteligente transformando cuentas por cobrar en el motor de su
+                      portafolio.
+                    </figcaption>
+                  </figure>
+                </div>
               </div>
             </div>
           </div>
