@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
 import { siteUrl } from "@/lib/site-url";
+import { breadcrumbLd, jsonLd, serviceLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/servicios/factoring")({
   head: () => ({
@@ -23,6 +24,23 @@ export const Route = createFileRoute("/servicios/factoring")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: siteUrl("/servicios/factoring") }],
+    scripts: [
+      jsonLd(
+        serviceLd({
+          name: "Factoring de facturas",
+          description:
+            "Venta anticipada de facturas por cobrar a cambio de liquidez inmediata, sin adquirir deuda bancaria.",
+          path: "/servicios/factoring",
+        }),
+      ),
+      jsonLd(
+        breadcrumbLd([
+          { name: "Inicio", path: "/" },
+          { name: "Servicios", path: "/servicios" },
+          { name: "Factoring", path: "/servicios/factoring" },
+        ]),
+      ),
+    ],
   }),
   component: Page,
 });

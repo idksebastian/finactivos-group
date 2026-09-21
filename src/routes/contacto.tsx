@@ -36,24 +36,6 @@ export const Route = createFileRoute("/contacto")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: siteUrl("/contacto") }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          name: "Finactivos Group S.A.S.",
-          email: "comercial@finactivos.com",
-          telephone: ["+57 312 808 5632", "+57 313 453 7849"],
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Cll 28 No. 13a 24, Oficina 303",
-            addressLocality: "Bogotá",
-            addressCountry: "CO",
-          },
-        }),
-      },
-    ],
   }),
   component: Page,
 });

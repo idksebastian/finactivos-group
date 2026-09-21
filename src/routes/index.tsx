@@ -20,19 +20,19 @@ export const Route = createFileRoute("/")({
   loader: () => listPublishedPosts().catch(() => []),
   head: () => ({
     meta: [
-      { title: "Finactivos Group | Compra de sentencias judiciales en Colombia" },
+      { title: "Compra de sentencias judiciales en Colombia | Finactivos Group" },
       {
         name: "description",
         content:
-          "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Liquidez en semanas, con acompañamiento jurídico de principio a fin.",
+          "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá.",
       },
       {
         property: "og:title",
-        content: "Finactivos Group | Compra de sentencias judiciales en Colombia",
+        content: "Compra de sentencias judiciales en Colombia | Finactivos Group",
       },
       {
         property: "og:description",
-        content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Liquidez en semanas, con acompañamiento jurídico de principio a fin.",
+        content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: siteUrl("/") },
@@ -127,6 +127,9 @@ function HeroJourneyPhoto() {
     <figure className="graphic-enter overflow-hidden rounded-[6px] border border-fin-line bg-white">
       <img
         src={heroCubosFinal}
+        width={1264}
+        height={842}
+        fetchPriority="high"
         alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
         className="h-full w-full object-cover"
       />

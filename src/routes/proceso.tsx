@@ -11,7 +11,7 @@ import { slugify } from "@/lib/blog-format";
 export const Route = createFileRoute("/proceso")({
   head: () => ({
     meta: [
-      { title: "Proceso | De la sentencia al desembolso — Finactivos Group" },
+      { title: "Proceso de compra de sentencias: etapas y pasos | Finactivos Group" },
       {
         name: "description",
         content:

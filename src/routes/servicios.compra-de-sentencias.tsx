@@ -4,6 +4,34 @@ import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
 import { EntitiesGrid } from "@/components/entities-grid";
 import { siteUrl } from "@/lib/site-url";
+import { breadcrumbLd, faqLd, jsonLd, serviceLd } from "@/lib/seo";
+
+const faq = [
+  {
+    q: "¿Qué sentencias compra Finactivos?",
+    a: "Sentencias y conciliaciones en firme y ejecutoriadas de reparación directa contra entidades del orden nacional.",
+  },
+  {
+    q: "¿Qué documentos necesito para que evalúen mi caso?",
+    a: "Copia de la sentencia o del acta de conciliación, la constancia de ejecutoria y la identificación del titular.",
+  },
+  {
+    q: "¿Tiene costo el estudio de mi sentencia?",
+    a: "No. El estudio y la valoración escrita no tienen costo para el titular.",
+  },
+  {
+    q: "¿Puede vender la sentencia un beneficiario o un heredero?",
+    a: "Sí. Puede hacerlo el titular, el beneficiario o el heredero, con la documentación en regla.",
+  },
+  {
+    q: "¿Compran sentencias con embargo o que ya fueron cedidas?",
+    a: "Si el crédito ya fue cedido antes, no podemos adquirirlo. Las sentencias con embargo total requieren un análisis particular antes de cualquier oferta.",
+  },
+  {
+    q: "¿Quién asume la espera de la entidad?",
+    a: "Finactivos. Usted recibe sus derechos económicos anticipadamente y nosotros esperamos a que la entidad pague.",
+  },
+];
 
 export const Route = createFileRoute("/servicios/compra-de-sentencias")({
   head: () => ({
@@ -12,7 +40,7 @@ export const Route = createFileRoute("/servicios/compra-de-sentencias")({
       {
         name: "description",
         content:
-          "Compramos sentencias y conciliaciones ejecutoriadas de reparación directa contra entidades del Estado. Pago al titular antes del giro estatal.",
+          "Venda su sentencia o conciliación en firme de reparación directa contra el Estado. Usted recibe sus derechos económicos anticipadamente y nosotros esperamos a la entidad.",
       },
       { property: "og:title", content: "Compra de sentencias | Finactivos Group" },
       {
@@ -24,6 +52,24 @@ export const Route = createFileRoute("/servicios/compra-de-sentencias")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: siteUrl("/servicios/compra-de-sentencias") }],
+    scripts: [
+      jsonLd(
+        serviceLd({
+          name: "Compra de sentencias contra el Estado",
+          description:
+            "Compra de sentencias y conciliaciones en firme de reparación directa contra entidades del orden nacional.",
+          path: "/servicios/compra-de-sentencias",
+        }),
+      ),
+      jsonLd(
+        breadcrumbLd([
+          { name: "Inicio", path: "/" },
+          { name: "Servicios", path: "/servicios" },
+          { name: "Compra de sentencias", path: "/servicios/compra-de-sentencias" },
+        ]),
+      ),
+      jsonLd(faqLd(faq)),
+    ],
   }),
   component: Page,
 });
@@ -140,6 +186,25 @@ function Page() {
         </section>
 
         <EntitiesGrid tone="white" />
+
+        {/* preguntas frecuentes */}
+        <section className="border-b border-fin-line bg-fin-cream">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+            <h2 className="max-w-2xl font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
+              Preguntas frecuentes sobre la compra de sentencias
+            </h2>
+            <div className="mt-10 grid gap-px bg-fin-line sm:grid-cols-2">
+              {faq.map((f) => (
+                <div key={f.q} className="bg-fin-cream p-7">
+                  <h3 className="font-display text-base font-bold uppercase leading-tight text-fin-teal">
+                    {f.q}
+                  </h3>
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-fin-ink/75">{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="bg-fin-teal">
           <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-20 md:flex-row md:items-end md:justify-between">

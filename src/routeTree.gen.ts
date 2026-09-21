@@ -15,7 +15,9 @@ import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as ProcesoRouteImport } from './routes/proceso'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as TerminosYCondicionesRouteImport } from './routes/terminos-y-condiciones'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
@@ -57,9 +59,19 @@ const ProcesoRoute = ProcesoRouteImport.update({
   path: '/proceso',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiciosRoute = ServiciosRouteImport.update({
   id: '/servicios',
   path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TerminosYCondicionesRoute = TerminosYCondicionesRouteImport.update({
@@ -121,7 +133,9 @@ export interface FileRoutesByFullPath {
   '/nosotros': typeof NosotrosRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proceso': typeof ProcesoRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/servicios': typeof ServiciosRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -139,6 +153,8 @@ export interface FileRoutesByTo {
   '/nosotros': typeof NosotrosRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proceso': typeof ProcesoRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -158,7 +174,9 @@ export interface FileRoutesById {
   '/nosotros': typeof NosotrosRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/proceso': typeof ProcesoRoute
+  '/robots.txt': typeof RobotsDottxtRoute
   '/servicios': typeof ServiciosRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terminos-y-condiciones': typeof TerminosYCondicionesRoute
   '/admin/login': typeof AdminLoginRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -179,7 +197,9 @@ export interface FileRouteTypes {
     | '/nosotros'
     | '/politica-de-privacidad'
     | '/proceso'
+    | '/robots.txt'
     | '/servicios'
+    | '/sitemap.xml'
     | '/terminos-y-condiciones'
     | '/admin/login'
     | '/blog/$slug'
@@ -197,6 +217,8 @@ export interface FileRouteTypes {
     | '/nosotros'
     | '/politica-de-privacidad'
     | '/proceso'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terminos-y-condiciones'
     | '/admin/login'
     | '/blog/$slug'
@@ -215,7 +237,9 @@ export interface FileRouteTypes {
     | '/nosotros'
     | '/politica-de-privacidad'
     | '/proceso'
+    | '/robots.txt'
     | '/servicios'
+    | '/sitemap.xml'
     | '/terminos-y-condiciones'
     | '/admin/login'
     | '/blog/$slug'
@@ -235,7 +259,9 @@ export interface RootRouteChildren {
   NosotrosRoute: typeof NosotrosRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   ProcesoRoute: typeof ProcesoRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
   ServiciosRoute: typeof ServiciosRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TerminosYCondicionesRoute: typeof TerminosYCondicionesRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -285,11 +311,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProcesoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/servicios': {
       id: '/servicios'
       path: '/servicios'
       fullPath: '/servicios'
       preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terminos-y-condiciones': {
@@ -404,7 +444,9 @@ const rootRouteChildren: RootRouteChildren = {
   NosotrosRoute: NosotrosRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   ProcesoRoute: ProcesoRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
   ServiciosRoute: ServiciosRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TerminosYCondicionesRoute: TerminosYCondicionesRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,

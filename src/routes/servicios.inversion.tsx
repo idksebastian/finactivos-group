@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
 import { siteUrl } from "@/lib/site-url";
+import { breadcrumbLd, jsonLd, serviceLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/servicios/inversion")({
   head: () => ({
@@ -23,6 +24,23 @@ export const Route = createFileRoute("/servicios/inversion")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: siteUrl("/servicios/inversion") }],
+    scripts: [
+      jsonLd(
+        serviceLd({
+          name: "Inversión respaldada en activos judiciales",
+          description:
+            "Vehículo de inversión respaldado en sentencias y conciliaciones en firme contra el Estado, con reglas de retorno y plazos definidos.",
+          path: "/servicios/inversion",
+        }),
+      ),
+      jsonLd(
+        breadcrumbLd([
+          { name: "Inicio", path: "/" },
+          { name: "Servicios", path: "/servicios" },
+          { name: "Inversión", path: "/servicios/inversion" },
+        ]),
+      ),
+    ],
   }),
   component: Page,
 });
