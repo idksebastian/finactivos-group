@@ -88,7 +88,7 @@ const stages = [
       },
       {
         t: "Giro de recursos",
-        d: "La entidad gira. Ese tiempo ya no es suyo: el riesgo de espera quedó en nuestras manos.",
+        d: "Finactivos gira los recursos a los Cedentes. Ese tiempo ya no es suyo: el riesgo de espera quedó en nuestras manos.",
       },
     ],
   },
@@ -180,7 +180,7 @@ function Page() {
         <PageHeader
           eyebrow="Proceso"
           title="De la sentencia al desembolso en nueve pasos"
-          support="Cuatro etapas con tiempos definidos. Usted firma en el día nueve; la espera de la entidad corre por nuestra cuenta."
+          support="Cuatro etapas con tiempos definidos. Usted firma en el día nueve; Finactivos espera los 6 años que la entidad pague."
         >
           <div className="mt-12 hidden border-t border-fin-line pt-10 md:block">
             <div className="relative mb-6 hidden h-3 md:block">

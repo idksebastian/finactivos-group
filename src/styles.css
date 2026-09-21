@@ -141,6 +141,12 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
   }
+
+  /* Texto justificado (pedido del cliente); las utilidades text-center/left lo sobrescriben. */
+  main p {
+    text-align: justify;
+    hyphens: auto;
+  }
 }
 
 /* Finactivos Group — design tokens */

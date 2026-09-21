@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
@@ -32,6 +32,24 @@ export const Route = createFileRoute("/nosotros")({
   component: Page,
 });
 
+const services = [
+  {
+    t: "Compra de sentencias",
+    to: "/servicios/compra-de-sentencias" as const,
+    d: "Adquirimos sentencias y conciliaciones ejecutoriadas de reparación directa contra entidades del Estado, con pago al titular antes de que la entidad gire.",
+  },
+  {
+    t: "Factoring",
+    to: "/servicios/factoring" as const,
+    d: "Anticipamos el pago de sus facturas de sus clientes, sin afectar el flujo de su operación.",
+  },
+  {
+    t: "Inversión",
+    to: "/servicios/inversion" as const,
+    d: "Estructuramos vehículos respaldados en activos judiciales, con estudio jurídico previo y retorno definido.",
+  },
+];
+
 function Page() {
   return (
     <div className="min-h-screen bg-fin-cream">
@@ -45,7 +63,7 @@ function Page() {
           support="Finactivos Group S.A.S. es una compañía colombiana de estructuración financiera y jurídica. Compramos derechos económicos reconocidos judicialmente para que sus titulares no dependan de los plazos del Estado."
         />
 
-        <Section>
+        <Section tone="paper">
           <div className="grid gap-12 md:grid-cols-[4fr_6fr]">
             <SectionTitle>Quiénes somos</SectionTitle>
             <div className={`space-y-5 ${ds.lead} text-fin-ink/75`}>
@@ -63,6 +81,40 @@ function Page() {
         </Section>
 
         <Section>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-xl">
+              <SectionTitle>Qué hacemos</SectionTitle>
+              <p className={`mt-4 ${ds.body} text-fin-ink/70`}>
+                Tres líneas de negocio con un mismo principio: convertir derechos ciertos en
+                liquidez real.
+              </p>
+            </div>
+            <Link to="/servicios" className={ds.linkUnderline}>
+              Ver todos los servicios
+            </Link>
+          </div>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {services.map((s, idx) => (
+              <div key={s.t} className="flex flex-col border border-fin-line bg-white p-7">
+                <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-fin-lime font-display text-sm font-bold text-fin-teal">
+                  0{idx + 1}
+                </span>
+                <h3 className="mt-5 font-display text-xl font-bold uppercase text-fin-teal">{s.t}</h3>
+                <p className={`mt-3 flex-1 ${ds.body} text-fin-ink/70`}>{s.d}</p>
+                <Link
+                  to={s.to}
+                  className="mt-6 inline-flex items-center justify-center gap-2 rounded-[3px] border-2 border-fin-teal px-5 py-2.5 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-teal hover:text-fin-cream"
+                >
+                  Conocer más
+                  <span aria-hidden>→</span>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section tone="paper">
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div className="grid grid-cols-2 gap-10 pt-6">
               <PhotoFrame

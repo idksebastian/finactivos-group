@@ -65,14 +65,14 @@ function Page() {
                 </p>
                 <p className="mt-2 max-w-xl font-sans text-base leading-relaxed text-fin-ink/80">
                   Adquirimos sentencias y conciliaciones en firme de reparación directa contra
-                  entidades del Estado. Usted recibe el capital en días hábiles; nosotros nos
-                  sustituimos en el cobro ante la entidad condenada y asumimos íntegramente el
-                  riesgo de la demora.
+                  entidades del orden nacional. Usted recibe sus derechos económicos
+                  anticipadamente y nosotros esperamos los años que se están demorando las
+                  entidades.
                 </p>
               </div>
               <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-3">
                 {[
-                  ["60 a 90 días", "hasta la firma de cesión"],
+                  ["60 a 90 días", "hasta la firma de la cesión de los derechos económicos"],
                   ["0 costos", "para el titular en el estudio"],
                   ["100%", "acompañamiento jurídico"],
                 ].map(([v, l]) => (
@@ -94,7 +94,7 @@ function Page() {
             </h2>
             <ul className="grid gap-6 sm:grid-cols-2">
               {[
-                ["Víctimas y beneficiarios", "Personas naturales con fallo favorable de reparación directa que llevan años esperando el pago."],
+                ["Víctimas y beneficiarios", "Personas naturales y/o jurídicas con fallo favorable de reparación directa que llevan años esperando el pago."],
                 ["Herederos", "Sucesores del titular fallecido, con la documentación sucesoral correspondiente."],
                 ["Abogados litigantes", "Apoderados que buscan una salida líquida y transparente para sus clientes."],
                 ["Grupos familiares", "Varios beneficiarios de una misma sentencia que desean cobrar de forma anticipada."],

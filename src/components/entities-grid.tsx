@@ -44,8 +44,8 @@ export function EntitiesGrid({ tone = "cream" }: { tone?: "cream" | "white" }) {
             </h2>
           </div>
           <p className="font-sans text-sm leading-relaxed text-fin-ink/70">
-            Trabajamos casos del orden nacional en los que estas entidades figuran como parte
-            demandada y condenada. Si la suya aparece aquí, su caso probablemente aplica.
+            Compramos sentencias contra entidades del orden nacional en las que figuran como
+            parte demandada o condenada. Si la suya aparece aquí, su caso probablemente aplica.
           </p>
         </div>
 

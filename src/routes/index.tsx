@@ -187,70 +187,6 @@ function Empathy() {
   );
 }
 
-/* ---------- servicios: split asimétrico ---------- */
-
-function Services() {
-  const items = [
-    {
-      t: "Compra de sentencias",
-      to: "/servicios/compra-de-sentencias" as const,
-      d: "Adquirimos sentencias y conciliaciones ejecutoriadas de reparación directa contra entidades del Estado, con pago al titular antes de que la entidad gire.",
-    },
-    {
-      t: "Factoring",
-      to: "/servicios/factoring" as const,
-      d: "Anticipamos el pago de sus facturas de sus clientes, sin afectar el flujo de su operación.",
-    },
-    {
-      t: "Inversión",
-      to: "/servicios/inversion" as const,
-      d: "Estructuramos vehículos respaldados en activos judiciales, con estudio jurídico previo y retorno definido.",
-    },
-  ];
-  return (
-    <section className="border-b border-fin-line bg-fin-cream">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-xl">
-            <h2 className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-teal">
-              Qué hacemos
-            </h2>
-            <p className="mt-4 font-sans text-sm leading-relaxed text-fin-ink/70">
-              Tres líneas de negocio con un mismo principio: convertir derechos ciertos en liquidez
-              real.
-            </p>
-          </div>
-          <Link
-            to="/servicios"
-            className="border-b-2 border-fin-lime pb-1 font-sans text-sm font-semibold text-fin-teal transition-colors hover:border-fin-teal"
-          >
-            Ver todos los servicios
-          </Link>
-        </div>
-
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          {items.map((i, idx) => (
-            <div key={i.t} className="flex flex-col border border-fin-line bg-white p-7">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-fin-lime font-display text-sm font-bold text-fin-teal">
-                0{idx + 1}
-              </span>
-              <h3 className="mt-5 font-display text-xl font-bold uppercase text-fin-teal">{i.t}</h3>
-              <p className="mt-3 flex-1 font-sans text-sm leading-relaxed text-fin-ink/70">{i.d}</p>
-              <Link
-                to={i.to}
-                className="mt-6 inline-flex items-center justify-center gap-2 rounded-[3px] border-2 border-fin-teal px-5 py-2.5 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-teal hover:text-fin-cream"
-              >
-                Conocer más
-                <span aria-hidden>→</span>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- experiencia y conocimiento: 3 pilares ---------- */
 
 const pillars = [
@@ -430,9 +366,8 @@ function Index() {
       <SiteNav />
       <main>
         <Hero />
-        <EntitiesGrid tone="cream" />
+        <EntitiesGrid tone="white" />
         <Empathy />
-        <Services />
         <Values />
         <Coverage />
         <LatestNews posts={posts} />
