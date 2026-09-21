@@ -190,12 +190,12 @@ function Page() {
         </article>
 
         {related.length > 0 ? (
-          <section className="border-t border-fin-line">
+          <section className="border-t border-fin-line bg-fin-green">
             <div className="mx-auto max-w-6xl px-6 py-14">
-              <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-fin-teal">
+              <p className="font-display text-xs font-bold uppercase tracking-[0.18em] text-fin-lime">
                 Siga leyendo
               </p>
-              <div className="mt-6 grid gap-px bg-fin-line sm:grid-cols-3">
+              <div className="mt-6 grid gap-px bg-fin-cream/15 sm:grid-cols-3">
                 {related.map((r) => (
                   <article key={r.id} className="group bg-fin-cream p-6">
                     <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-fin-green">

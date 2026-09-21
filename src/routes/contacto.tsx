@@ -199,16 +199,16 @@ function Page() {
           </dl>
         </PageHeader>
 
-        <Section tone="paper">
+        <Section tone="green">
           <div className="grid gap-8 md:grid-cols-[5fr_6fr]">
             <div>
-              <p className={ds.eyebrow}>Formulario</p>
-              <SectionTitle className="mt-4">O escríbanos aquí</SectionTitle>
-              <p className={`mt-4 max-w-sm ${ds.body} text-fin-ink/70`}>
+              <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-lime">Formulario</p>
+              <SectionTitle tone="cream" className="mt-4">O escríbanos aquí</SectionTitle>
+              <p className={`mt-4 max-w-sm ${ds.body} text-fin-cream/80`}>
                 Complete sus datos y un asesor de Finactivos Group se pondrá en contacto con usted.
               </p>
             </div>
-            <ContactForm />
+            <ContactForm tone="solid" />
           </div>
         </Section>
 

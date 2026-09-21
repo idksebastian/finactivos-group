@@ -116,8 +116,8 @@ function Page() {
             </Section>
 
             {rest.length > 0 ? (
-              <Section tone="paper">
-                <div className="grid gap-px bg-fin-line sm:grid-cols-2">
+              <Section tone="green">
+                <div className="grid gap-px bg-fin-cream/15 sm:grid-cols-2">
                   {rest.map((p, i) => (
                     <article key={p.id} className="group bg-fin-cream p-8">
                       <div className="flex items-center gap-3">
