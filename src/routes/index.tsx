@@ -131,7 +131,7 @@ function HeroJourneyPhoto() {
         height={842}
         fetchPriority="high"
         alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
-        className="h-full w-full object-cover"
+        className="block w-full"
       />
       <figcaption className="border-t border-fin-line px-5 py-4">
         <p className="font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-fin-green">
