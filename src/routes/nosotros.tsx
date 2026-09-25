@@ -70,13 +70,19 @@ function Page() {
             <SectionTitle>Quiénes somos</SectionTitle>
             <div className={`space-y-5 ${ds.lead} text-fin-ink/75`}>
               <p>
-                Trabajamos principalmente con sentencias y conciliaciones de reparación directa,
-                donde las familias llevan años esperando un pago que ya fue ordenado por un juez.
-                Nuestro papel es adelantar ese momento sin trasladarle riesgos al titular.
+                En Finactivos Group SAS contamos con un equipo de profesionales con más de 17 años
+                de experiencia, comprometidos en brindar asesoría especializada, acompañamiento
+                cercano y soluciones a la medida de las necesidades de nuestros clientes.
               </p>
               <p>
-                Operamos desde Bogotá con cobertura nacional, y acompañamos cada cesión hasta su
-                radicación ante la entidad condenada.
+                Nuestro equipo integra conocimiento financiero, experiencia en estructuración de
+                alternativas de inversión, financiación y liquidez, así como capacidades de
+                consultoría en servicios financieros.
+              </p>
+              <p>
+                Trabajamos de manera coordinada para analizar cada situación, identificar
+                oportunidades y gestionar soluciones que contribuyan al cumplimiento de los
+                objetivos establecidos.
               </p>
             </div>
           </div>
@@ -118,7 +124,7 @@ function Page() {
 
         <Section tone="teal">
           <div className="grid gap-14 md:grid-cols-2 md:items-center">
-            <div className="md:order-2">
+            <div>
               <p className={`${ds.eyebrow} text-fin-lime`}>Nuestra visión</p>
               <div className={`mt-5 space-y-4 ${ds.lead} text-fin-cream/85`}>
                 <p>
@@ -146,7 +152,7 @@ function Page() {
               alt="Dos personas cerrando un acuerdo de negociación con un apretón de manos"
               block="lime"
               border="cream"
-              className="aspect-4/5 md:order-1"
+              className="aspect-4/5"
             />
           </div>
         </Section>

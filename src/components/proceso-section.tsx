@@ -222,7 +222,7 @@ export function ProcesoSection() {
   );
 
   return (
-    <section id="proceso" className="scroll-mt-20 border-b border-fin-line bg-fin-cream">
+    <section id="proceso" className="scroll-mt-19 border-b border-fin-line bg-fin-cream">
       <div className={`${ds.container} ${ds.sectionPad}`}>
         <p className={ds.eyebrow}>Proceso</p>
         <h2 className={`mt-5 max-w-2xl ${ds.h2} text-fin-teal`}>
@@ -267,7 +267,7 @@ const checklist = [
 /** Lista de documentos para el contrato de cesión, enlazada desde el paso "Documentos contractuales". */
 export function ChecklistSection() {
   return (
-    <section id="checklist" className="scroll-mt-20 border-b border-fin-line bg-white/50">
+    <section id="checklist" className="scroll-mt-19 border-b border-fin-line bg-white/50">
       <div className={`${ds.container} ${ds.sectionPad}`}>
         <p className={ds.eyebrow}>Documentos contractuales</p>
         <h2 className={`mt-5 max-w-2xl ${ds.h2} text-fin-teal`}>

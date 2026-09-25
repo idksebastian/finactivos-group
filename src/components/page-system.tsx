@@ -30,7 +30,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={`${id ? "scroll-mt-20" : ""} ${tones[tone]} ${
+      className={`${id ? "scroll-mt-19" : ""} ${tones[tone]} ${
         border && (tone === "cream" || tone === "paper") ? "border-b border-fin-line" : ""
       }`}
     >
