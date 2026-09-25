@@ -12,11 +12,14 @@ export function PhotoFrame({
   src,
   alt,
   block = "lime",
+  border = "teal",
   className = "",
 }: {
   src: string;
   alt: string;
   block?: "lime" | "green";
+  /** Color del marco desfasado. Usar "cream" sobre fondos oscuros (teal/green). */
+  border?: "teal" | "cream";
   className?: string;
 }) {
   const { ref, inView } = useInViewToggle<HTMLDivElement>(0.25);
@@ -38,7 +41,9 @@ export function PhotoFrame({
         <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover" />
       </div>
       <div
-        className="pointer-events-none absolute -left-4 -top-4 h-full w-full rounded-2xl border-2 border-fin-teal"
+        className={`pointer-events-none absolute -left-4 -top-4 h-full w-full rounded-2xl border-2 ${
+          border === "cream" ? "border-fin-cream" : "border-fin-teal"
+        }`}
         aria-hidden
       />
     </div>

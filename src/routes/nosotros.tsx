@@ -9,6 +9,7 @@ import { siteUrl } from "@/lib/site-url";
 import fotoHombre from "@/assets/fotos/hero-tranquilidad.jpg";
 import fotoPareja from "@/assets/fotos/presencia-2.jpg";
 import fotoCiudad from "@/assets/fotos/nosotros-ciudad.jpg";
+import fotoAcuerdo from "@/assets/fotos/nosotros-acuerdo.jpg";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -140,11 +141,13 @@ function Page() {
                 </p>
               </div>
             </div>
-            <div className="md:order-1 border-l-2 border-fin-lime pl-6">
-              <p className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream sm:text-4xl">
-                Hoy construimos las oportunidades del mañana
-              </p>
-            </div>
+            <PhotoFrame
+              src={fotoAcuerdo}
+              alt="Dos personas cerrando un acuerdo de negociación con un apretón de manos"
+              block="lime"
+              border="cream"
+              className="aspect-4/5 md:order-1"
+            />
           </div>
         </Section>
 

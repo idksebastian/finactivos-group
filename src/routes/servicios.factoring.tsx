@@ -2,11 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
-import { PhotoFrame } from "@/components/photo-frame";
 import { siteUrl } from "@/lib/site-url";
 import { breadcrumbLd, jsonLd, serviceLd } from "@/lib/seo";
 import { InfoCard, type InfoItem } from "@/components/info-graphics";
-import fotoNegociacion from "@/assets/fotos/factoring-negociacion.jpg";
 
 export const Route = createFileRoute("/servicios/factoring")({
   head: () => ({
@@ -86,34 +84,26 @@ function Page() {
       <BackButton fallbackTo="/servicios" />
       <main>
         <section className="border-b border-fin-line">
-          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[6fr_5fr] md:items-center md:py-24">
-            <div>
-              <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
-                Factoring
+          <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+            <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
+              Factoring
+            </p>
+            <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl">
+              El costo oculto del capital atrapado
+            </h1>
+            <div className="mt-8 max-w-2xl border-l-2 border-fin-lime pl-4">
+              <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-green">
+                ¿Qué es?
               </p>
-              <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl">
-                El costo oculto del capital atrapado
-              </h1>
-              <div className="mt-8 max-w-2xl border-l-2 border-fin-lime pl-4">
-                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-green">
-                  ¿Qué es?
-                </p>
-                <p className="mt-2 font-sans text-base leading-relaxed text-fin-ink/75">
-                  Es la venta anticipada de sus facturas por cobrar a cambio de liquidez inmediata,
-                  sin esperar el plazo de pago de su cliente ni adquirir deuda bancaria.
-                </p>
-              </div>
-              <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-fin-ink/75">
-                Esperar 30, 60 o más de 90 días por el pago de una factura ralentiza la operación y
-                asfixia el flujo de caja. El factoring convierte esa cartera en efectivo ahora.
+              <p className="mt-2 font-sans text-base leading-relaxed text-fin-ink/75">
+                Es la venta anticipada de sus facturas por cobrar a cambio de liquidez inmediata,
+                sin esperar el plazo de pago de su cliente ni adquirir deuda bancaria.
               </p>
             </div>
-            <PhotoFrame
-              src={fotoNegociacion}
-              alt="Dos personas cerrando un acuerdo de negociación con un apretón de manos"
-              block="lime"
-              className="aspect-4/5"
-            />
+            <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-fin-ink/75">
+              Esperar 30, 60 o más de 90 días por el pago de una factura ralentiza la operación y
+              asfixia el flujo de caja. El factoring convierte esa cartera en efectivo ahora.
+            </p>
           </div>
         </section>
 
