@@ -129,10 +129,9 @@ function Page() {
                   entidades.
                 </p>
               </div>
-              <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-2 lg:grid-cols-4">
+              <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-3">
                 {[
-                  ["60 a 90 días", "hasta la firma de la cesión de los derechos económicos"],
-                  ["90 días", "después de la firma, para recibir sus derechos económicos"],
+                  ["90 días", "posteriores a la firma de la cesión, para recibir sus derechos económicos"],
                   ["0 costos", "para el titular en el estudio"],
                   ["100%", "acompañamiento jurídico"],
                 ].map(([v, l]) => (
