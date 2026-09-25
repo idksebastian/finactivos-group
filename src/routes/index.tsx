@@ -61,7 +61,7 @@ function TypingHeadline({ text, className }: { text: string; className: string }
       return;
     }
     if (chars >= text.length) return;
-    const t = setTimeout(() => setChars((c) => c + 1), 28);
+    const t = setTimeout(() => setChars((c) => c + 1), 55);
     return () => clearTimeout(t);
   }, [chars, text.length]);
 
@@ -106,7 +106,8 @@ function Hero() {
               Solicite una valoración
             </Link>
             <Link
-              to="/proceso"
+              to="/servicios/compra-de-sentencias"
+              hash="proceso"
               className="rounded-[3px] border border-fin-teal px-6 py-3 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-teal hover:text-fin-cream"
             >
               Conozca el proceso
@@ -127,8 +128,8 @@ function HeroJourneyPhoto() {
     <figure className="graphic-enter overflow-hidden rounded-[6px] border border-fin-line bg-white">
       <img
         src={heroCubosFinal}
-        width={1264}
-        height={842}
+        width={1024}
+        height={682}
         fetchPriority="high"
         alt="Cubos en fila con un ícono por fase (Análisis, Negociación, Formalización) y el logo de Finactivos en el que la mano coloca"
         className="block w-full"

@@ -2,9 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
+import { PhotoFrame } from "@/components/photo-frame";
 import { siteUrl } from "@/lib/site-url";
 import { InfoCard, type InfoItem } from "@/components/info-graphics";
 import { breadcrumbLd, jsonLd, serviceLd } from "@/lib/seo";
+import fotoAnalisis from "@/assets/fotos/inversion-analisis.jpg";
 
 export const Route = createFileRoute("/servicios/inversion")({
   head: () => ({
@@ -59,8 +61,8 @@ function Page() {
       <BackButton fallbackTo="/servicios" />
       <main>
         <section className="border-b border-fin-line bg-white/50">
-          <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-            <div className="max-w-3xl">
+          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[6fr_5fr] md:items-center md:py-24">
+            <div>
               <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
                 Inversión
               </p>
@@ -82,6 +84,12 @@ function Page() {
                 retorno y plazos definidos desde el primer día.
               </p>
             </div>
+            <PhotoFrame
+              src={fotoAnalisis}
+              alt="Analista revisando gráficas de rendimiento financiero en laptop y en papel"
+              block="green"
+              className="aspect-4/5"
+            />
           </div>
         </section>
 

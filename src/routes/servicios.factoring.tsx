@@ -2,9 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
+import { PhotoFrame } from "@/components/photo-frame";
 import { siteUrl } from "@/lib/site-url";
 import { breadcrumbLd, jsonLd, serviceLd } from "@/lib/seo";
 import { InfoCard, type InfoItem } from "@/components/info-graphics";
+import fotoNegociacion from "@/assets/fotos/factoring-negociacion.jpg";
 
 export const Route = createFileRoute("/servicios/factoring")({
   head: () => ({
@@ -84,26 +86,34 @@ function Page() {
       <BackButton fallbackTo="/servicios" />
       <main>
         <section className="border-b border-fin-line">
-          <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-            <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
-              Factoring
-            </p>
-            <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl">
-              El costo oculto del capital atrapado
-            </h1>
-            <div className="mt-8 max-w-2xl border-l-2 border-fin-lime pl-4">
-              <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-green">
-                ¿Qué es?
+          <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[6fr_5fr] md:items-center md:py-24">
+            <div>
+              <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-green">
+                Factoring
               </p>
-              <p className="mt-2 font-sans text-base leading-relaxed text-fin-ink/75">
-                Es la venta anticipada de sus facturas por cobrar a cambio de liquidez inmediata,
-                sin esperar el plazo de pago de su cliente ni adquirir deuda bancaria.
+              <h1 className="mt-5 max-w-3xl font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight text-fin-teal sm:text-5xl">
+                El costo oculto del capital atrapado
+              </h1>
+              <div className="mt-8 max-w-2xl border-l-2 border-fin-lime pl-4">
+                <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-fin-green">
+                  ¿Qué es?
+                </p>
+                <p className="mt-2 font-sans text-base leading-relaxed text-fin-ink/75">
+                  Es la venta anticipada de sus facturas por cobrar a cambio de liquidez inmediata,
+                  sin esperar el plazo de pago de su cliente ni adquirir deuda bancaria.
+                </p>
+              </div>
+              <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-fin-ink/75">
+                Esperar 30, 60 o más de 90 días por el pago de una factura ralentiza la operación y
+                asfixia el flujo de caja. El factoring convierte esa cartera en efectivo ahora.
               </p>
             </div>
-            <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-fin-ink/75">
-              Esperar 30, 60 o más de 90 días por el pago de una factura ralentiza la operación y
-              asfixia el flujo de caja. El factoring convierte esa cartera en efectivo ahora.
-            </p>
+            <PhotoFrame
+              src={fotoNegociacion}
+              alt="Dos personas cerrando un acuerdo de negociación con un apretón de manos"
+              block="lime"
+              className="aspect-4/5"
+            />
           </div>
         </section>
 
@@ -163,6 +173,7 @@ function Page() {
               </h2>
               <ul className="mt-6 space-y-4">
                 {[
+                  "Proveedores de bienes o servicios a empresas en Colombia, que emitan facturas electrónicas a plazo y estén registradas en RADIAN.",
                   "Empresas proveedoras del Estado con facturas radicadas y aceptadas.",
                   "Compañías con contratos de tracto sucesivo y pagos diferidos.",
                   "Pymes en crecimiento que necesitan capital de trabajo sin endeudarse.",
@@ -181,10 +192,9 @@ function Page() {
               </h2>
               <ol className="mt-6 divide-y divide-fin-line border-t border-fin-line">
                 {[
-                  "Factura radicada y aceptada por el pagador",
-                  "Contrato u orden de compra que la respalde",
-                  "Certificado de existencia y representación legal",
-                  "Estados financieros del último periodo",
+                  "Factura electrónica emitida a plazo y aceptada en RADIAN por el cliente pagador",
+                  "Información de la empresa para realizar la respectiva vinculación al programa de Factoring",
+                  "En casos puntuales, contratos u órdenes de compra",
                 ].map((t, i) => (
                   <li key={t} className="flex gap-4 py-4">
                     <span className="inline-flex h-8 min-w-8 items-center justify-center rounded-[3px] border-2 border-fin-lime px-1.5 font-display text-sm font-bold text-fin-teal">
@@ -205,6 +215,7 @@ function Page() {
             </h2>
             <Link
               to="/contacto"
+              hash="formulario"
               className="self-start rounded-[3px] bg-fin-lime px-7 py-3 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-cream"
             >
               Cotizar mis facturas

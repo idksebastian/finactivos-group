@@ -3,6 +3,7 @@ import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { BackButton } from "@/components/back-button";
 import { EntitiesGrid } from "@/components/entities-grid";
+import { ProcesoSection, ChecklistSection } from "@/components/proceso-section";
 import { siteUrl } from "@/lib/site-url";
 import { breadcrumbLd, faqLd, jsonLd, serviceLd } from "@/lib/seo";
 
@@ -13,15 +14,15 @@ const faq = [
   },
   {
     q: "¿Qué documentos necesito para que evalúen mi caso?",
-    a: "Copia de la sentencia o del acta de conciliación, la constancia de ejecutoria y la identificación del titular.",
+    a: "Copia de la sentencia o del acta de conciliación, la constancia de ejecutoria, la solicitud de pago o cuenta de cobro y la identificación del titular.",
   },
   {
     q: "¿Tiene costo el estudio de mi sentencia?",
     a: "No. El estudio y la valoración escrita no tienen costo para el titular.",
   },
   {
-    q: "¿Puede vender la sentencia un beneficiario o un heredero?",
-    a: "Sí. Puede hacerlo el titular, el beneficiario o el heredero, con la documentación en regla.",
+    q: "¿Puede vender la sentencia un beneficiario o el apoderado?",
+    a: "Sí, realizamos cesiones parciales: la cesión se puede hacer por la parte del titular, por los beneficiarios y/o herederos, y también solo por el porcentaje de los honorarios del abogado, con la documentación en regla.",
   },
   {
     q: "¿Compran sentencias con embargo o que ya fueron cedidas?",
@@ -78,9 +79,21 @@ const requisitos = [
   { ok: true, t: "Sentencia o conciliación ejecutoriada", d: "Con constancia de ejecutoria expedida por el despacho." },
   { ok: true, t: "Proceso de reparación directa", d: "Contra una entidad del orden nacional." },
   { ok: true, t: "Titular plenamente identificado", d: "Beneficiario o heredero con documentación en regla." },
-  { ok: false, t: "Procesos en primera instancia", d: "Aún sin decisión en firme: no son elegibles." },
-  { ok: false, t: "Derechos ya cedidos", d: "Si el crédito fue cedido antes, no podemos adquirirlo." },
-  { ok: false, t: "Sentencias con embargo total", d: "Requiere análisis particular antes de cualquier oferta." },
+  {
+    ok: true,
+    t: "Cuenta de cobro o solicitud de pago radicada",
+    d: "Ante la entidad demandada, según el Artículo 2.8.6.5.1 del Decreto 2469 de 2015.",
+  },
+  {
+    ok: true,
+    t: "Costas y/o agencias en derecho",
+    d: "Sentencias en las que el juez o tribunal fijó formalmente la condena en costas y/o liquidó las agencias en derecho a favor.",
+  },
+  {
+    ok: true,
+    t: "Sentencias con procesos ejecutivos",
+    d: "Sentencias cuyo cumplimiento ya está siendo exigido mediante una demanda ejecutiva radicada formalmente.",
+  },
 ];
 
 function Page() {
@@ -116,9 +129,10 @@ function Page() {
                   entidades.
                 </p>
               </div>
-              <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-3">
+              <dl className="grid gap-6 border-t border-fin-line pt-6 sm:grid-cols-2 lg:grid-cols-4">
                 {[
                   ["60 a 90 días", "hasta la firma de la cesión de los derechos económicos"],
+                  ["90 días", "después de la firma, para recibir sus derechos económicos"],
                   ["0 costos", "para el titular en el estudio"],
                   ["100%", "acompañamiento jurídico"],
                 ].map(([v, l]) => (
@@ -187,6 +201,9 @@ function Page() {
 
         <EntitiesGrid tone="white" />
 
+        <ProcesoSection />
+        <ChecklistSection />
+
         {/* preguntas frecuentes */}
         <section className="border-b border-fin-line bg-fin-cream">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
@@ -218,12 +235,12 @@ function Page() {
               >
                 Solicitar valoración
               </Link>
-              <Link
-                to="/proceso"
+              <a
+                href="#proceso"
                 className="rounded-[3px] border border-fin-cream px-7 py-3 font-sans text-sm font-semibold text-fin-cream transition-colors hover:bg-fin-cream hover:text-fin-teal"
               >
                 Ver el proceso
-              </Link>
+              </a>
             </div>
           </div>
         </section>

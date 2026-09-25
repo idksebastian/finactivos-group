@@ -99,7 +99,6 @@ export const STATIC_PATHS = [
   "/servicios/compra-de-sentencias",
   "/servicios/factoring",
   "/servicios/inversion",
-  "/proceso",
   "/nosotros",
   "/blog",
   "/contacto",

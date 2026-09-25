@@ -8,11 +8,11 @@ const otherServices = [
   { label: "Inversión", to: "/servicios/inversion" as const },
 ];
 
-/** Orden pedido por el cliente: Inicio, Compra de sentencias, Proceso, Nosotros, Otros servicios, Blog. */
+/** Orden pedido por el cliente: Inicio, Compra de sentencias, Nosotros, Otros servicios, Blog.
+ * "Proceso" se integró dentro de Compra de sentencias, ya no es un ítem aparte del menú. */
 const items = [
   { label: "Inicio", to: "/" as const, exact: true },
   { label: "Compra de sentencias", to: "/servicios/compra-de-sentencias" as const, exact: false },
-  { label: "Proceso", to: "/proceso" as const, exact: false },
   { label: "Nosotros", to: "/nosotros" as const, exact: false },
   { label: "Blog", to: "/blog" as const, exact: false },
 ] as const;
@@ -107,7 +107,7 @@ export function SiteNav() {
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
-          {items.slice(0, 4).map((i) => (
+          {items.slice(0, 3).map((i) => (
             <Link
               key={i.label}
               to={i.to}
@@ -118,7 +118,7 @@ export function SiteNav() {
             </Link>
           ))}
           <OtherServicesDropdown />
-          {items.slice(4).map((i) => (
+          {items.slice(3).map((i) => (
             <Link
               key={i.label}
               to={i.to}
@@ -161,7 +161,7 @@ export function SiteNav() {
         </div>
 
         <nav className="flex-1 overflow-y-auto px-6 py-4">
-          {items.slice(0, 4).map((i) => (
+          {items.slice(0, 3).map((i) => (
             <Link
               key={i.label}
               to={i.to}
@@ -184,7 +184,7 @@ export function SiteNav() {
               {s.label}
             </Link>
           ))}
-          {items.slice(4).map((i) => (
+          {items.slice(3).map((i) => (
             <Link
               key={i.label}
               to={i.to}

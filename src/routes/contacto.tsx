@@ -181,7 +181,7 @@ function Page() {
           </dl>
         </PageHeader>
 
-        <Section tone="green">
+        <Section tone="green" id="formulario">
           <div className="grid gap-8 md:grid-cols-[5fr_6fr]">
             <div>
               <p className="font-sans text-xs font-medium uppercase tracking-[0.22em] text-fin-lime">Formulario</p>

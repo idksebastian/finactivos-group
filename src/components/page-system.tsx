@@ -9,12 +9,14 @@ export function Section({
   border = true,
   size = "default",
   className = "",
+  id,
 }: {
   children: ReactNode;
   tone?: "cream" | "paper" | "teal" | "green" | "lime";
   border?: boolean;
   size?: "default" | "header" | "cta";
   className?: string;
+  id?: string;
 }) {
   const tones = {
     cream: "bg-fin-cream",
@@ -27,7 +29,8 @@ export function Section({
     size === "header" ? ds.sectionPadHeader : size === "cta" ? ds.sectionPadCta : ds.sectionPad;
   return (
     <section
-      className={`${tones[tone]} ${
+      id={id}
+      className={`${id ? "scroll-mt-20" : ""} ${tones[tone]} ${
         border && (tone === "cream" || tone === "paper") ? "border-b border-fin-line" : ""
       }`}
     >
@@ -109,7 +112,7 @@ export function CtaBlock({
 }: {
   title: string;
   action: string;
-  to?: "/contacto" | "/servicios" | "/proceso";
+  to?: "/contacto" | "/servicios";
   href?: string;
 }) {
   return (

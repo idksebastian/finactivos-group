@@ -8,6 +8,7 @@ import * as ds from "@/lib/design-system";
 import { siteUrl } from "@/lib/site-url";
 import fotoHombre from "@/assets/fotos/hero-tranquilidad.jpg";
 import fotoPareja from "@/assets/fotos/presencia-2.jpg";
+import fotoCiudad from "@/assets/fotos/nosotros-ciudad.jpg";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -75,6 +76,73 @@ function Page() {
               <p>
                 Operamos desde Bogotá con cobertura nacional, y acompañamos cada cesión hasta su
                 radicación ante la entidad condenada.
+              </p>
+            </div>
+          </div>
+        </Section>
+
+        <Section tone="paper">
+          <div className="grid items-center gap-14 md:grid-cols-2">
+            <PhotoFrame
+              src={fotoCiudad}
+              alt="Vista aérea nocturna de una ciudad colombiana"
+              block="green"
+              className="aspect-4/5"
+            />
+            <div>
+              <p className={ds.eyebrow}>Nuestra misión</p>
+              <div className={`mt-5 space-y-4 ${ds.lead} text-fin-ink/75`}>
+                <p>
+                  En Finactivos Group SAS estructuramos soluciones de inversión, financiación y
+                  liquidez sobre activos alternativos y títulos no tradicionales, brindando a
+                  nuestros clientes asesoría especializada, acompañamiento cercano y gestión
+                  integral durante cada etapa del proceso.
+                </p>
+                <p>
+                  Trabajamos para construir relaciones de largo plazo basadas en la confianza, la
+                  transparencia, la ética y el compromiso, entendiendo las necesidades
+                  particulares de cada cliente y ofreciendo soluciones oportunas, seguras y
+                  orientadas al cumplimiento de sus objetivos.
+                </p>
+                <p>
+                  A través de nuestra experiencia y conocimiento, buscamos generar valor no solo
+                  para nuestros clientes y aliados, sino también para la sociedad, contribuyendo
+                  especialmente a facilitar oportunidades de acceso a recursos y acompañamiento
+                  para víctimas del conflicto armado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section tone="teal">
+          <div className="grid gap-14 md:grid-cols-2 md:items-center">
+            <div className="md:order-2">
+              <p className={`${ds.eyebrow} text-fin-lime`}>Nuestra visión</p>
+              <div className={`mt-5 space-y-4 ${ds.lead} text-fin-cream/85`}>
+                <p>
+                  Ser una compañía reconocida en Colombia por nuestra experiencia, confiabilidad e
+                  innovación en la estructuración de soluciones de inversión, financiación y
+                  liquidez sobre activos alternativos, destacándose por ofrecer un servicio
+                  cercano, transparente y centrado en las necesidades de nuestros clientes.
+                </p>
+                <p>
+                  Buscaremos consolidarnos como un aliado estratégico y asesor de confianza,
+                  construyendo relaciones sostenibles y de largo plazo con nuestros clientes,
+                  inversionistas y aliados, respaldados por la excelencia operativa y el
+                  compromiso con los resultados.
+                </p>
+                <p>
+                  Asimismo, aspiramos a fortalecer nuestro impacto social, convirtiéndonos en un
+                  referente empresarial por nuestra contribución a la inclusión económica y al
+                  apoyo de las víctimas del conflicto armado, generando oportunidades que aporten
+                  a su proceso de reparación, estabilidad y construcción de un mejor futuro.
+                </p>
+              </div>
+            </div>
+            <div className="md:order-1 border-l-2 border-fin-lime pl-6">
+              <p className="font-display text-3xl font-extrabold uppercase leading-tight tracking-tight text-fin-cream sm:text-4xl">
+                Hoy construimos las oportunidades del mañana
               </p>
             </div>
           </div>

@@ -233,7 +233,7 @@ function PageTransitionFlash() {
       <img
         src={finactivosMark}
         alt=""
-        className={`h-12 w-auto brightness-0 invert ${
+        className={`h-20 w-auto brightness-0 invert sm:h-24 ${
           phase === "covering" ? "page-flash-mark-in" : "page-flash-mark-out"
         }`}
       />

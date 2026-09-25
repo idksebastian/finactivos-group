@@ -88,7 +88,17 @@ export function ContactForm({
           <label htmlFor="phone" className={label}>
             Celular
           </label>
-          <input id="phone" name="phone" type="tel" required className={`mt-2 ${fieldClass}`} />
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputMode="numeric"
+            pattern="[0-9]{10}"
+            maxLength={10}
+            title="Ingrese los 10 dígitos de su celular"
+            required
+            className={`mt-2 ${fieldClass}`}
+          />
         </div>
         <div className="sm:col-span-1">
           <label htmlFor="email" className={label}>
