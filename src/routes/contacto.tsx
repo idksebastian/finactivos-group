@@ -141,7 +141,7 @@ function Page() {
         <PageHeader
           eyebrow="Contacto"
           title="Cuéntenos su caso"
-          support="Con la sentencia, la constancia de ejecutoria y su identificación podemos entregarle una valoración escrita. El estudio no tiene costo."
+          support="La búsqueda de convertir sus derechos en recursos líquidos o efectivo, es nuestra meta. No es solo una transacción, es materializar sus proyectos."
         >
           <dl
             className={`mt-12 grid gap-8 border-t border-fin-line pt-12 sm:grid-cols-2 lg:grid-cols-4 ${ds.body} text-fin-ink/75`}

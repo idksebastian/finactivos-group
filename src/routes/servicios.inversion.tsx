@@ -205,6 +205,7 @@ function Page() {
             </h2>
             <Link
               to="/contacto"
+              hash="formulario"
               className="self-start rounded-[3px] bg-fin-lime px-7 py-3 font-sans text-sm font-semibold text-fin-teal transition-colors hover:bg-fin-cream"
             >
               Agendar evaluación de portafolio
