@@ -30,6 +30,7 @@ Ver [.env.example](.env.example) para la lista completa y su documentación. Res
 - `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID` — cliente de Supabase en el navegador (claves públicas, seguras de exponer).
 - `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_PROJECT_ID` — mismas credenciales para funciones de servidor.
 - `SUPABASE_SERVICE_ROLE_KEY` — solo servidor, nunca exponer al cliente. Bypasea Row Level Security.
+- `RESEND_API_KEY` — solo servidor. Envía el correo de notificación de cada solicitud del formulario de contacto a `comercial@finactivos.com`.
 
 ## Estructura
 
