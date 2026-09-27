@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import * as ds from "@/lib/design-system";
-import { supabase } from "@/integrations/supabase/client";
+import { submitContactForm } from "@/lib/contact.functions";
 
 const requestTypes = [
   { value: "sentencia", label: "Compra de sentencia o conciliación" },
@@ -36,15 +36,17 @@ export function ContactForm({
     const data = new FormData(form);
     setStatus("loading");
 
-    const { error } = await supabase.from("contact_submissions").insert({
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      request_type: String(data.get("request_type") ?? "sentencia"),
-      message: String(data.get("message") ?? ""),
-    });
-
-    if (error) {
+    try {
+      await submitContactForm({
+        data: {
+          name: String(data.get("name") ?? ""),
+          email: String(data.get("email") ?? ""),
+          phone: String(data.get("phone") ?? ""),
+          request_type: String(data.get("request_type") ?? "sentencia"),
+          message: String(data.get("message") ?? ""),
+        },
+      });
+    } catch (error) {
       console.error(error);
       setStatus("error");
       return;
