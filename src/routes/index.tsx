@@ -9,9 +9,9 @@ import { ContactForm } from "@/components/contact-form";
 import { listPublishedPosts } from "@/lib/blog.functions";
 import { formatPostDate } from "@/lib/blog-format";
 import { siteUrl } from "@/lib/site-url";
-import fotoMujerCasa from "@/assets/fotos/presencia-1.jpg";
-import fotoFamilia from "@/assets/fotos/familia-feliz.jpg";
-import heroCubosFinal from "@/assets/fotos/hero-cubos-final.jpg";
+import fotoMujerCasa from "@/assets/fotos/presencia-1.webp";
+import fotoFamilia from "@/assets/fotos/familia-feliz.webp";
+import heroCubosFinal from "@/assets/fotos/hero-cubos-final.webp";
 
 
 export const Route = createFileRoute("/")({
