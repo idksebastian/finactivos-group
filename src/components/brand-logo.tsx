@@ -1,4 +1,4 @@
-import mark from "@/assets/finactivos-mark.png";
+import mark from "@/assets/finactivos-mark.webp";
 
 export function BrandLogo({
   className = "",

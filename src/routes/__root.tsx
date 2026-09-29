@@ -15,7 +15,7 @@ import { Analytics } from "@vercel/analytics/react";
 import appCss from "../styles.css?url";
 import { siteUrl } from "../lib/site-url";
 import { FloatingWhatsApp } from "../components/floating-whatsapp";
-import finactivosMark from "../assets/finactivos-mark.png";
+import finactivosMark from "../assets/finactivos-mark.webp";
 import { jsonLd, organizationLd } from "../lib/seo";
 
 function NotFoundComponent() {
@@ -80,17 +80,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Compra de sentencias judiciales en Colombia | Finactivos Group" },
-      { name: "description", content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá." },
+      { title: "Compra de sentencias judiciales Colombia | Finactivos Group" },
+      { name: "description", content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico." },
       { name: "author", content: "Finactivos Group" },
-      { property: "og:title", content: "Compra de sentencias judiciales en Colombia | Finactivos Group" },
-      { property: "og:description", content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá." },
+      { property: "og:title", content: "Compra de sentencias judiciales Colombia | Finactivos Group" },
+      { property: "og:description", content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico." },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Finactivos Group" },
       { property: "og:locale", content: "es_CO" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Compra de sentencias judiciales en Colombia | Finactivos Group" },
-      { name: "twitter:description", content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá." },
+      { name: "twitter:title", content: "Compra de sentencias judiciales Colombia | Finactivos Group" },
+      { name: "twitter:description", content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico." },
       { property: "og:image", content: siteUrl("/og-image-temp.png") },
       { name: "twitter:image", content: siteUrl("/og-image-temp.png") },
     ],

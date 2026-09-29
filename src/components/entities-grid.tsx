@@ -1,9 +1,9 @@
-import mindefensa from "@/assets/entidades/mindefensa.png";
-import policia from "@/assets/entidades/policia.png";
-import invias from "@/assets/entidades/invias.png";
-import inpec from "@/assets/entidades/inpec.png";
-import fiscalia from "@/assets/entidades/fiscalia.png";
-import ramaJudicial from "@/assets/entidades/rama-judicial.png";
+import mindefensa from "@/assets/entidades/mindefensa.webp";
+import policia from "@/assets/entidades/policia.webp";
+import invias from "@/assets/entidades/invias.webp";
+import inpec from "@/assets/entidades/inpec.webp";
+import fiscalia from "@/assets/entidades/fiscalia.webp";
+import ramaJudicial from "@/assets/entidades/rama-judicial.webp";
 
 type Entity = {
   name: string;
@@ -62,6 +62,8 @@ export function EntitiesGrid({ tone = "cream" }: { tone?: "cream" | "white" }) {
                   src={e.logo}
                   alt={`Logo de ${e.name}`}
                   loading="lazy"
+                  width={400}
+                  height={183}
                   className="max-h-16 w-auto max-w-42 object-contain"
                 />
               </span>

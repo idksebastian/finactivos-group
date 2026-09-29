@@ -20,19 +20,19 @@ export const Route = createFileRoute("/")({
   loader: () => listPublishedPosts().catch(() => []),
   head: () => ({
     meta: [
-      { title: "Compra de sentencias judiciales en Colombia | Finactivos Group" },
+      { title: "Compra de sentencias judiciales Colombia | Finactivos Group" },
       {
         name: "description",
         content:
-          "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá.",
+          "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico.",
       },
       {
         property: "og:title",
-        content: "Compra de sentencias judiciales en Colombia | Finactivos Group",
+        content: "Compra de sentencias judiciales Colombia | Finactivos Group",
       },
       {
         property: "og:description",
-        content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico. Bogotá.",
+        content: "Compramos sentencias y conciliaciones de reparación directa contra el Estado. Reciba sus derechos económicos anticipadamente y con acompañamiento jurídico.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: siteUrl("/") },
