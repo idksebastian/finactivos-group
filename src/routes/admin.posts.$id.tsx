@@ -26,10 +26,12 @@ type Form = {
   published_at: string;
 };
 
+const CATEGORY_OPTIONS = ["Sentencias", "Factoring", "Inversión"];
+
 const empty: Form = {
   title: "",
   slug: "",
-  category: "Reparación directa",
+  category: "Sentencias",
   excerpt: "",
   content: "<p></p>",
   cover_image_url: "",
@@ -203,13 +205,21 @@ function PostEditor() {
             <label className={labelCls} htmlFor="category">
               Categoría
             </label>
-            <input
+            <select
               id="category"
               value={form.category}
               onChange={(e) => set("category", e.target.value)}
-              maxLength={60}
               className={inputCls}
-            />
+            >
+              {CATEGORY_OPTIONS.includes(form.category) || !form.category ? null : (
+                <option value={form.category}>{form.category} (actual)</option>
+              )}
+              {CATEGORY_OPTIONS.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
