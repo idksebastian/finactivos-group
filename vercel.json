@@ -1,4 +1,15 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.finactivos.com" }],
+      "destination": "https://finactivos.com/:path*",
+      "permanent": true
+    },
+    { "source": "/factoring.html", "destination": "/servicios/factoring", "permanent": true },
+    { "source": "/sentencias.html", "destination": "/servicios/compra-de-sentencias", "permanent": true },
+    { "source": "/contact.html", "destination": "/contacto", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
